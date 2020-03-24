@@ -106,6 +106,8 @@ export default new Vuex.Store({
         area: 5765,
         time: 1984,
         lang: [],
+        partvalue: [],
+        part: [],
         belief: [],
         gdp: 135.7,
         per: 31628,
