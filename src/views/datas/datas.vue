@@ -93,7 +93,7 @@ export default {
         tooltip: {},
           
         xAxis: {
-          data: ["挪威","波兰","韩国","希腊","当前"],
+          data: ["美国","印度","中国","沙特","当前"],
           // axisLabel: {  
           //   interval:0,  
           //   rotate: 20  
@@ -106,9 +106,9 @@ export default {
           }  
         },
         series: [{
-          name: '人口/万',
+          name: '人均/美元',
           type: 'bar',
-          data: [529, 3840, 5164, 1073, {value: this.item.people/10000,itemStyle:{ normal:{color:"#62bfe0"}}}]
+          data: [59532, 2016, 9771, 23219, {value: this.item.per,itemStyle:{ normal:{color:"#62bfe0"}}}]
         }]
       });  //图表实例尾括号
     }     //绘制函数尾括号
@@ -124,8 +124,8 @@ export default {
 }
 #datasTop{
   width: 100%;
-  height: 30px;
-  line-height: 30px;
+  height: 35px;
+  line-height: 35px;
   font-size: 13px;
   float: left;
   position: fixed;
@@ -148,7 +148,7 @@ export default {
 #badges{
   position: absolute;
   width: 55%;
-  right: 0;
+  right: 1%;
   top: 0;
   bottom: 0;
   margin: auto;

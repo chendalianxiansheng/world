@@ -17,17 +17,17 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 11580,
         time: 1971,
-        lang: ['阿拉伯语'],
-        partvalue: [25,13.5,12.1,10.8,10,8.6,5.6,4.8,9.6],
-        part: ['印度人','尼泊尔人','卡塔尔人','孟加拉人','菲律宾人','埃及人','斯里兰卡人','巴基斯坦人','其他'],
-        belief: ['伊斯兰教'],
         gdp: 1920,
         per: 69026,
         attr: '阿伊中',
         code: "白红三2无",
         place: '西亚',
         flag:require('../../public/img/flag/KTE.png'),
-        badge:require('../../public/img/badge/KTE1.png')
+        badge:require('../../public/img/badge/KTE1.png'),
+        lang: ['阿拉伯语'],
+        partvalue: [25,13.5,12.1,10.8,10,8.6,5.6,4.8,9.6],
+        part: ['印度人','尼泊尔人','卡塔尔人','孟加拉人','菲律宾人','埃及人','斯里兰卡人','巴基斯坦人','其他'],
+        belief: ['伊斯兰教']
       },{
         id: 194,
         type: 1,
