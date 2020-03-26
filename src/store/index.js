@@ -19,6 +19,7 @@ export default new Vuex.Store({
         time: 1971,
         gdp: 1920,
         per: 69026,
+        dens: 176,
         attr: '阿伊中',
         code: "白红三2无",
         place: '西亚',
@@ -26,7 +27,7 @@ export default new Vuex.Store({
         badge:require('../../public/img/badge/KTE1.png'),
         lang: ['阿拉伯语'],
         partvalue: [25,13.5,12.1,10.8,10,8.6,5.6,4.8,9.6],
-        part: ['印度人','尼泊尔人','卡塔尔人','孟加拉人','菲律宾人','埃及人','斯里兰卡人','巴基斯坦人','其他'],
+        part: ['印度人','尼泊尔人','卡塔尔人','孟加拉人','菲律宾人','埃及人','斯里兰卡人','巴基斯坦人','其他族群'],
         belief: ['伊斯兰教']
       },{
         id: 194,
@@ -39,17 +40,18 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 2727300,
         time: 1991,
-        lang: ['哈萨克语','俄语'],
-        partvalue: [68.48,20.61,12.91],
-        part: ['哈萨克族','俄罗斯人','其他'],
-        belief: ['伊斯兰教','基督新教'],
         gdp: 1447,
         per: 8480,
+        dens: 6.8,
         attr: '苏中伊内',
         code: "蓝黄1日动单字",
         place: '中亚',
         flag: require('../../public/img/flag/HSK.png'),
-        badge: require('../../public/img/badge/HSK1.png')
+        badge: require('../../public/img/badge/HSK1.png'),
+        lang: ['哈萨克语','俄语'],
+        partvalue: [68.48,20.61,12.91],
+        part: ['哈萨克族','俄罗斯人','其他族群'],
+        belief: ['伊斯兰教','基督新教']
       },{
         id: 193,
         type: 1,
@@ -61,17 +63,18 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 65600,
         time: 1991,
-        lang: ['僧伽罗语','泰米尔语'],
-        partvalue: [73.8,18,8.3],
-        part: ['僧伽罗族','泰米尔族','摩尔人'],
-        belief: ['佛教','印度教'],
         gdp: 889,
         per: 4102,
+        dens: 305,
         attr: '中岛佛',
         code: "红绿黄四1动器单",
         place: '南亚地区',
         flag: require('../../public/img/flag/SLLK.png'),
-        badge: require('../../public/img/badge/SLLK1.png')
+        badge: require('../../public/img/badge/SLLK1.png'),
+        lang: ['僧伽罗语','泰米尔语'],
+        partvalue: [73.8,18,8.3],
+        part: ['僧伽罗族','泰米尔族','摩尔人'],
+        belief: ['佛教','印度教']
       },{
         id: 192,
         type: 1,
@@ -83,17 +86,18 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 330350,
         time: 1957,
-        lang: ['马来语'],
-        partvalue: [69.3,22.8,6.9],
-        part: ['土著居民','华人','印度人'],
-        belief: ['伊斯兰教'],
         gdp: 3543.5,
         per: 11239,
+        dens: 92,
         attr: '中伊',
         code: "蓝白黄红四条月星5",
         place: '东南亚',
         flag: require('../../public/img/flag/MLXY.png'),
-        badge: require('../../public/img/badge/MLXY1.png')
+        badge: require('../../public/img/badge/MLXY1.png'),
+        lang: ['马来语'],
+        partvalue: [69.3,22.8,6.9],
+        part: ['原住民','华裔','印度人'],
+        belief: ['伊斯兰教']
       },{
         id:191,
         type: 1,
@@ -105,17 +109,18 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 5765,
         time: 1984,
-        lang: [],
-        partvalue: [],
-        part: [],
-        belief: [],
         gdp: 135.7,
         per: 31628,
+        dens: 72,
         attr: '中岛伊',
         code: "黑白黄红三字器不月4人单",
         place: '东南亚',
         flag: require('../../public/img/flag/WL.png'),
-        badge: require('../../public/img/badge/WL1.png')
+        badge: require('../../public/img/badge/WL1.png'),
+        lang: ['马来语'],
+        partvalue: [66.3,11.2,3.4,2.3,16.8],
+        part: ['马来人','华人','原住民','印度裔','其他族群'],
+        belief: ['伊斯兰教']
       },{
         id: 190,
         type: 1,
@@ -127,15 +132,18 @@ export default new Vuex.Store({
         land:'亚洲',
         area: 29800,
         time: 1991,
-        lang: [],
-        belief: [],
         gdp: 121.03,
         per: 3952,
+        dens: 109,
         place: '西亚',
         code: "红蓝黄条8无",
         attr: '苏中内新',
         flag: require('../../public/img/flag/YMNY.png'),
-        badge: require('../../public/img/badge/YMNY1.png')
+        badge: require('../../public/img/badge/YMNY1.png'),
+        lang: ['亚美尼亚语'],
+        partvalue: [93.3, 6.7],
+        part: ['亚美尼亚族','其他族群'],
+        belief: ['基督新教']
       },{
         id: 189,
         type: 1,
@@ -4772,15 +4780,17 @@ export default new Vuex.Store({
       land: '亚洲',
       area: 9600000,
       time: 1949,
-      lang: [],
-      belief: [],
       gdp: 136100,
       per: 9771,
       attr: '中非',
       code: "红黄多1",
       place: '东亚',
       flag: require('../../public/img/flag/ZG.png'),
-      badge: require('../../public/img/badge/ZG1.png')
+      badge: require('../../public/img/badge/ZG1.png'),
+      lang: ["汉语"],
+      partValue: [91.51,8.49],
+      part: ['汉族','其他族群'],
+      belief: []
     }
   },
   mutations: {
@@ -4803,7 +4813,6 @@ export default new Vuex.Store({
     }
   },
   getters: {
-
   },
   actions: {
     

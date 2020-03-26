@@ -3,6 +3,7 @@
     <div id="datasTop">
       <div id="backTo" @click="back()">返回 ➤</div>
       <span id="name1">{{item.name}}</span>
+      
     </div>
   <div id="datasInfo">
   <transition name="rotateBadge" appear tag="div">
@@ -28,20 +29,22 @@
     </div>
   </transition>
   </div>
-    <div id="map"></div>
+    <!-- <div id="map"></div> -->
+    <div id="chart2"></div>
     <div id="chart1"></div>
-  
+    <div id="bottom" @click="show"></div>
   </div>
 </template>
 
 <script>
-import echarts from 'echarts'
+// import echarts from 'echarts'
 
 export default {
   name: 'datas',
   data() {
     return {
-      item:[]
+      item: [],
+      merge: []
     };
   },
   filters:{
@@ -68,32 +71,89 @@ export default {
       }
     },
   },
+  created(){ 
+    this.item = this.$store.state.items  
+  },
   beforeMount(){
-    this.item = this.$store.state.items
+    this.merge = this.item.partValue.map((value,idx) => ({value, name: this.item.part[idx]}));
   },
   mounted(){
     this.$router.afterEach((to, from) => {
     window.scrollTo(0, 0) 
     })
     this.drawTab1();
+    this.drawTab2();
   },
+  // computed:{
+  //   merge(){
+  //     return this.item.partValue.map((value,idx) => ({value, name: this.item.part[idx]}));
+  //   }
+  // },
   methods:{
+    show(){
+      console.log(this.merge)
+    },
     back(){
       history.back(-1)
+    },
+    drawTab2(){
+      let chart = this.$echarts.init(document.getElementById('chart2'))
+      chart.setOption({
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b} {c}%',
+        },
+        legend: {
+          orient: 'vertical',
+          left: 10,
+          data: this.item.part
+        },
+        series: [
+          {
+            name: '人口结构',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                show: false,
+                position: 'center'
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    fontSize: '23',
+                    fontWeight: 'bold'
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            // data: [
+            //     {value: 60.48, name: '哈萨克族'},
+            //     {value: 20.61, name: '俄罗斯人'},
+            //     {value: 12.91, name: '其他族群'},
+            // ]
+            data: this.merge
+          }
+        ]
+      })
     },
     drawTab1(){
       let chart = this.$echarts.init(document.getElementById('chart1'))
       chart.setOption({
-        // color:'#87cefa',
         title:{
-          // text: '波兰',
-          // backgroundColor: "orange",
-          // subtext: 3840,       
+          padding: 10,
+          subtext:'人均收入/美元（GDP）',
+          subtextStyle:{
+            fontSize: 16,
+            color: "rgb(54,54,54)" 
+          },
+          x:'center'      
         },
-        tooltip: {},
-          
+        
+        tooltip: {},   
         xAxis: {
-          data: ["美国","印度","中国","沙特","当前"],
+          data: ["美国","印度","中国","伊朗","沙特","当前"],
           // axisLabel: {  
           //   interval:0,  
           //   rotate: 20  
@@ -108,7 +168,8 @@ export default {
         series: [{
           name: '人均/美元',
           type: 'bar',
-          data: [59532, 2016, 9771, 23219, {value: this.item.per,itemStyle:{ normal:{color:"#62bfe0"}}}]
+          
+          data: [59532, 2016, 9771, 5415, 23219, {value: this.item.per,itemStyle:{ normal:{color:"#62bfe0"}}}]
         }]
       });  //图表实例尾括号
     }     //绘制函数尾括号
@@ -129,7 +190,7 @@ export default {
   font-size: 13px;
   float: left;
   position: fixed;
-  z-index: 999;
+  z-index: 9999;
   background: white;
 }
 #backTo{
@@ -147,7 +208,7 @@ export default {
 }
 #badges{
   position: absolute;
-  width: 55%;
+  width: 54%;
   right: 1%;
   top: 0;
   bottom: 0;
@@ -195,10 +256,23 @@ export default {
 } */
 #chart1{
   position:relative;
-  top: -40px;
-  width: 96%;
-  padding-left: 2%;
+  width: 97%;
+  padding-left: 3%;
   height: 280px;
+  /* background: rgb(157, 238, 157); */
+}
+#chart2{
+  width: 100%;
+  height: 260px;
+  padding-top: 15px;
+  /* background: lightsalmon; */
+  /* background-image: url("../../../public/img/bg/bg1.png");
+  background-size: 120% 270px; */
+}
+
+#bottom{
+  width: 100%;
+  height: 500px;
 }
 .fadeFlag-enter,.fadeFlag-leave-to{
   transform: translateX(-100%);
