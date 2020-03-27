@@ -32,7 +32,7 @@
     <!-- <div id="map"></div> -->
     <div id="chart2"></div>
     <div id="chart1"></div>
-    <div id="bottom" @click="show"></div>
+    <div id="bottom"></div>
   </div>
 </template>
 
@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       item: [],
-      merge: []
+      merge: ''
     };
   },
   filters:{
@@ -75,7 +75,7 @@ export default {
     this.item = this.$store.state.items  
   },
   beforeMount(){
-    this.merge = this.item.partValue.map((value,idx) => ({value, name: this.item.part[idx]}));
+    this.merge = this.item.partvalue.map((value,idx) => ({value, name: this.item.part[idx]}));
   },
   mounted(){
     this.$router.afterEach((to, from) => {
@@ -84,15 +84,7 @@ export default {
     this.drawTab1();
     this.drawTab2();
   },
-  // computed:{
-  //   merge(){
-  //     return this.item.partValue.map((value,idx) => ({value, name: this.item.part[idx]}));
-  //   }
-  // },
   methods:{
-    show(){
-      console.log(this.merge)
-    },
     back(){
       history.back(-1)
     },
@@ -121,7 +113,7 @@ export default {
             emphasis: {
                 label: {
                     show: true,
-                    fontSize: '23',
+                    fontSize: '21',
                     fontWeight: 'bold'
                 }
             },
@@ -259,13 +251,13 @@ export default {
   width: 97%;
   padding-left: 3%;
   height: 280px;
-  /* background: rgb(157, 238, 157); */
+  background: rgb(157, 238, 157);
 }
 #chart2{
   width: 100%;
   height: 260px;
   padding-top: 15px;
-  /* background: lightsalmon; */
+  background: lightsalmon;
   /* background-image: url("../../../public/img/bg/bg1.png");
   background-size: 120% 270px; */
 }
