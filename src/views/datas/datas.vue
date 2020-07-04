@@ -31,7 +31,6 @@
   </div>
     <!-- <div id="map"></div> -->
     <div id="chart2"></div>
-    <div id="chart1"></div>
     <div id="bottom"></div>
   </div>
 </template>
@@ -81,8 +80,8 @@ export default {
     this.$router.afterEach((to, from) => {
     window.scrollTo(0, 0) 
     })
-    this.drawTab1();
     this.drawTab2();
+    // this.drawTab2();
   },
   methods:{
     back(){
@@ -130,41 +129,6 @@ export default {
         ]
       })
     },
-    drawTab1(){
-      let chart = this.$echarts.init(document.getElementById('chart1'))
-      chart.setOption({
-        title:{
-          padding: 10,
-          subtext:'人均收入/美元（GDP）',
-          subtextStyle:{
-            fontSize: 16,
-            color: "rgb(54,54,54)" 
-          },
-          x:'center'      
-        },
-        
-        tooltip: {},   
-        xAxis: {
-          data: ["美国","印度","中国","伊朗","沙特","当前"],
-          // axisLabel: {  
-          //   interval:0,  
-          //   rotate: 20  
-          // }  
-        },
-        yAxis: {
-          axisLabel: {  
-            interval:0,  
-            rotate: 55  
-          }  
-        },
-        series: [{
-          name: '人均/美元',
-          type: 'bar',
-          
-          data: [59532, 2016, 9771, 5415, 23219, {value: this.item.per,itemStyle:{ normal:{color:"#62bfe0"}}}]
-        }]
-      });  //图表实例尾括号
-    }     //绘制函数尾括号
   }      //methods尾括号
 }       //vue实例尾括号
 </script>

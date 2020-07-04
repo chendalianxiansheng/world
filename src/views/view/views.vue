@@ -185,31 +185,33 @@
         
         <icon-tag>
           <!-- 子组件资料小模块，展示数据   并排2个 -->
-          <img slot="item-p1" src="../../assets/img/viewImg/people.png" alt="">
+          <img slot="item-img1" src="../../assets/img/viewImg/people.png" alt="">
           
-          <p slot="item-people">{{item.people | numb}}人</p>
+          <p slot="item-p1"> {{item.people | numb}}人</p>
           
-          <p slot="item-money" class="item-end">{{item.area | numb}}km²</p>
+          <img slot="item-img2" class="item-end" src="../../assets/img/viewImg/area.png" alt="">
+
+          <p slot="item-p2" class="item-end"> {{item.area | numb}}km²</p>
           
-          <img slot="item-p2" class="item-end" src="../../assets/img/viewImg/area.png" alt="">
         </icon-tag>
         
         <icon-tag class="icon-tag2" v-if="item.gdp">
           <!-- 资料小模块  第二个 -->
-          <img slot="item-p1" src="../../assets/img/viewImg/GDP.png" alt="">
+          <img slot="item-img1" src="../../assets/img/viewImg/GDP.png" alt="">
           
-          <p slot="item-people">{{item.gdp | gdp}}</p>
+          <p slot="item-p1"> {{item.gdp | gdp}}</p>
+        
+          <img slot="item-img2" src="../../assets/img/viewImg/money.png" alt="">
+
+          <p slot="item-p2" class="item-end"> {{item.per | per}}</p>
           
-          <p slot="item-money" class="item-end">{{item.per | per}}</p>
-          
-          <img slot="item-p2" src="../../assets/img/viewImg/money.png" alt="">
         </icon-tag>
        
         <icon-tag class="icon-tag3" v-else="item.gdp">
 
-          <img slot="item-p1" src="../../assets/img/viewImg/earth.png" alt="">
+          <img slot="item-img1" src="../../assets/img/viewImg/earth.png" alt="">
 
-          <p slot="item-people">主权国 : {{item.from}}</p>
+          <p slot="item-p1"> 主权国 : {{item.from}}</p>
         </icon-tag>
       </div>
       <!-- 数据库 中部40% -->
@@ -335,6 +337,9 @@ export default {
   //   // this.$store.commit('sortMethod','id')
   //   })
   // },
+  mounted(){
+
+  },
   methods:{
     iptBlur(e){     //点击键盘确定(13)时，输入框失去焦点
       e.target.blur()
@@ -760,22 +765,9 @@ export default {
   font-size: 10px;
   line-height: 15px;
 }
-.list #content .line-a{  /* 内容块中间部分的内容第一行 */
+.list #content .line-a{  
   color: #DB4137;
   font-size: 10px;
-}
-.list #content .icon-tag2,.icon-tag3{
-  margin-top: 3px;
-}
-.list #content .icon-tag3 p{
-  padding-top: 1px;
-}
-/* .list #content .icon-tag3{
-  margin-top: 3px;
-} */
-.list #content .item-end{
-  white-space: nowrap;
-  text-overflow: initial
 }
 .list #badge{  /* 内容块第三部分的徽章区 */
   flex: 0.3;

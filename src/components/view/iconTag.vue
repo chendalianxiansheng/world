@@ -1,9 +1,13 @@
 <template>
   <div id="line-b">
-    <slot name="item-p1"></slot>
-    <slot name="item-people"></slot>
-    <slot name="item-money"></slot>
-    <slot name="item-p2"></slot>
+    <div class="line-left">
+      <slot name="item-img1"></slot>
+      <slot name="item-p1"></slot>   
+    </div>
+    <div class="line-right">
+      <slot name="item-img2"></slot>
+      <slot name="item-p2"></slot>
+    </div>
   </div>
 </template>
 
@@ -15,6 +19,27 @@ export default {
 
 <style>
 #line-b{
+  width: 98%;
+  height: 17px;
+  margin-left: 2%;
+  line-height: 17px;
+  display: flex;
+}
+#line-b>.line-left,#line-b>.line-right{
+  flex: 0.5;
+  text-align: start;
+  font-size: 9px;
+}
+#line-b img{
+  display: inline-block;
+  width: 12px;
+}
+#line-b p{
+  display: inline;
+  font-size: 9px;
+}
+
+/* #line-b{
   width: 100%;
   height: 20px;
   position: relative;
@@ -43,5 +68,5 @@ export default {
 #line-b img:last-child{
   position: absolute;
   left: 55%;
-}
+} */
 </style>

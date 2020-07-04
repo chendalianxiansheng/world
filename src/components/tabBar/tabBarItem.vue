@@ -51,9 +51,6 @@ export default {
 }
 .active{
   color: white;
-  font-size: 14px;
-  font-weight: 900;
-  transition: all 0.5s ease;
 }
 
 </style>
