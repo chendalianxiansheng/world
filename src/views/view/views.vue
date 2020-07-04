@@ -1,12 +1,12 @@
 <template>
   <div @click="showPop($event)">
-    <!-- 视图组件根元素  0级-->
+    <!-- 视图组件根元素  @点击触发泡泡 -->
     <div id="pop" ref="pop"></div> 
-      <!-- 点击产生泡泡  1级-->
+      <!-- 点击泡泡的具体实现div -->
     <div id="tags" v-if="tags">
-      <!-- 旗帜特征选择面板  1级 -->
+      <!-- 旗帜特征选择面板 @点击创建/移除-->
       <div id="tags-top" @click="tags=false">特征过滤 ×</div>
-        <!-- 旗帜特征顶部div 2级 -->
+        <!-- 旗帜特征顶部div @点击移除-->
     <transition-group name="imgScale" appear>
       <!-- 旗帜特征标签过度样式 -->
       <div class="buttons" v-for="item in $store.state.buttons" :key="item.idx" @click="item.state=!item.state,getOut(),sumNum=maxNum,item.state?buttonInfo=item.info:'',item.state?flagStyle.push(item.code):flagStyle.splice(flagStyle.indexOf(item.code),1)" >
@@ -89,77 +89,54 @@
           <p slot="ipt-btn-text" :class="{font:sortWay==='area'}">按面积</p>
         </div>
       </input-btn>
-
       <input-btn>
         <div slot="ipt-btn-out" @click="sumNum=maxNum,sortWay=='people'?'':reverse='',sendMutation('people'),sortWay='people',showMsg('按国家人口排序')">
           <img v-if="sortWay==='people'" slot="ipt-btn-icon" src="../../assets/img/viewImg/people1.png" alt="">
-          
           <img v-else slot="ipt-btn-icon-active" src="../../assets/img/viewImg/people0.png" alt="">
-          
           <p slot="ipt-btn-text" :class="{font:sortWay==='people'}">按人口</p>
         </div>
-      </input-btn>
-      
+      </input-btn>  
       <input-btn>
         <div slot="ipt-btn-out" @click="sumNum=maxNum,sortWay=='gdp'?'':reverse='',sendMutation('gdp'),sortWay='gdp',showMsg('按年产总值排序/美元')">
           <img v-if="sortWay==='gdp'" slot="ipt-btn-icon" src="../../assets/img/viewImg/GDP1.png" alt="">
-          
           <img v-else slot="ipt-btn-icon-active" src="../../assets/img/viewImg/GDP0.png" alt="">
-          
           <p slot="ipt-btn-text" :class="{font:sortWay==='gdp'}">按总量</p>
         </div>
       </input-btn>
-
       <input-btn>
         <div slot="ipt-btn-out" @click="sumNum=maxNum,sortWay=='per'?'':reverse='',sendMutation('per'),sortWay='per',showMsg('按人均收入排序/美元')">
           <img v-if="sortWay==='per'" slot="ipt-btn-icon" src="../../assets/img/viewImg/per1.png" alt="">
-          
           <img v-else slot="ipt-btn-icon-active" src="../../assets/img/viewImg/per0.png" alt="">
-          
           <p slot="ipt-btn-text" :class="{font:sortWay==='per'}">按人均</p>
         </div>
       </input-btn>
-
       <input-btn>
           <div slot="ipt-btn-out" @click="tags=!tags">
-          
           <span id="arrLen" v-if="flagStyle.length" :class="{font:!tags}">{{flagStyle.length}}</span>
-          
           <img v-if="tags" slot="ipt-btn-icon" src="../../assets/img/viewImg/rings1.png" alt="">
           <!-- reverse为正时，倒序有效 -->
           <img v-else slot="ipt-btn-icon-active" src="../../assets/img/viewImg/rings0.png" alt="">
-          
           <p :class="{font:tags}" slot="ipt-btn-text">过滤项</p>
         </div>
       </input-btn>
-
       <input-btn>
         <div slot="ipt-btn-out" @click="sideBar=!sideBar,sideBar?stopScroll():startScroll()">
-          
           <div id="count">{{result.length}}</div>
-          
           <p slot="ipt-btn-text" class="font">展示数</p>
         </div>
       </input-btn>
-
       <input-btn>
           <div slot="ipt-btn-out">
-          
           <img v-if="reverse" slot="ipt-btn-icon" @click="reverseItem(),reverse='',showMsg('取消倒序')" src="../../assets/img/viewImg/rotate1.png" alt="">
           <!-- reverse为正时，倒序有效 -->
           <img v-else slot="ipt-btn-icon-active" @click="reverseItem(),reverse=true,showMsg('倒序')" src="../../assets/img/viewImg/rotate0.png" alt="">
-          
           <p :class="{font:reverse}" slot="ipt-btn-text">倒 序</p>
         </div>
       </input-btn>
       
-      
     </search-input>
-    
     <div class="space"></div>
     <!-- 填充浮动功能栏的大白块 (●—●) -->
-
-
   <div v-if="result.length>0" @click="sideBar=''">
     <!-- if/else切换无结果填充图 -->
     <transition appear name="changeList">
@@ -178,39 +155,24 @@
       <!-- 图片区 左侧30% -->
       <div id="content">
         <p class="name">{{item.name}}</p>
-        
         <p class="fullname">{{item.fullname}}</p>
-        
         <p class="line-a">首都：{{item.city}}</p>
-        
         <icon-tag>
           <!-- 子组件资料小模块，展示数据   并排2个 -->
           <img slot="item-img1" src="../../assets/img/viewImg/people.png" alt="">
-          
           <p slot="item-p1"> {{item.people | numb}}人</p>
-          
           <img slot="item-img2" class="item-end" src="../../assets/img/viewImg/area.png" alt="">
-
-          <p slot="item-p2" class="item-end"> {{item.area | numb}}km²</p>
-          
+          <p slot="item-p2" class="item-end"> {{item.area | numb}}km²</p> 
         </icon-tag>
-        
         <icon-tag class="icon-tag2" v-if="item.gdp">
           <!-- 资料小模块  第二个 -->
           <img slot="item-img1" src="../../assets/img/viewImg/GDP.png" alt="">
-          
           <p slot="item-p1"> {{item.gdp | gdp}}</p>
-        
           <img slot="item-img2" src="../../assets/img/viewImg/money.png" alt="">
-
           <p slot="item-p2" class="item-end"> {{item.per | per}}</p>
-          
         </icon-tag>
-       
         <icon-tag class="icon-tag3" v-else="item.gdp">
-
           <img slot="item-img1" src="../../assets/img/viewImg/earth.png" alt="">
-
           <p slot="item-p1"> 主权国 : {{item.from}}</p>
         </icon-tag>
       </div>
@@ -221,10 +183,8 @@
           <div id="index">{{idx+1}}</div>
         <!-- 备选功能按键，预留 -->
         </div>
-    </div>  
-    
+      </div>  
     </div>
-    
     </transition>
     <img id="goTo" src="../../assets/img/viewImg/arrow.png" alt="" @click="getOut(),sumNum=maxNum,showMsg('返回顶部')">  
     <transition name="fadeImg" appear>
@@ -244,7 +204,6 @@
     </transition>
   </div>
     <div id="view-bottom">
-    
     </div>
     <!-- 填充底部tabBar的div -->
   </div>
@@ -256,7 +215,6 @@ import inputBtn from "../../components/view/inputBtn"
 import iconTag from "../../components/view/iconTag"
 import sideBar from "../../components/view/sideBar"
 
-
 export default {
   name: 'views',
   components:{
@@ -267,20 +225,19 @@ export default {
   },
   data() {
     return {
-      search: '',             //搜索词条
-      sortWay: 'id',         //排序方式变量
-      color: true,          //激活颜色变量
-      reverse: false,      //倒序数组变量
-      message: '',        //点击时传入的消息框内容
-      showTimer: null,   //消息框定时器 
-      sideBar: false,   //侧边栏的显示状态
+      search: '',               //搜索词条
+      sortWay: 'id',           //排序方式变量
+      color: true,            //激活颜色变量
+      reverse: false,        //倒序数组变量
+      message: '',          //点击时传入的消息框内容
+      showTimer: null,     //消息框定时器 
+      sideBar: false,     //侧边栏的显示状态
       searchkey: 'item.ename+item.name+item.land',
       attrKey: '',         
       attrState: '',
       maxNum: 30,
       sumNum: 30,
       tags: false,
-      country: '波斯尼亚和黑塞哥维纳',
       buttonInfo: '过滤 简介 : 选择需要过滤的旗帜特征，含有颜色/图形/图案和结构分类',
       buttonInfor: '过滤 简介 : 选择需要过滤的旗帜特征，含有颜色/图形/图案和结构分类',
       type1: 1,
@@ -289,17 +246,8 @@ export default {
       type4: false,
       type5: false,
       flagStyle:[]
-      // scrollTop: 0,
-      // topBtn: false
     }
-  },
-  // mounted(){
-  //   window.addEventListener('scroll',this.scrollToTop)
-  // },
-  // afterEach((to,from)=>{
-  //   this.$store.state.pageHeight = window.document.body.scrollTop
-  //   alert(this.$store.state.pageHeight)
-  // }),  
+  }, 
   beforeRouteLeave:((to, from, next)=>{
     // this.$store.state.page = document.body.scrollTop || document.documentElement.scrollTop
     next()
@@ -317,28 +265,7 @@ export default {
           eval(this.searchkey)
         ).indexOf(this.search)>-1))
       
-      // )).sort((a,b)=>{
-      //   var a = a[this.sortWay]
-      //   var b = b[this.sortWay]
-      //   if(this.sortWay==='ename'){
-      //     return a.localeCompare(b)
-      //   }else{
-      //     return b-a
-      //   }
-      // })
     },
-  },
-  // beforeMount(){
-  //   this.$store.commit('sortMethod','id')
-  // },
-  // mounted() {
-  //   this.$router.afterEach((to, from) => {
-  //   window.scrollTo(0, 0)
-  //   // this.$store.commit('sortMethod','id')
-  //   })
-  // },
-  mounted(){
-
   },
   methods:{
     iptBlur(e){     //点击键盘确定(13)时，输入框失去焦点
@@ -367,18 +294,7 @@ export default {
     },
     clearTag(){       //将搜索项重置
       this.$store.commit('clearTag')
-    },
-    // sortMethod(key){            //排序功能实现
-    //   return this.result.sort((a,b)=>{ 
-    //     var a = a[key]
-    //     var b = b[key]
-    //     if(key=='ename'){    //首字母排序
-    //       return a.localeCompare(b)
-    //     }else{
-    //     return b-a        //纯大小排序（默认大到小）
-    //     }
-    //   })
-    // },          
+    },         
     cancelIpt(){  //重置输入框  
     if(this.search){                 
       this.search='' 
@@ -578,7 +494,6 @@ export default {
 #tags .buttons img{
   margin-top: 8px;
   height: 19px;
-  /* border-radius: 50%; */
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 #tags .buttons p{
@@ -636,10 +551,6 @@ export default {
 #keyTag span{
   padding-left: 7px;
 }
-/* #keyTag :last-child(){
-  padding: 10px;
-  background: white;
-} */
 #bbg{
   width: 100%;
   height: 100%;
@@ -736,7 +647,6 @@ export default {
   left: 5px;
   color: black;
 }
-
 .list #flag #ename{   /* 内容块第一部分的p标签 */
   position: absolute;
   font-size: 17px;
@@ -811,7 +721,8 @@ export default {
 .changeStyle-enter-active,.changeStyle-leave-active{   /* 无效图过度效果 */ 
   transition: all 0.5s ease;
 }
-.sideBar-enter,.sideBar-leave-to{    /* 侧边栏的开始和结束样式 */
+/* 侧边栏的开始和结束样式 */
+.sideBar-enter,.sideBar-leave-to{    
   transform: translateX(500px);
   opacity: 0;
 }
@@ -824,12 +735,14 @@ export default {
 .keyTag-enter-active,.keyTag-leave-active{
   transition: all ease 0.5s;
 }
+/* imgScale特征面板初加载 */
 .imgScale-enter,.imgScale-leave-to{
   transform: scale(0);
 }
 .imgScale-enter-active,.imgScale-leave-active{
   transition: all ease 0.5s;
 }
+/* fadeImg底部menu按钮的动态效果 */
 .fadeImg-enter,.fadeImg-leave-to{
   transform: translateX(100%);
 }
@@ -839,15 +752,18 @@ export default {
 .fadeImg-enter-active,.fadeImg-leave-active{
   transition: all ease 1s;
 }
-#view-bottom{  /* 底部填充div */
+#view-bottom{  
+  /* 底部填充div */
   width: 100%;
   height: 70px;
 }
-#no-div{   /* 无效图容器的空间位置 */
+#no-div{   
+  /* 无效图容器的空间位置 */
   width: 100%;
   height: 100%;
 }
 #no-result{
+  /* 没有搜索结果时展示的地球图片 */
   position: absolute;
   width: 50%;
   top: 0;
@@ -857,10 +773,12 @@ export default {
   margin: auto;
 }
 #menu{
+  /* 下方按钮和hr横线的整体 */
   margin-top: 10px;
   position: relative;
 }
 #menu:after{
+  /* 按钮内的hr横线 */
   content:'';
   width: 90%;
   height: 1px;
@@ -871,12 +789,14 @@ export default {
   z-index: 1;
 }
 #menu img{
+  /* 已无更多 和 下滑加载按钮 */ 
   position: relative;
   z-index: 2;
-  margin-top: 8px;
+  top: 4px;
   width: 60px;
 }
 #goTo{
+  /* 返回顶部按钮 */ 
   position: fixed;
   width: 30px;
   right: 15px;
@@ -886,7 +806,8 @@ export default {
   background:rgba(0, 0, 0, 0.5);
   transition: all ease 0.1s;
 }
-#goTo:active{
+#goTo:active{   
+  /* 返回顶部点击效果 */
   transform: scale(1.1);
   background: #db4137;
 }
