@@ -4,7 +4,7 @@
       <router-view></router-view>
     </keep-alive>
      <tab-bar>
-       <tab-bar-item path="/search">
+       <tab-bar-item path="/tree">
          <img slot="tab-bar-icon" src="./assets/img/tabImg/g0.png" alt="">
          <img slot="tab-bar-icon-active" src="./assets/img/tabImg/g1.png" alt="">
          <div slot="tab-bar-text">过滤</div>

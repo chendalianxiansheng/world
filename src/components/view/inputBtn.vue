@@ -22,9 +22,8 @@ export default {
 
 <style scoped>
 #ipt-btn{
-  font-size: 9px;
-  float: left;
-  width: 8.1%;
+  font-size: 8px;
+  flex: 0.11;
   user-select: none;
 }
 #ipt-btn p{
@@ -32,7 +31,7 @@ export default {
   color: #AEAAAA;
 }
 #ipt-btn img{
-  width: 19px;
+  width: 18px;
   margin-top: 4px;
   vertical-align: middle;
 }

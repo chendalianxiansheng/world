@@ -25,7 +25,7 @@ export default {
 #search{
   cursor: pointer;
   width: 100%;
-  height: 36px;
+  height: 35px;
   background: whitesmoke;
   position: fixed;
   top: 0;
@@ -33,6 +33,8 @@ export default {
   right: 0;
   display: flex;
   z-index: 6666;
+  justify-content: center;
+  align-items: center;
   border-bottom: 1px solid whitesmoke;
 }
 #search input[type="text"]{  
@@ -40,10 +42,10 @@ export default {
   border: 1px solid Gainsboro; 
   border-radius: 20px;  
   height: 25px;
-  margin-top: 4px;
+  line-height: 25px;
   width: 22%;
   padding-left: 8px;
-  margin-left: 1.5%;
+  margin-left: 1%;
 }
 #search input[type="text"]:focus{   
   border-color: #DB4137;  
@@ -52,10 +54,10 @@ export default {
 }
 #search span{
   position: absolute;
-  left: 20%;
-  bottom: 2.5px;
-  font-size: 17px;
-  padding: 5px 5px;
+  left: 21.5%;
+  font-size: 16px;
+  line-height: 25px;
+  /* padding: 5px 5px; */
   color: #757575;
   user-select: none;
 }

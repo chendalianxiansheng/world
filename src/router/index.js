@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+const tree = () =>import('../views/tree/tree')
 const views = () =>import('../views/view/views')
 const datas = () =>import('../views/datas/datas')
-const search = () =>import('../views/search/search')
 const setting = () =>import('../views/setting/setting')
 
 
@@ -22,8 +22,8 @@ const routes = [
     component: datas
   },
   {
-    path:'/search',
-    component: search
+    path:'/tree',
+    component: tree
   },
   {
     path:'/setting',

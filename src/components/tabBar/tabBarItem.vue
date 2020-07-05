@@ -37,17 +37,15 @@ export default {
 
 <style scoped>
 .tab-bar-item{
-  flex: 1;
-  height: 65px;
-  font-size: 13px;
+  flex: 0.25;
+  font-size: 11px;
   cursor: pointer;
   color: #AEAAAA;
   z-index: 99;
 }
 .tab-bar-item img{
-  margin-top: 3px;
+  margin-top: 5px;
   height: 25px;
-  vertical-align: middle;
 }
 .active{
   color: white;

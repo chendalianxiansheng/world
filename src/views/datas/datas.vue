@@ -1,7 +1,7 @@
 <template>
   <div id="datasDiv">
     <div id="datasTop">
-      <div id="backTo" @click="back()">返回 ➤</div>
+      <div id="backTo" @click="back()">返回 ➤ </div>
       <span id="name1">{{item.name}}</span>
       
     </div>
@@ -153,6 +153,7 @@ export default {
   position: absolute;
   float: left;
   margin-left: 3%;
+  cursor: pointer;
 }
 #name1{
   text-align: center;
