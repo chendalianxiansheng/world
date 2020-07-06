@@ -38,19 +38,9 @@ export default {
   border-bottom: 1px solid whitesmoke;
 }
 #search input[type="text"]{  
-  outline-style: none;
-  border: 1px solid Gainsboro; 
-  border-radius: 20px;  
-  height: 25px;
-  line-height: 25px;
   width: 22%;
   padding-left: 8px;
   margin-left: 1%;
-}
-#search input[type="text"]:focus{   
-  border-color: #DB4137;  
-  outline: 0; 
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 10px rgba(219,65,55,.6)
 }
 #search span{
   position: absolute;

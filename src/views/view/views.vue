@@ -1,5 +1,5 @@
 <template>
-  <div @click="showPop($event)">
+  <div @click="showPop($event)" id="views">
     <!-- 视图组件根元素  @点击触发泡泡 -->
     <div id="pop" ref="pop"></div> 
       <!-- 点击泡泡的具体实现div -->
@@ -453,7 +453,8 @@ export default {
   position: absolute;
 
 }
-#pop{
+#pop{   
+  /* 泡泡的具体实现 */
   width: 24px;
   height: 24px;
   background: rgba(0, 0, 0, .15);
@@ -463,7 +464,8 @@ export default {
   z-index: 9999;
   transition: all ease 0.2s;
 }
-#tags{
+#tags{  
+  /* 旗帜特征定位的面板 */
   width: 60%;
   height: 460px;
   background: white;
@@ -476,8 +478,8 @@ export default {
   margin: auto;
   overflow-y: hidden;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-
 }
+
 #tags-top{
   width: 100%;
   height: 40px;
