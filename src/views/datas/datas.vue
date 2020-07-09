@@ -77,10 +77,11 @@ export default {
     this.merge = this.item.partvalue.map((value,idx) => ({value, name: this.item.part[idx]}));
   },
   mounted(){
+    this.drawTab2();
     this.$router.afterEach((to, from) => {
     window.scrollTo(0, 0) 
     })
-    this.drawTab2();
+    
     // this.drawTab2();
   },
   methods:{

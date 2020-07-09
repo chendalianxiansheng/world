@@ -50,20 +50,21 @@ export default {
 <style scoped>
 #tree-top{
   position: fixed;
-  top: 15%;
+  top: 0;
   left: 0;
+  transform: translateY(calc(50% - 50px));
 }
 #tree-top>div{
-  width: 37px;
-  height: 37px;
-  margin: 25px 0px;
+  width: 40px;
+  height: 40px;
+  margin: 22px 0px;
   cursor: pointer;
   user-select: none;
 }
 #tree-top img{
   width: 22px;
   height: 22px;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 #tree-top p{
   font-size: 8px;
