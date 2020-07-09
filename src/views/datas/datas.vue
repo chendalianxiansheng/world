@@ -95,7 +95,7 @@ export default {
           trigger: 'item',
           formatter: '{a} <br/>{b} {c}%',
         },
-        legend: {
+        legend: {    //提示框的方位
           orient: 'vertical',
           left: 10,
           data: this.item.part
@@ -104,9 +104,9 @@ export default {
           {
             name: '人口结构',
             type: 'pie',
-            radius: ['50%', '70%'],
+            radius: ['50%', '70%'],   //环形的宽度
             avoidLabelOverlap: false,
-            label: {
+            label: {   //中央文字的样式
                 show: false,
                 position: 'center'
             },
@@ -120,16 +120,11 @@ export default {
             labelLine: {
                 show: false
             },
-            // data: [
-            //     {value: 60.48, name: '哈萨克族'},
-            //     {value: 20.61, name: '俄罗斯人'},
-            //     {value: 12.91, name: '其他族群'},
-            // ]
             data: this.merge
           }
         ]
       })
-    },
+    },    //echarts的结尾
   }      //methods尾括号
 }       //vue实例尾括号
 </script>

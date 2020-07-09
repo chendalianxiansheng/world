@@ -1,5 +1,5 @@
 <template>
-  <div id="tree-top">
+  <div id="tree-top" @click="sendArr">
     <div @click="cvlz=!cvlz" :style="{background:cvlz?'white':'#db4137'}">
       <img v-if="cvlz" src="../../../src/assets/img/viewImg/fire1.png" alt="">
       <img v-else src="../../../src/assets/img/viewImg/fire0.png" alt="">
@@ -44,15 +44,20 @@ export default {
       person: true,
     };
   },
+  methods:{
+    sendArr(){
+      this.$emit('sendClick')
+    }
+  }
 }
 </script>
 
 <style scoped>
 #tree-top{
   position: fixed;
-  top: 0;
+  top: calc(50% - 50px);
   left: 0;
-  transform: translateY(calc(50% - 50px));
+  transform: translateY(-50%);
 }
 #tree-top>div{
   width: 40px;

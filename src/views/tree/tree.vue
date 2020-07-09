@@ -196,7 +196,7 @@ export default {
           timestamp: 'BC 632年',
           name: '中国文明',
           place: '今 中国 山东菏泽-鄄城县 西南',
-          content: '晋文公姬重耳 与 楚成王 两军爆发了城濮之战，晋军以少胜多，阻止了楚国北进的势头，就此奠定了晋国与楚国两个超级大国的对峙形势。晋文公成为春秋时期的第二代霸主',
+          content: '晋文公姬重耳 与 楚成王 进行了争夺中原霸权的城濮之战，晋军以少胜多，阻止了楚国北进，就此奠定了晋国与楚国两个超级大国对峙的形势。晋文公成为春秋时期的第二代霸主',
           type: 'war',
           color: 'red',
           src: require('../../../public/img/flag/ZG.png'),
@@ -221,6 +221,9 @@ export default {
   computed:{
     result(){
     }
+  },
+  methods:{
+    
   }
 }
 </script>
