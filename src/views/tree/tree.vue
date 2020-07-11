@@ -1,5 +1,5 @@
 <template>
-  <div id="tree">
+  <div id="tree" @click="run">
     <tree-top></tree-top>
     <div id="tree-content">
       <el-timeline>
@@ -36,6 +36,7 @@ export default {
           place: '今 伊拉克 美索不达米亚平原',
           content: '苏美尔人在 两河流域（幼发拉底河与底格里斯河河畔）建立了聚居的城邦，同时期产生了楔形文字，第一代人类文明诞生',
           type: 'cvlz',
+          tier: 0,
           color: 'orange',
           src: require('../../../public/img/flag/YLK.png'),
         },
@@ -43,8 +44,9 @@ export default {
           timestamp: 'BC 3100年',
           name:'古埃及文明',
           place: '今 埃及 开罗',
-          content: '由 纳尔迈 Nermer（又称美尼斯）统一上下埃及建立了古埃及第一王朝，都城位于 孟菲斯。早王朝时期开始',
+          content: '由 纳尔迈 Nermer（又称美尼斯）统一上下埃及建立了古埃及第一王朝，都城位于 孟菲斯。古埃及的早王朝时期开始',
           type: 'cvlz',
+          tier: 0,
           color: 'orange',
           src: require('../../../public/img/flag/AJ.png'),
         },
@@ -52,8 +54,9 @@ export default {
           timestamp: 'BC 2900年',
           name:'苏美尔文明',
           place: '今 伊拉克 美索不达米亚平原',
-          content: '苏美尔文明进入城邦争霸阶段',
+          content: '由于势力的扩张，苏美尔城邦之间的矛盾激化，进入城邦争霸阶段',
           type: 'war',
+          tier: 0,
           color: 'red',
           src: require('../../../public/img/flag/YLK.png'),
         },
@@ -61,8 +64,9 @@ export default {
           timestamp: 'BC 2070年',
           name: '中国文明',
           place: '今 中国 黄河流域',
-          content: '大禹之子 启，建立夏朝（真实性存疑）',
+          content: '大禹之子 启，终止了部落阶段的禅让制，建立世袭朝代夏朝（真实性存疑）夏朝早期定都阳城（今河南郑州-登封市）后迁都斟鄩（今河南洛阳-偃师市）所在地区有小规模遗址得到印证，但无法坐实',
           type: 'cvlz',
+          tier: 0,
           color: 'orange',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -72,6 +76,7 @@ export default {
           place: '今 中国 河南商丘',
           content: '夏朝方国：商国君主 汤，于鸣条之战（具体地址有争议）击败夏朝君主 桀，建立商朝。定都亳（今河南商丘）商朝使用象形文字 甲骨文，主流学界认为商代为中国文明肇基之始',
           type: 'cvlz',
+          tier: 1,
           color: 'orange',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -81,6 +86,7 @@ export default {
           place: '今 中国 河南 / 河北一代',
           content: '因商朝世衰，王室内发夺权，废立加剧。动乱历经 仲丁、外壬、河亶甲、祖乙、祖辛、沃甲、祖丁、南庚、阳甲 九代君王，史称九世之乱，此间国都频繁迁移',
           type: 'cvlz',
+          tier: 1,
           color: 'orange',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -88,8 +94,9 @@ export default {
           timestamp: 'BC 约1300年',
           name: '中国文明',
           place: '今 中国 河南安阳',
-          content: '商王 盘庚 迁都于殷（今河南安阳）商朝摆脱混乱时期，自此大定，直至灭亡，史称盘庚迁殷',
+          content: '商王 盘庚 迁都于殷（今河南安阳）商朝摆脱混乱无序，自此大定，直至商朝灭亡，史称盘庚迁殷',
           type: 'cvlz',
+          tier: 1,
           color: 'orange',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -99,6 +106,7 @@ export default {
           place: '今 中国 河南鹤壁-淇县',
           content: '周人于周原兴起（今陕西宝鸡一代）并与 商王帝辛，决战于牧野，史称牧野之战。纣王兵败自焚于朝歌城（殷商陪都 今河南鹤壁-淇县）商朝灭亡',
           type: 'war',
+          tier: 1,
           color: 'red',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -108,6 +116,7 @@ export default {
           place: '今 中国 陕西西安',
           content: '周武王 姬发 灭商建立周朝，定都镐京（今陕西西安）设东都雒邑（今河南洛阳），分别称为 宗周 与 成周',
           type: 'cvlz',
+          tier: 1,
           color: 'orange',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -117,6 +126,7 @@ export default {
           place: '今 中国 河南安阳',
           content: '周武王早逝，成王年幼，周公旦摄政。纣王之子武庚与殷商王畿三监（制衡殷商遗民的三国诸侯）发动叛乱，被周公东征平定。史称三监之乱，殷商遗民被迁往故地商丘，分封纣王长兄 微子启 为宋国国君',
           type: 'war',
+          tier: 1,
           color: 'red',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -126,6 +136,7 @@ export default {
           place: '今 中国 陕西咸阳-兴平市 东南',
           content: '周懿王 姬囏时期，国力日衰，戎狄多次进犯（称为北狄和西戎，实为多股外族部落），周朝被迫迁都于犬丘（今陕西咸阳兴平市）并改都城名为 槐里',
           type: 'cvlz',
+          tier: 1,
           color: 'orange',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -135,6 +146,7 @@ export default {
           place: '今 中国 陕西西安',
           content: '周懿王死后，姬辟方 以次子身份被拥立为周王（主战派），是为周孝王。以六师攻伐戎狄，迫使对方求和。回迁宗周，周王朝短暂中兴',
           type: 'war',
+          tier: 1,
           color: 'red',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -142,8 +154,9 @@ export default {
           timestamp: 'BC 842年',
           name: '中国文明',
           place: '今 中国 山西临汾-霍州',
-          content: '因 周厉王姬胡 狂悖专制，引发国人暴动（国都平民）周厉王逃亡彘地（今山西临汾-霍州）周公与召公代理执政，号：共和，史称共和行政。周厉王在 彘地 死于前829年，周王室开始衰落',
+          content: '因 周厉王姬胡 垄断专制，引发国人暴动（国都平民）周厉王逃亡彘地（今山西临汾-霍州）周公与召公代理执政，号：共和，史称共和行政。周厉王在 彘地 死于前829年，周王室开始衰落',
           type: 'cvlz',
+          tier: 1,
           color: 'orange',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -151,8 +164,9 @@ export default {
           timestamp: 'BC 771年',
           name: '中国文明',
           place: '今 中国 陕西西安',
-          content: '犬戎攻灭镐京，周王姬宫湦 身死国灭，西周结束，历十二世，谥号幽王。幽王之子 周平王姬宜臼 迁都成周（今河南洛阳）史称平王东迁，进入春秋与东周时期。秦襄公因护送平王有功，由子爵擢为伯爵，并许以宗周封地（已被戎狄占领）',
+          content: '犬戎攻灭镐京，周王姬宫湦 身死国灭，西周结束，历十二世，谥号幽王。幽王之子 周平王姬宜臼 迁都成周（今河南洛阳）史称平王东迁，中国文明进入春秋与东周时期。秦襄公因护送平王有功，由子爵擢为伯爵，并许以宗周封地（已被戎狄占领）',
           type: 'cvlz',
+          tier: 0,
           color: 'orange',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -162,6 +176,7 @@ export default {
           place: '今 中国 河南三门峡',
           content: '诸侯分别扶立 周平王宜臼 与 周携王余臣，并形成二王并立，其中虢国拥戴携王日趋壮大，引发诸侯纷争，被晋文侯攻灭，并击杀携王',
           type: 'war',
+          tier: 1,
           color: 'red',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -169,8 +184,9 @@ export default {
           timestamp: 'BC 750年',
           name: '中国文明',
           place: '今 中国 河南三门峡',
-          content: '诸侯分别扶立 周平王宜臼 与 周携王余臣，并形成二王并立，其中虢国拥戴携王日趋壮大，引发诸侯纷争，被晋文侯攻灭，并击杀携王',
+          content: '诸侯分别扶立 周平王宜臼 与 周携王余臣，并形成二王，其中虢国拥戴携王日趋壮大，引发诸侯纷争，后被晋文侯攻灭，并击杀携王',
           type: 'war',
+          tier: 1,
           color: 'red',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -178,8 +194,19 @@ export default {
           timestamp: 'BC 707年',
           name: '中国文明',
           place: '今 中国 河南许昌-长葛',
-          content: '宗室诸侯（拱卫王畿的同宗）郑庄公姬寤生 因不再尊奉周天子，双方激发矛盾。周桓王姬林 率多路诸侯讨伐郑国，两军战于繻葛，史称繻葛之战。王室大败，郑国军队箭射周王，周王肩部中箭。这一标志性事件代表周王室的彻底衰落',
+          content: '宗室诸侯（拱卫王畿的姬姓诸侯）郑庄公姬寤生 因不再尊奉周天子，双方激发矛盾。周桓王姬林 率多路诸侯讨伐郑国，两军战于繻葛，史称繻葛之战。王室大败，郑国军队箭射周王，周王肩部中箭。这一标志性事件代表周王室的彻底衰落',
           type: 'war',
+          tier: 1,
+          color: 'red',
+          src: require('../../../public/img/flag/ZG.png'),
+        },
+        {
+          timestamp: 'BC 704年',
+          name: '中国文明',
+          place: '今 中国 湖北宜昌',
+          content: '楚国国君 熊通，兼并四周小国，并以子爵之位要挟周天子封为诸侯。被周王室拒绝，于是自封为 楚武王，成为第一个在名位上挑战周王室的诸侯',
+          type: 'cvlz',
+          tier: 1,
           color: 'red',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -187,8 +214,9 @@ export default {
           timestamp: 'BC 679年',
           name: '中国文明',
           place: '今 中国 山东菏泽-鄄城县',
-          content: '齐桓公姜小白 任用管仲励精图治，以 尊王攘夷 为号，讨伐进犯中原的戎狄，史称 九合诸侯，一匡天下。成为天下霸主，齐桓公与四方诸侯于鄄地会盟，势力达到极盛。也开启了诸侯争霸的先例',
+          content: '齐桓公姜小白 任用管仲治国，以 尊王攘夷 为号，讨伐进犯中原的戎狄，史称 九合诸侯，一匡天下。成为天下霸主，齐桓公与四方诸侯于鄄地会盟，势力达到极盛。开启了诸侯争霸的先例',
           type: 'cvlz',
+          tier: 1,
           color: 'orange',
           src: require('../../../public/img/flag/ZG.png'),
         },
@@ -196,9 +224,80 @@ export default {
           timestamp: 'BC 632年',
           name: '中国文明',
           place: '今 中国 山东菏泽-鄄城县 西南',
-          content: '晋文公姬重耳 与 楚成王 进行了争夺中原霸权的城濮之战，晋军以少胜多，阻止了楚国北进，就此奠定了晋国与楚国两个超级大国对峙的形势。晋文公成为春秋时期的第二代霸主',
+          content: '晋文公姬重耳 与 楚成王熊恽 进行了争夺中原霸权的城濮之战，晋军以少胜多，阻止了楚国北进，借此奠定了晋国与楚国两个超级大国间的对峙态势。晋文公成为春秋时期的第二代霸主',
           type: 'war',
+          tier: 1,
           color: 'red',
+          src: require('../../../public/img/flag/ZG.png'),
+        },
+        {
+          timestamp: 'BC 623年',
+          name: '中国文明',
+          place: '今 中国 陕西宝鸡-凤翔县',
+          content: '在图霸中原与晋国交锋失利后，秦穆公 嬴任好 转而西进，对秦国西方的戎狄或劝导归化，或兴兵攻伐，史称 开地千里，并国十二。周襄王姬郑派遣召公嘉奖',
+          type: 'cvlz',
+          tier: 1,
+          color: 'orange',
+          src: require('../../../public/img/flag/ZG.png'),
+        },
+        {
+          timestamp: 'BC 606年',
+          name: '中国文明',
+          place: '今 中国 河南洛阳',
+          content: '晋灵公 姬夷皋与前607年去世，楚庄王熊侣借机北上 率军攻打 陆浑戎，以勤王之名渡过洛水，并询问 周王使节 王孙满 九鼎的大小与重量。其意向周王示威。史称 问鼎中原',
+          type: 'cvlz',
+          tier: 1,
+          color: 'orange',
+          src: require('../../../public/img/flag/ZG.png'),
+        },
+        {
+          timestamp: 'BC 597年',
+          name: '中国文明',
+          place: '今 中国 河南郑州 北',
+          content: '楚庄王熊侣 围攻郑国，晋景公姬据 派遣 荀林父 救郑，双方爆发战争，史称 邲之战。由于晋国一方指挥不当，且内部分歧严重，被楚国击败，楚庄王此时武功达到极盛',
+          type: 'war',
+          tier: 1,
+          color: 'red',
+          src: require('../../../public/img/flag/ZG.png'),
+        },
+        {
+          timestamp: 'BC 589年',
+          name: '中国文明',
+          place: '今 中国 山东济南-长清区',
+          content: '齐顷公姜无野 讨伐鲁国与卫国，两国向晋国求援，晋景公姬据 派遣大夫 郤克于鞌（今山东济南-长清区）击败齐国，史称 鞌之战。齐国就此在战略上向楚国靠拢',
+          type: 'war',
+          tier: 1,
+          color: 'red',
+          src: require('../../../public/img/flag/ZG.png'),
+        },
+        {
+          timestamp: 'BC 575年',
+          name: '中国文明',
+          place: '今 中国 河南许昌-鄢陵县',
+          content: '楚国违背 前579年 弭兵会盟 止战休战的承诺，先后进犯郑国、许国与卫国，晋厉公姬寿曼亲率三军与楚军爆发 鄢陵之战，晋国俘获楚国王子，射瞎 楚共王熊审 一目，此战战后双方进入休战期',
+          type: 'war',
+          tier: 1,
+          color: 'red',
+          src: require('../../../public/img/flag/ZG.png'),
+        },
+        {
+          timestamp: 'BC 546年',
+          name: '中国文明',
+          place: '今 中国 河南商丘',
+          content: '诸侯国达成一致，罢兵言和，发起了第二次弭兵会盟。会盟地点为宋国西门之外，晋、楚、齐、秦、鲁、卫、陈、蔡、郑、许、宋、邾、滕等14国均参与盟誓，第二次止战开始',
+          type: 'cvlz',
+          tier: 1,
+          color: 'orange',
+          src: require('../../../public/img/flag/ZG.png'),
+        },
+        {
+          timestamp: 'BC 510年',
+          name: '中国文明',
+          place: '今 中国 浙江嘉兴-西南',
+          content: '',
+          type: 'cvlz',
+          tier: 1,
+          color: 'orange',
           src: require('../../../public/img/flag/ZG.png'),
         },
         
@@ -223,14 +322,17 @@ export default {
     }
   },
   methods:{
-    
+    run(){
+      
+    }
   }
 }
 </script>
 
 
 <style> 
-#tree{
+#tree{ 
+  /* 路由本页样式 */
   width: 100%;
   height: auto;
   background: whitesmoke;
@@ -238,27 +340,40 @@ export default {
 }
 
 .el-timeline{
-  padding: 60px 15px;
+  /* 时间线板块样式 */
+  padding: 50px 15px;
   background: whitesmoke;
   color: white;
   text-align: left;
   margin-left: 15%;
   transition: 1s all ease;
 }
+.el-timeline:hover{
+  color: red;
+}
 .el-timeline p{
+  /* 历史事件介绍文字 */
   color: gray;
   font-size: 12px;
+  cursor: pointer;
   padding: 3px 0px;
   /* padding-bottom: 10px; */
 }
+.el-timeline p:hover{
+  color: #db4137;
+  font-weight: 700;
+}
 .el-timeline img{
+  /* 历史事件国旗样式 */
   height: 45px;
   vertical-align: middle;
 }
 .el-timeline img:nth-child(2n){
+  /* 历史事件第二个国旗样式 */
   margin-left: 10px;
 }
 .el-timeline h6{
+  /* */
   font-weight: 700;
   font-size: 10px;
   padding: 5px 0;
