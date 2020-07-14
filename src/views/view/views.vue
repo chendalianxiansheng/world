@@ -186,7 +186,7 @@
       </div>  
     </div>
     </transition>
-    <img id="goTo" src="../../assets/img/viewImg/arrow.png" alt="" @click="getOut(),sumNum=maxNum,showMsg('返回顶部')">  
+    <img id="go-to" src="../../assets/img/viewImg/arrow.png" alt="" @click="getOut(),sumNum=maxNum,showMsg('返回顶部')">  
     <transition name="fadeImg" appear>
       <div id="menu" @touchstart="sumNum<result.length?showMore():showMsg('已无更多数据')">
         <img v-if="sumNum<result.length" src="../../assets/img/viewImg/swipe.png" alt="" ref="bottomTag">
@@ -375,10 +375,7 @@ export default {
     // }
     toDatas(item) {    //跳路由,送出整个item
       this.$router.push({
-      path: '/datas',
-      // query: {   //不传值直接改值
-      //   item: item
-      //   }     
+      path: '/datas',   
       })
       this.$store.state.items = item
     },    
@@ -441,31 +438,30 @@ export default {
   /* border-radius: 50%; */
 }
 #arrLen{
+  /* 过滤项的右上角数字 */ 
   font-size: 10px;
   margin-left: 12px;
   float: right;
-  top: 1px;
-  padding: 1px;
+  top: 4px;
+  /* padding: 1px; */
   line-height: 10px;
   letter-spacing: -1px;
-  font-weight: 500;
   color: rgb(51, 51, 51);
   position: absolute;
-
 }
 #pop{   
   /* 泡泡的具体实现 */
   width: 24px;
   height: 24px;
-  background: rgba(0, 0, 0, .15);
   border-radius: 50%;
   display: none;
   position: fixed;
   z-index: 9999;
+  background: rgba(0, 0, 0, .15);
   transition: all ease 0.2s;
 }
 #tags{  
-  /* 旗帜特征定位的面板 */
+  /* 过滤项面板 */
   width: 60%;
   height: 460px;
   background: white;
@@ -481,6 +477,7 @@ export default {
 }
 
 #tags-top{
+  /* 过滤项面板顶部 */
   width: 100%;
   height: 40px;
   font-size: 16px;
@@ -489,22 +486,26 @@ export default {
   background: #db4137;
 }
 #tags .buttons{
+  /* 过滤项面板关闭按钮 */
   width: 20%;
   height: 50px;
   float: left;
 }
 #tags .buttons img{
+  /* 过滤项面板小图 */
   margin-top: 8px;
   height: 19px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 #tags .buttons p{
+  /* 过滤项面板介绍 */
   margin-top: 5px;
   font-size: 8px;
   line-height: 12px;
   color: rgb(197, 195, 195);
 }
 #buttons-p{
+  /* 过滤项底部文字 */
   clear: both;
   width: 88%;
   margin-left: 5%;
@@ -515,6 +516,7 @@ export default {
   font-weight: 700;
 }
 #pic1{
+  /* 陆家嘴背景图 */
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -523,6 +525,7 @@ export default {
   z-index: -1;
 }
 #clear{
+  /* 右下角清除按钮 */
   width: 25px;
   position: absolute;
   bottom: 3px;
@@ -540,6 +543,7 @@ export default {
   border: 1px solid black !important;
 }
 #keyTag{
+  /* 左下角特征标签 */ 
   position: fixed;
   z-index: 22;
   padding: 3px 10px;
@@ -551,9 +555,11 @@ export default {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 #keyTag span{
+  /* 左下角标签的关闭按钮 */
   padding-left: 7px;
 }
 #bbg{
+  /* 黑色背景遮罩 */
   width: 100%;
   height: 100%;
   background:rgba(0, 0, 0, 0.5);
@@ -564,7 +570,8 @@ export default {
   background: #DB4137 !important;
   color: white !important;
 }
-#showMessage{     /* 弹出的消息框 */
+#showMessage{     
+  /* 弹出的消息框 */
   position: fixed;
   z-index: 999;
   transform: translateX(-50%);
@@ -577,7 +584,8 @@ export default {
   display: none;
   transition: all ease 0.3s;
 }
-#count{   /* 右上角的计数区域 */
+#count{   
+  /* 右上角的计数区域 */
   font-size: 17px;
   height: 20px;
   line-height: 22px;
@@ -591,7 +599,8 @@ export default {
   text-decoration: underline;
   margin-left: -30%;
 }
-.space{    /* 占位白块 */
+.space{    
+  /* 占位白块 */
   width: 100%;
   height: 36px; 
 }
@@ -600,7 +609,8 @@ export default {
   position: absolute;
   top: -5px;
 }
-.list{    /* 被渲染的单个内容块 */
+.list{    
+  /* 被渲染的单个内容块 */
   width: 96%;
   height: 89px;
   background: white;
@@ -651,11 +661,12 @@ export default {
 }
 .list #flag #ename{   /* 内容块第一部分的p标签 */
   position: absolute;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 18px;
   font-weight: 700;
   left: 5px;
   bottom: -3px;
+  z-index: 0;
   color: rgb(204, 203, 203, 0.7);
   
 }
@@ -797,7 +808,7 @@ export default {
   top: 4px;
   width: 60px;
 }
-#goTo{
+#go-to{
   /* 返回顶部按钮 */ 
   position: fixed;
   width: 30px;
@@ -808,7 +819,7 @@ export default {
   background:rgba(0, 0, 0, 0.5);
   transition: all ease 0.1s;
 }
-#goTo:active{   
+#go-to:active{   
   /* 返回顶部点击效果 */
   transform: scale(1.1);
   background: #db4137;
