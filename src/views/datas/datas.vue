@@ -117,6 +117,7 @@ export default {
                     fontWeight: 'bold'
                 }
             },
+            itemGap: 10,
             labelLine: {
                 show: false
             },
