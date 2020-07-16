@@ -2109,7 +2109,7 @@ export default new Vuex.Store({
         badge: require('../../public/img/badge/RB1.png'),
         lang: ['日语'],
         partvalue: [95.6, 1.5, 2.3, 0.6],
-        part: ['大和族','琉球族','外籍人士','其他民族'],
+        part: ['大和族','琉球族','外籍移民','其他民族'],
         belief: []
       },{
         id: 101,
@@ -2197,7 +2197,7 @@ export default new Vuex.Store({
         badge: require('../../public/img/badge/JPZ1.png'),
         lang: ['高棉语'],
         partvalue: [97.6, 1.2, 1.2],
-        part: ['高棉人','少数民族','其他族群'],
+        part: ['高棉人','占族','其他族群'],
         belief: ['佛教']
       },{
         id: 97,
@@ -2276,15 +2276,17 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 513100,
         time: 1927,
-        lang: [],
-        belief: [],
         gdp: 5049.93,
         per: 7274,
         attr: '中佛',
         code: "红白蓝条5无",
         place: '东南亚',
         flag: require('../../public/img/flag/TG.png'),
-        badge: require('../../public/img/badge/TG1.png')
+        badge: require('../../public/img/badge/TG1.png'),
+        lang: ['泰语'],
+        partvalue: [36, 33, 12.7, 9, 2.8, 2.7, 3.8],
+        part: ['泰族(暹罗族)','佬族','华人','兰纳族','高棉人','马来人','其他族群'],
+        belief: ['佛教']
       },{
         id: 93,
         type: 1,
@@ -2296,15 +2298,17 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 719,
         time: 1965,
-        lang: [],
-        belief: [],
         gdp: 3610,
         per: 64000,
         attr: '发岛非',
         code: "红白条月多2",
         place: '东南亚',
         flag: require('../../public/img/flag/XJP.png'),
-        badge: require('../../public/img/badge/XJP1.png')
+        badge: require('../../public/img/badge/XJP1.png'),
+        lang: ['韩语'],
+        partvalue: [74.2, 13.3, 9.1, 3.4],
+        part: ['华人','马来族','印度裔','其他族群'],
+        belief: []
       },{
         id: 92,
         type: 1,
@@ -2316,15 +2320,17 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 236800,
         time: 1965,
-        lang: [],
-        belief: [],
         gdp: 181.31,
         per: 2568,
         attr: '内不佛',
         code: "红白蓝条圆8无",
         place: '东南亚',
         flag: require('../../public/img/flag/LW.png'),
-        badge: require('../../public/img/badge/LW1.png')
+        badge: require('../../public/img/badge/LW1.png'),
+        lang: ['老挝语'],
+        partvalue: [53.2, 11, 9.2, 3.4, 3.1, 20.1],
+        part: ['佬族','克木族','赫蒙族','普泰族','泰族','其他民族'],
+        belief: ['佛教']
       },{
         id: 91,
         type: 1,
@@ -2336,15 +2342,17 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 676580,
         time: 1948,
-        lang: [],
-        belief: [],
         gdp: 712.15,
         per: 1326,
         attr: '不佛',
         code: "黄绿红条白8星",
         place: '东南亚',
         flag: require('../../public/img/flag/MD.png'),
-        badge: require('../../public/img/badge/MD1.png')
+        badge: require('../../public/img/badge/MD1.png'),
+        lang: ['缅甸语'],
+        partvalue: [68, 9, 7, 2, 14],
+        part: ['缅族','掸族','克伦族','孟族','其他族群'],
+        belief: ['佛教']
       },{
         id: 90,
         type: 1,
@@ -2356,15 +2364,17 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 329500,
         time: 1945,
-        lang: [],
-        belief: [],
         gdp: 2449.5,
         per: 2564,
         attr: '中非',
         code: "红黄星1",
         place: '东南亚',
         flag: require('../../public/img/flag/YN.png'),
-        badge: require('../../public/img/badge/YN1.png')
+        badge: require('../../public/img/badge/YN1.png'),
+        lang: ['越南语'],
+        partvalue: [86.2, 1.9, 1.7, 1.4, 1, 7.8],
+        part: ['越族(京族)','岱依族','泰族','高棉族','苗族','其他民族'],
+        belief: []
       },{
         id: 89,
         type: 1,
@@ -2376,15 +2386,17 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 1913500,
         time: 1945,
-        lang: [],
-        belief: [],
         gdp: 10420,
         per: 3894,
         attr: '中岛伊',
         code: "红白条无2",
         place: '东南亚',
         flag: require('../../public/img/flag/YDNX.png'),
-        badge: require('../../public/img/badge/YDNX1.png')
+        badge: require('../../public/img/badge/YDNX1.png'),
+        lang: ['印度尼西亚语'],
+        partvalue: [45, 14, 7.5, 7.5, 26],
+        part: ['爪哇族','巽他族','马都拉族','马来族','其他族群'],
+        belief: []
       },{
         id: 88,
         type: 1,
@@ -2396,15 +2408,17 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 298,
         time: 1965,
-        lang:[],
-        belief:[],
         gdp: 52.72,
         per: 10224,
         attr: '中岛伊',
         code: "红绿白四1月",
         place: '东南亚',
         flag: require('../../public/img/flag/MEDF.png'),
-        badge: require('../../public/img/badge/MEDF1.png')
+        badge: require('../../public/img/badge/MEDF1.png'),
+        lang: ['迪维希语'],
+        partvalue: [100],
+        part: ['马尔代夫族'],
+        belief: ['伊斯兰教']
       },{
         id: 87,
         type: 1,
@@ -2416,15 +2430,17 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 10450,
         time: 1943,
-        lang: [],
-        belief: [],
         gdp: 566.39,
         per: 8270,
         attr: '中阿伊新',
         code: "红白绿条8植单",
         place: '西亚',
         flag: require('../../public/img/flag/LBN.png'),
-        badge: require('../../public/img/badge/LBN1.png')
+        badge: require('../../public/img/badge/LBN1.png'),
+        lang: ['阿拉伯语'],
+        partvalue: [95, 4, 1],
+        part: ['阿拉伯人','亚美尼亚人','其他民族'],
+        belief: ['伊斯兰教']
       },{
         id: 86,
         type: 1,
@@ -2436,15 +2452,17 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 2250000,
         time: 1926,
-        lang: [],
-        belief: [],
         gdp: 7824.83,
         per: 23219,
         attr: '中阿伊',
         code: "绿白1字器单",
         place: '西亚',
         flag: require('../../public/img/flag/ST.png'),
-        badge: require('../../public/img/badge/ST1.png')
+        badge: require('../../public/img/badge/ST1.png'),
+        lang: ['阿拉伯语'],
+        partvalue: [70, 30],
+        part: ['沙特公民','外籍人士'],
+        belief: ['伊斯兰教']
       },{
         id: 85,
         type: 1,
@@ -2456,15 +2474,17 @@ export default new Vuex.Store({
         land: '亚洲',
         area: 9251,
         time: 1960,
-        lang: [],
-        belief: [],
         gdp: 244.7,
         per: 28159,
         attr: '发岛东',
         code: "黄绿白1植单",
         place: '西亚',
         flag: require('../../public/img/flag/SPLS.png'),
-        badge: require('../../public/img/badge/SPLS1.png')
+        badge: require('../../public/img/badge/SPLS1.png'),
+        lang: ['韩语'],
+        partvalue: [72.8, 9.6, 17.6],
+        part: ['希腊族','土耳其族','外籍人士'],
+        belief: ['东正教']
       },{
         id: 84,
         type: 1,
@@ -2476,15 +2496,17 @@ export default new Vuex.Store({
         land: '欧洲',
         area: 17098000,
         time: 1990,
-        lang: [],
-        belief: [],
         gdp: 16580,
         per: 11289,
         attr: '苏中东',
         code: "白蓝红条8无",
         place: '东欧',
         flag: require('../../public/img/flag/ELS.png'),
-        badge: require('../../public/img/badge/ELS1.png')
+        badge: require('../../public/img/badge/ELS1.png'),
+        lang: ['俄语'],
+        partvalue: [77, 3.8, 1.2, 1.1, 0.8, 16.1],
+        part: ['俄罗斯人','鞑靼人','楚瓦什人','巴什基尔人','车臣人','其他民族'],
+        belief: ['东正教']
       },{
         id: 83,
         type: 1,
@@ -2496,15 +2518,17 @@ export default new Vuex.Store({
         land: '欧洲',
         area: 603700,
         time: 1991,
-        lang: [],
-        belief: [],
         gdp: 950,
         per: 3095,
         attr: '苏中东天',
         code: "蓝黄条2无",
         place: '东欧',
         flag: require('../../public/img/flag/WKL.png'),
-        badge: require('../../public/img/badge/WKL1.png')
+        badge: require('../../public/img/badge/WKL1.png'),
+        lang: ['俄语'],
+        partvalue: [77.8, 17.3, 4.9],
+        part: ['乌克兰族','俄罗斯族','其他族群'],
+        belief: ['东正教']
       },{
         id: 82,
         type: 1,
@@ -2516,15 +2540,17 @@ export default new Vuex.Store({
         land: '欧洲',
         area: 41530,
         time: 1814,
-        lang: [],
-        belief: [],
         gdp: 9128.7,
         per: 52978,
         attr: '发非',
         code: "红白蓝条8无",
         place: '西欧',
         flag: require('../../public/img/flag/NDL.png'),
-        badge: require('../../public/img/badge/NDL1.png')
+        badge: require('../../public/img/badge/NDL1.png'),
+        lang: ['荷兰语'],
+        partvalue: [80.9, 2.4, 2.4, 2.2, 2, 1.9, 8.2],
+        part: ['荷兰族','印尼人','德国人','土耳其人','苏里南人','摩洛哥人','其他族群'],
+        belief: []
       },{
         id: 81,
         type: 1,
@@ -2536,15 +2562,17 @@ export default new Vuex.Store({
         land: '欧洲',
         area: 83880,
         time: 1955,
-        lang: [],
-        belief: [],
         gdp: 4557.37,
         per: 51513,
         attr: '内发永德天',
         code: "红白条8无",
         place: '中欧',
         flag: require('../../public/img/flag/ADL.png'),
-        badge: require('../../public/img/badge/ADL1.png')
+        badge: require('../../public/img/badge/ADL1.png'),
+        lang: ['德语'],
+        partvalue: [92, 8],
+        part: ['奥地利人','其他族群'],
+        belief: ['天主教']
       },{
         id: 80,
         type: 1,
@@ -2556,15 +2584,17 @@ export default new Vuex.Store({
         land: '欧洲',
         area: 506000,
         time: 1947,
-        lang: [],
-        belief: [],
         gdp: 14260,
         per: 30524,
         attr: '发西天',
         code: "红黄条8动字人山彩",
         place: '南欧地区',
         flag: require('../../public/img/flag/XBY.png'),
-        badge: require('../../public/img/badge/XBY1.png')
+        badge: require('../../public/img/badge/XBY1.png'),
+        lang: ['西班牙语'],
+        partvalue: [73, 16, 11],
+        part: ['卡斯蒂利亚人','加泰罗尼亚人','其他族群'],
+        belief: ['天主教']
       },{
         id: 79,
         type: 1,
@@ -2576,15 +2606,18 @@ export default new Vuex.Store({
         land: '欧洲',
         area: 92210,
         time: 1580,
-        lang: [],
-        belief: [],
         gdp: 2379.8,
         per: 23146,
         attr: '发牙天',
         code: "绿红圆2山器彩",
         place: '南欧地区',
         flag: require('../../public/img/flag/PTY.png'),
-        badge: require('../../public/img/badge/PTY1.png')
+        badge: require('../../public/img/badge/PTY1.png'),
+        lang: ['葡萄牙语'],
+        partvalue: [96, 4],
+        part: ['葡萄牙人','外籍移民'],
+        belief: ['天主教']
+        
       },{
         id: 78,
         type: 1,
@@ -2596,15 +2629,17 @@ export default new Vuex.Store({
         land: '欧洲',
         area: 2586,
         time: 1890,
-        lang: [],
-        belief: [],
         gdp: 708.85,
         per: 116600,
         attr: '内发永德法天',
         code: "红白蓝条8无",
         place: '西欧',
         flag: require('../../public/img/flag/LSB.png'),
-        badge: require('../../public/img/badge/LSB1.png')
+        badge: require('../../public/img/badge/LSB1.png'),
+        lang: ['卢森堡语','德语','法语'],
+        partvalue: [52.1, 17.2, 30.7],
+        part: ['卢森堡人','葡萄牙人','其他族群'],
+        belief: ['天主教']
       },{
         id: 77,
         type: 1,
