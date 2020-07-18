@@ -249,6 +249,7 @@ export default {
     }
   }, 
   beforeRouteLeave:((to, from, next)=>{
+    alert(document.querySelector('#views').srcollHeight)
     // this.$store.state.page = document.body.scrollTop || document.documentElement.scrollTop
     next()
   }),

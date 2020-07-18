@@ -3618,15 +3618,17 @@ export default new Vuex.Store({
         land: '非洲',
         area: 112600,
         time: 1960,
-        lang: [],
-        belief: [],
         gdp: 103.6,
         per: 902,
         attr: '不法非黑',
         code: "绿黄红四3无",
         place: '西非',
         flag: require('../../public/img/flag/BN.png'),
-        badge: require('../../public/img/badge/BN1.png')
+        badge: require('../../public/img/badge/BN1.png'),
+        lang: ['法语'],
+        partvalue: [100],
+        part: ['比例不详'],
+        belief: ['伏都教']
       },{
         id: 32,
         type: 1,
@@ -3638,15 +3640,17 @@ export default new Vuex.Store({
         land: '北美洲',
         area: 75500,
         time: 1903,
-        lang: [],
-        belief: [],
         gdp: 650.55,
         per: 15575,
         attr: '中西天',
         code: "红白蓝四4多",
         place: '中美洲',
         flag: require('../../public/img/flag/BNM.png'),
-        badge: require('../../public/img/badge/BNM1.png')
+        badge: require('../../public/img/badge/BNM1.png'),
+        lang: ['西班牙语'],
+        partvalue: [65, 12, 10, 7, 6],
+        part: ['麦士蒂索人','非洲裔','欧洲裔','华裔','印第安人'],
+        belief: ['天主教']
       },{
         id: 31,
         type: 1,
@@ -3658,15 +3662,17 @@ export default new Vuex.Store({
         land: '北美洲',
         area: 22970,
         time: 1981,
-        lang: [],
-        belief: [],
         gdp: 19.25,
         per: 5025,
         attr: '中未天',
         code: "蓝白红条植人器字彩8",
         place: '中美洲',
         flag: require('../../public/img/flag/BLZ.png'),
-        badge: require('../../public/img/badge/BLZ1.png')
+        badge: require('../../public/img/badge/BLZ1.png'),
+        lang: ['英语'],
+        partvalue: [48, 24, 10, 6, 5, 7],
+        part: ['麦士蒂索人','克里奥尔人','玛雅人','黑人','欧洲裔','其他族群'],
+        belief: ['基督教']
       },{
         id: 30,
         type: 1,
