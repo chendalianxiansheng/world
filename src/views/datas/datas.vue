@@ -80,15 +80,13 @@ export default {
     })
   },
   mounted(){
-    this.$router.afterEach((to, from) => {
+    // this.$router.afterEach((to, from) => {
     window.scrollTo(0, 0) 
-    })
-    
     // this.drawTab2();
   },
   methods:{
     back(){
-      history.back(-1)
+      this.$router.replace('/views')
     },
     drawTab2(){
       let chart = this.$echarts.init(document.getElementById('chart2'))
