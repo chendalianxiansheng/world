@@ -75,9 +75,11 @@ export default {
   },
   beforeMount(){
     this.merge = this.item.partvalue.map((value,idx) => ({value, name: this.item.part[idx]}));
+    this.$nextTick(()=>{
+      this.drawTab2();
+    })
   },
   mounted(){
-    this.drawTab2();
     this.$router.afterEach((to, from) => {
     window.scrollTo(0, 0) 
     })
@@ -117,7 +119,6 @@ export default {
                     fontWeight: 'bold'
                 }
             },
-            itemGap: 10,
             labelLine: {
                 show: false
             },

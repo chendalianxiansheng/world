@@ -245,14 +245,21 @@ export default {
       type3: false,
       type4: false,
       type5: false,
-      flagStyle:[]
+      flagStyle:[],
+      page: 0
     }
   }, 
-  beforeRouteLeave:((to, from, next)=>{
-    alert(document.querySelector('#views').srcollHeight)
-    // this.$store.state.page = document.body.scrollTop || document.documentElement.scrollTop
-    next()
-  }),
+  // beforeRouteLeave(to, from, next){
+  //   this.page = parseInt(document.documentElement.srcollTop || window.scrollY)
+  //   next()
+  // },
+  beforeRouteLeave( to, from, next){
+        this.page = document.querySelector('#views').scrollTop || window.scrollY
+        next()
+  },
+  activated(){
+    window.scrollTo(0, this.page)
+  },
   computed:{
     result(){       //数据过滤运算
        return (this.$store.state.flags.filter(item=>
