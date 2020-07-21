@@ -3582,8 +3582,8 @@ export default new Vuex.Store({
         flag: require('../../public/img/flag/NF.png'),
         badge: require('../../public/img/badge/NF1.png'),
         lang: ['阿非利卡语','英语'],
-        partvalue: [80.7, 8, 2.5, 8.8],
-        part: ['黑人','白种人','亚裔','混血人种'],
+        partvalue: [80.7, 8.8, 8, 2.5],
+        part: ['黑人','混血人种','白种人','亚裔'],
         belief: ['基督教']
       },{
         id: 34,
@@ -3670,8 +3670,8 @@ export default new Vuex.Store({
         flag: require('../../public/img/flag/BLZ.png'),
         badge: require('../../public/img/badge/BLZ1.png'),
         lang: ['英语'],
-        partvalue: [48, 24, 10, 6, 5, 7],
-        part: ['麦士蒂索人','克里奥尔人','玛雅人','黑人','欧洲裔','其他族群'],
+        partvalue: [48, 24, 10, 7, 6, 5],
+        part: ['麦士蒂索人','克里奥尔人','玛雅人','其他族群','黑人','欧洲裔'],
         belief: ['基督教']
       },{
         id: 30,
@@ -3684,15 +3684,17 @@ export default new Vuex.Store({
         land: '北美洲',
         area: 443,
         time: 1981,
-        lang: [],
-        belief: [],
         gdp: 16.24,
         per: 16864,
         attr: '中岛新',
         code: "红蓝黑黄白三不日3",
         place: '加勒比地区',
         flag: require('../../public/img/flag/ATG.png'),
-        badge: require('../../public/img/badge/ATG1.png')
+        badge: require('../../public/img/badge/ATG1.png'),
+        lang: ['英语'],
+        partvalue: [98, 2],
+        part: ['黑人','欧洲裔'],
+        belief: ['基督教']
       },{
         id: 29,
         type: 1,
@@ -3704,15 +3706,17 @@ export default new Vuex.Store({
         land: '北美洲',
         area: 267,
         time: 1983,
-        lang: [],
-        belief: [],
         gdp: 10.4,
         per: 19829,
         attr: '中岛英未新',
         code: "绿黄红黑白三不多5",
         place: '加勒比地区',
         flag: require('../../public/img/flag/SJC.png'),
-        badge: require('../../public/img/badge/SJC1.png')
+        badge: require('../../public/img/badge/SJC1.png'),
+        lang: ['英语'],
+        partvalue: [94, 6],
+        part: ['黑人','欧洲裔'],
+        belief: ['英国圣公会']
       },{
         id: 28,
         type: 1,
@@ -3724,15 +3728,17 @@ export default new Vuex.Store({
         land: '北美洲',
         area: 431,
         time: 1966,
-        lang: [],
-        belief: [],
         gdp: 46.73,
         per: 16328,
         attr: '中岛英新',
         code: "蓝黄黑器单3",
         place: '加勒比地区',
         flag: require('../../public/img/flag/BBDS.png'),
-        badge: require('../../public/img/badge/BBDS1.png')
+        badge: require('../../public/img/badge/BBDS1.png'),
+        lang: ['英语'],
+        partvalue: [95, 5],
+        part: ['黑人','欧洲裔'],
+        belief: ['基督教']
       },{
         id: 27,
         type: 1,
@@ -3744,15 +3750,17 @@ export default new Vuex.Store({
         land: '北美洲',
         area: 389,
         time: 1966,
-        lang: [],
-        belief: [],
         gdp: 8.13,
         per: 7378,
         attr: '中岛未新',
         code: "绿黄蓝不无3",
         place: '加勒比地区',
         flag: require('../../public/img/flag/SWST.png'),
-        badge: require('../../public/img/badge/SWST1.png')
+        badge: require('../../public/img/badge/SWST1.png'),
+        lang: ['英语'],
+        partvalue: [66, 19, 15],
+        part: ['黑人','混血人种','其他族群'],
+        belief: ['基督教']
       },{
         id: 26,
         type: 1,
@@ -3764,15 +3772,17 @@ export default new Vuex.Store({
         land: '南美洲',
         area: 916400,
         time: 1953,
-        lang: [],
-        belief: [],
         gdp: 2153,
         per: 6822,
         attr: '中西天',
         code: "黄蓝红条多8",
         place: '南美',
         flag: require('../../public/img/flag/WNRL.png'),
-        badge: require('../../public/img/badge/WNRL1.png')
+        badge: require('../../public/img/badge/WNRL1.png'),
+        lang: ['西班牙语'],
+        partvalue: [58, 29, 11, 2],
+        part: ['印欧混血','白种人','黑人','印第安人'],
+        belief: ['天主教']
       },{
         id: 25,
         type: 1,
@@ -5117,7 +5127,6 @@ export default new Vuex.Store({
       },
     ],
     time:2000,
-    page:0,
     items:{
       id: 108,
       type: 1,
