@@ -3794,15 +3794,17 @@ export default new Vuex.Store({
         land: '南美洲',
         area: 256370,
         time: 1809,
-        lang: [],
-        belief: [],
         gdp: 1083.98,
         per: 6344,
         attr: '中西天',
         code: "黄蓝红条动植器山彩8",
         place: '南美',
         flag: require('../../public/img/flag/EGDE.png'),
-        badge: require('../../public/img/badge/EGDE1.png')
+        badge: require('../../public/img/badge/EGDE1.png'),
+        lang: ['西班牙'],
+        partvalue: [77.4, 10.5, 6.8, 2.7, 2.6],
+        part: ['印欧混血','白种人','印第安人','黑白混血','黑人'],
+        belief: ['天主教']
       },{
         id: 24,
         type: 1,
@@ -3814,15 +3816,17 @@ export default new Vuex.Store({
         land: '南美洲',
         area: 1141750,
         time: 1810,
-        lang: [],
-        belief: [],
         gdp: 3302.3,
         per: 6651,
         attr: '中西天',
         code: "黄蓝红条8无",
         place: '南美',
         flag: require('../../public/img/flag/GLBY.png'),
-        badge: require('../../public/img/badge/GLBY1.png')
+        badge: require('../../public/img/badge/GLBY1.png'),
+        lang: ['西班牙语'],
+        partvalue: [49, 37, 5, 4, 3, 2],
+        part: ['印欧混血','白种人','黑白混血','黑人','印第安人','其他族群'],
+        belief: ['天主教']
       },{
         id: 23,
         type: 1,
@@ -3834,15 +3838,17 @@ export default new Vuex.Store({
         land: '南美洲',
         area: 8515000,
         time: 1822,
-        lang: [],
-        belief: [],
         gdp: 18690,
         per: 8921,
         attr: '中地牙天',
         code: "绿黄圆不1多字",
         place: '南美',
         flag: require('../../public/img/flag/BX.png'),
-        badge: require('../../public/img/badge/BX1.png')
+        badge: require('../../public/img/badge/BX1.png'),
+        lang: ['葡萄牙语'],
+        partvalue: [53.7, 38.5, 6.2, 1.6],
+        part: ['印欧混血','黑白混血','黑人','其他族裔'],
+        belief: ['天主教']
       },{
         id: 22,
         type: 1,
@@ -3854,15 +3860,17 @@ export default new Vuex.Store({
         land: '南美洲',
         area: 164000,
         time: 1875,
-        lang: [],
-        belief: [],
         gdp: 34.27,
         per: 5950,
         attr: '中非',
         code: "绿白红黄条5星",
         place: '南美',
         flag: require('../../public/img/flag/SLN.png'),
-        badge: require('../../public/img/badge/SLN1.png')
+        badge: require('../../public/img/badge/SLN1.png'),
+        lang: ['荷兰语'],
+        partvalue: [33, 31, 15, 10, 4, 3, 1],
+        part: ['印度裔','克里奥尔人','印尼裔','丛林黑人','印第安人','华人','白种人'],
+        belief: ['基督教']
       },{
         id: 21,
         type: 1,

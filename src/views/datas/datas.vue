@@ -29,8 +29,9 @@
     </div>
   </transition>
   </div>
-    <!-- <div id="map"></div> -->
-    <div id="chart2"></div>
+    
+    <div id="chart1"></div>
+    <div id="map"></div>
     <div id="bottom"></div>
   </div>
 </template>
@@ -104,7 +105,9 @@ export default {
           {
             name: '人口结构',
             type: 'pie',
+            clockWise: false,
             radius: ['50%', '70%'],   //环形的宽度
+            center: ['55%', '50%'],
             avoidLabelOverlap: false,
             label: {   //中央文字的样式
                 show: false,
@@ -202,19 +205,12 @@ export default {
 #map{
   width: 100%;
   height: 300px;
-  background: gold;
+  background: lightgreen;
 }
 /* #datasP p:nth-child(2n){
   text-decoration:dotted;
 } */
 #chart1{
-  position:relative;
-  width: 97%;
-  padding-left: 3%;
-  height: 280px;
-  background: rgb(157, 238, 157);
-}
-#chart2{
   width: 100%;
   height: 260px;
   padding-top: 15px;
@@ -222,10 +218,10 @@ export default {
   /* background-image: url("../../../public/img/bg/bg1.png");
   background-size: 120% 270px; */
 }
-
 #bottom{
   width: 100%;
   height: 500px;
+  background: gold;
 }
 .fadeFlag-enter,.fadeFlag-leave-to{
   transform: translateX(-100%);
