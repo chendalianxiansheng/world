@@ -1,35 +1,37 @@
 <template>
   <div id="datasDiv">
+    <!-- 顶端数据行 -->
     <div id="datasTop">
       <div id="backTo" @click="back()">返回 ➤ </div>
       <span id="name1">{{item.name}}</span>
       
     </div>
-  <div id="datasInfo">
-  <transition name="rotateBadge" appear tag="div">
-    <img id="badges" :src="item.badge" alt="">
-  </transition>
-    <transition name="fadeFlag" appear>
-    <div id="datasContent">
-      <p id="datas-p1">{{item.ename}}</p>
-      <img id="flags" :src="item.flag" alt="">
-      <div id="datasP">
-        <p>国名：{{item.name}}</p>
-        <p>首都：{{item.city}}</p>
-        <p>大洲：{{item.land}}</p>
-        <p>地区：{{item.place}}</p>
-        <p>类型：{{item.type | typeName}}</p>
-        <p>人口：{{item.people | numb}}人</p>
-        <p>面积：{{item.area | numb}}平方千米</p>
-        <p>人均：{{item.per}}美元</p>
-        <p>年产总值：{{item.gdp}}亿美元</p>
-        <p>建国时间：{{item.time}}年</p>
-        <p>全名：{{item.fullname}}</p>
+  <!-- 内容数据块1 -->
+    <div id="datasInfo">
+      <transition name="rotateBadge" appear tag="div">
+        <img id="badges" :src="item.badge" alt="">
+      </transition>
+      <transition name="fadeFlag" appear>
+      <div id="datasContent">
+        <p id="datas-p1">{{item.ename}}</p>
+        <img id="flags" :src="item.flag" alt="">
+        <div id="datasP">
+          <p>国名：{{item.name}}</p>
+          <p>首都：{{item.city}}</p>
+          <p>大洲：{{item.land}}</p>
+          <p>地区：{{item.place}}</p>
+          <p>类型：{{item.type | typeName}}</p>
+          <p>人口：{{item.people | numb}}人</p>
+          <p>面积：{{item.area | numb}}平方千米</p>
+          <p>人均：{{item.per}}美元</p>
+          <p>年产总值：{{item.gdp}}亿美元</p>
+          <p>建国时间：{{item.time}}年</p>
+          <p>全名：{{item.fullname}}</p>
+        </div>
       </div>
+      </transition>
     </div>
-  </transition>
-  </div>
-    
+    <!-- 内容数据块2 echarts 民族构成模板 -->
     <div id="chart1"></div>
     <div id="map"></div>
     <div id="bottom"></div>
@@ -37,7 +39,7 @@
 </template>
 
 <script>
-// import echarts from 'echarts'
+import { drawTab1 } from './drawTab1'
 
 export default {
   name: 'datas',
@@ -77,8 +79,9 @@ export default {
   beforeMount(){
     this.merge = this.item.partvalue.map((value,idx) => ({value, name: this.item.part[idx]}));
     this.$nextTick(()=>{
-      this.drawTab2();
+      this.drawTab1();
     })
+    console.log(this.merge)
   },
   mounted(){
     // this.$router.afterEach((to, from) => {
@@ -89,55 +92,19 @@ export default {
     back(){
       this.$router.replace('/views')
     },
-    drawTab2(){
-      let chart = this.$echarts.init(document.getElementById('chart1'))
-      chart.setOption({
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} {c}%',
-        },
-        legend: {    //提示框的方位
-          orient: 'vertical',
-          left: 10,
-          data: this.item.part
-        },
-        series: [
-          {
-            name: '人口结构',
-            type: 'pie',
-            clockWise: false,
-            radius: ['50%', '70%'],   //环形的宽度
-            center: ['55%', '48%'],
-            avoidLabelOverlap: false,
-            label: {   //中央文字的样式
-                show: false,
-                position: 'center'
-            },
-            emphasis: {
-                label: {
-                    show: true,
-                    fontSize: '21',
-                    fontWeight: 'bold'
-                }
-            },
-            labelLine: {
-                show: false
-            },
-            data: this.merge
-          }
-        ]
-      })
-    },    //echarts的结尾
+    drawTab1
   }      //methods尾括号
 }       //vue实例尾括号
 </script>
 
 <style scoped>
+/* 整个data的样式 */
 #datasDiv{
   width: 100%;
   height: 100%;
   background: whitesmoke;
 }
+/* 顶部功能行 */
 #datasTop{
   width: 100%;
   height: 35px;
@@ -148,28 +115,33 @@ export default {
   z-index: 9999;
   background: white;
 }
+/* 左上角回退按钮 */
 #backTo{
   position: absolute;
   float: left;
   margin-left: 3%;
   cursor: pointer;
 }
+/* 顶端国家名称 */
 #name1{
   text-align: center;
 }
+/* 顶部模块1 数据模块 */
 #datasInfo{
   position: relative;
   width: 100%;
   height: 355px;
 }
+/* 右侧国徽样式 */
 #badges{
   position: absolute;
-  width: 54%;
-  right: 1%;
+  width: 54vmin;
+  right: 2%;
   top: 0;
   bottom: 0;
   margin: auto;
 }
+/* 数据模块1的所有左侧数据 */ 
 #datasContent{
   float: left;
   margin-left: 2%;
@@ -198,18 +170,10 @@ export default {
   font-size: 10px;
   font-weight: 700;
 }
+/* 单数数据为红色字体 */
 #datasP p:nth-child(2n+1){
   color: #db4137;
-
 }
-#map{
-  width: 100%;
-  height: 300px;
-  background: lightgreen;
-}
-/* #datasP p:nth-child(2n){
-  text-decoration:dotted;
-} */
 #chart1{
   width: 100%;
   height: 260px;
@@ -217,6 +181,11 @@ export default {
   background: lightsalmon;
   /* background-image: url("../../../public/img/bg/bg1.png");
   background-size: 120% 270px; */
+}
+#map{
+  width: 100%;
+  height: 300px;
+  background: lightgreen;
 }
 #bottom{
   width: 100%;

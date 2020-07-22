@@ -269,7 +269,7 @@ export default new Vuex.Store({
     ],
     time:2000,
     // ↓ 默认的data展示页，默认为中国
-    items:{
+    items: {
       id: 108,
       type: 1,
       name: '中国',
