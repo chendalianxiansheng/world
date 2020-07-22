@@ -90,7 +90,7 @@ export default {
       this.$router.replace('/views')
     },
     drawTab2(){
-      let chart = this.$echarts.init(document.getElementById('chart2'))
+      let chart = this.$echarts.init(document.getElementById('chart1'))
       chart.setOption({
         tooltip: {
           trigger: 'item',
@@ -107,7 +107,7 @@ export default {
             type: 'pie',
             clockWise: false,
             radius: ['50%', '70%'],   //环形的宽度
-            center: ['55%', '50%'],
+            center: ['55%', '48%'],
             avoidLabelOverlap: false,
             label: {   //中央文字的样式
                 show: false,
