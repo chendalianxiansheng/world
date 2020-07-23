@@ -24,6 +24,8 @@ export default {
   margin-left: 2%;
   line-height: 17px;
   display: flex;
+  position: relative;
+  z-index: 9;
 }
 #line-b>.line-left,#line-b>.line-right{
   flex: 0.5;

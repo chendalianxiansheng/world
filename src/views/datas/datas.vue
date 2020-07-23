@@ -81,7 +81,6 @@ export default {
     this.$nextTick(()=>{
       this.drawTab1();
     })
-    console.log(this.merge)
   },
   mounted(){
     // this.$router.afterEach((to, from) => {

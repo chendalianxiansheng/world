@@ -1,69 +1,111 @@
 <template>
-  <div id="app">
+  <div id="app" @click="showPop($event)">
+    <!-- 点击泡泡与泡泡实现 -->
+    <div id="pop" ref="pop"></div>
+    <!-- 实体标签，选择缓存views组件 -->
     <keep-alive include="views">
-      <router-view></router-view>
+      <router-view/>
     </keep-alive>
-     <tab-bar>
+     <nav>
+       <!-- replace插路径，点击切换tab-bar-item的小图标 -->
        <tab-bar-item path="/tree" replace>
-         <img slot="tab-bar-icon" src="./assets/img/tabImg/g0.png" alt="">
-         <img slot="tab-bar-icon-active" src="./assets/img/tabImg/g1.png" alt="">
+         <img slot="tab-bar-icon" src="./assets/img/tabImg/g0.png" alt="结构树">
+         <img slot="tab-bar-icon-active" src="./assets/img/tabImg/g1.png" alt="结构树">
          <div slot="tab-bar-text">过滤</div>
        </tab-bar-item>
        <tab-bar-item path="/views" replace>
-         <img slot="tab-bar-icon" src="./assets/img/tabImg/x0.png" alt="">
-         <img slot="tab-bar-icon-active" src="./assets/img/tabImg/x1.png" alt="">
+         <img slot="tab-bar-icon" src="./assets/img/tabImg/x0.png" alt="搜索项">
+         <img slot="tab-bar-icon-active" src="./assets/img/tabImg/x1.png" alt="搜索项">
          <div slot="tab-bar-text">序列</div>
        </tab-bar-item>
        <tab-bar-item path="/datas" replace>
-         <img slot="tab-bar-icon" src="./assets/img/tabImg/d0.png" alt="">
-         <img slot="tab-bar-icon-active" src="./assets/img/tabImg/d1.png" alt="">
+         <img slot="tab-bar-icon" src="./assets/img/tabImg/d0.png" alt="数据页">
+         <img slot="tab-bar-icon-active" src="./assets/img/tabImg/d1.png" alt="数据页">
          <div slot="tab-bar-text">数据</div>
        </tab-bar-item>
        <tab-bar-item path="/setting" replace>
-         <img slot="tab-bar-icon" src="./assets/img/tabImg/s0.png" alt="">
-         <img slot="tab-bar-icon-active" src="./assets/img/tabImg/s1.png" alt="">
+         <img slot="tab-bar-icon" src="./assets/img/tabImg/s0.png" alt="设置区">
+         <img slot="tab-bar-icon-active" src="./assets/img/tabImg/s1.png" alt="设置区">
          <div slot="tab-bar-text">设置</div>
        </tab-bar-item>
-     </tab-bar>
+      </nav>
   </div>
 </template>
 <script>
-import tabBar from "./components/tabBar/tabBar"
+
 import tabBarItem from "./components/tabBar/tabBarItem"
+//底部路由按钮实现
 
 export default {
   name:'App',
   components:{
-    tabBar,
     tabBarItem
   },
   data(){
     return{
-      
     }
+  },
+  methods:{
+    showPop(event){ 
+      //点击产生泡泡  
+      var pop = this.$refs.pop
+      pop.style.left = (event.clientX - 12) + 'px'
+      //暂时未解构，后面宽度与时间间隔会写作变量，并入setting
+      pop.style.top = (event.clientY - 12) + 'px'
+      pop.style.display="block"
+      setTimeout(()=>{
+        pop.style.display = "none"
+      },200)
+    },
   } 
 }
 </script>
 
 <style>
+
  @import "./assets/css/main.css";
+ /* 导入的其他全局样式 */ 
 
 #app {
+  /* vue自带默认样式 */
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
+nav{
+  /* 底部的nav导航栏 */
+  display: flex;
+  background: #da493e;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  z-index: 99;
+}
 input[type="text"]{  
+  /* 输入型表单全局样式 */
   outline-style: none;
   border: 1px solid Gainsboro; 
   border-radius: 20px;  
   height: 25px;
   line-height: 25px;
 }
-input[type="text"]:focus{   
+input[type="text"]:focus{  
+  /* 输入型表单激活样式 */ 
   border-color: #DB4137;  
   outline: 0; 
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 10px rgba(219,65,55,.6)
+}
+#pop{   
+  /* 泡泡的具体实现 */
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  background: rgba(0, 0, 0, .15);
 }
 </style>

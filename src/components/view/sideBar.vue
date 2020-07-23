@@ -19,7 +19,7 @@
         <span class="top-btn" :class="{choose:place}" @click="place=!place,place?sendkey('+item.place',$event):cancelkey('+item.place',$event)">地区</span>
         <span class="top-btn" :class="{choose:land}" @click="land=!land,land?sendkey('+item.land',$event):cancelkey('+item.land',$event)">大洲</span>
       </div>
-      <slot name="wlk"></slot>
+      <slot name="warn"></slot>
       <div id="content-p">
         <slot name="picp">
           <slot name="typeImg"></slot>

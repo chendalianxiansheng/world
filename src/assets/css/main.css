@@ -1,4 +1,5 @@
-body,html{       /* 顶端大佬的全局设置 */
+body,html{       
+  /* 顶端大佬的全局设置 */
   -webkit-tap-highlight-color: rgba(255,0,0,0);
   appearance: none;
   background: #E0E0E0;
@@ -6,12 +7,19 @@ body,html{       /* 顶端大佬的全局设置 */
   width: 100%;
   height: 100%;
 }
-body,h1,h2,h3,hr,p,ul,li,img{   /* 小弟们的初始设置 */
+body,h1,h2,h3,hr,p,ul,li,img{   
+  /* 小弟们的初始设置 */
   border: none;
   margin: 0;
   padding: 0;
 }
+a{
+  /* 去除a标签的默认样式 */
+  text-decoration: none;
+  color: inherit;
+}
 img{
+  /* 图片标签的默认格式 */
   vertical-align: middle;
   user-select: none;
 }

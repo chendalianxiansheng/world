@@ -1,51 +1,47 @@
 <template>
-  <div @click="showPop($event)" id="views">
-    <!-- 视图组件根元素  @点击触发泡泡 -->
-    <div id="pop" ref="pop"></div> 
-      <!-- 点击泡泡的具体实现div -->
+  <div id="views">
     <div id="tags" v-if="tags">
-      <!-- 旗帜特征选择面板 @点击创建/移除-->
+    <!-- 旗帜特征选择面板 @点击创建/移除-->
       <div id="tags-top" @click="tags=false">特征过滤 ×</div>
-        <!-- 旗帜特征顶部div @点击移除-->
+      <!-- 旗帜特征顶部div @点击移除-->
     <transition-group name="imgScale" appear>
-      <!-- 旗帜特征标签过度样式 -->
+    <!-- 旗帜特征标签过度样式 -->
       <div class="buttons" v-for="item in $store.state.buttons" :key="item.idx" @click="item.state=!item.state,getOut(),sumNum=maxNum,item.state?buttonInfo=item.info:'',item.state?flagStyle.push(item.code):flagStyle.splice(flagStyle.indexOf(item.code),1)" >
-        <!-- 旗帜特征标签div 2级 -->
+      <!-- 旗帜特征标签div -->
       <img :src="item.url" alt="" :class="{border1:item.state}">
-        <!-- 旗帜特征标签图片 2级 -->
+      <!-- 旗帜特征标签图片 -->
       <p :style="{color:item.state?'black':''}">{{item.word}}</p>
-        <!-- 旗帜特征p标签 2级 -->
+      <!-- 旗帜特征的图片按钮描述 -->
     </div>
     </transition-group>
       <p id="buttons-p">{{buttonInfo}}</p>
-      <!-- 旗帜特征底部介绍div 2级 -->
+      <!-- 旗帜特征底部介绍div -->
       <img src="../../../public/img/bg/gw.png" alt="" id="pic1">
-      <!-- 旗帜特征底部背景图片 2级 -->
+      <!-- 旗帜特征底部背景图片 => 目前是上海陆家嘴 -->
       <img src="../../../public/img/tags/clear.png" @click="clearTag(),buttonInfo=buttonInfor,flagStyle=[]" id="clear" alt="">
-      <!-- 旗帜特征右下角重置图片 2级 -->
+      <!-- 旗帜特征右下角重置图片 垃圾箱回收图标 -->
     </div>
     <transition appear name="keyTag">
-    <!-- 左下角标签 -->
+    <!-- 左下角标签的渐入渐出特效实现 -->
       <span id="keyTag" v-if=attrState>
-      
+      <!-- 左下角标签的实体以及逻辑控制 -->
         <span @click="sideBar=true,sideBar?stopScroll():startScroll()">{{attrState}}</span>  
-     
-      <span @click="attrState='',attrKey='',getOut(),showMsg('标签已清除')">×</span>
+        <!-- 左下角标签的文字说明 -->
+        <span @click="attrState='',attrKey='',getOut(),showMsg('标签已清除')">×</span>
+        <!-- 左下角标签的关闭按钮和关闭逻辑 -->
     </span>
     </transition>
-    <!-- 左下角标签实现 -->
+
     <div id="bbg" v-show="sideBar" @click="sideBar=false,startScroll()"></div>
-    <!-- 层级高度为33的黑色模板 -->
+    <!-- 层级高度为33的黑色蒙版 -->
     <transition name="sideBar">
       <!-- 侧边栏的运动效果元素 -->
       <side-bar v-show="sideBar" @sendkey="addkey" @cancelkey="cancelkey" @sendTag="" @sendImg="chooseImg" @sendInit="init">
         <!-- 侧边栏的真实DOM -->
-        <span slot="wlk" v-if="searchkey.length<15" class="wlk">*以上搜索内容，至少选择一项！</span>
+        <span slot="warn" class="warn">*默认可搜索英文，至少选择一项！</span>
         <!-- 当索引按键都没有被激活时 -->
-        <span slot="wlk" v-else class="wlk">*可搜索英文字母，至少选择一项</span>
-        <!-- 当至少有一个索引按键被激活时 --> 
         <div v-for="item in $store.state.attr" slot="picp" :key="item.idx">
-          <!-- sideBar组件用于渲染的图文父标签 -->
+        <!-- sideBar组件用于渲染的图文父标签 -->
           <img slot="typeImg" :src="item.src" alt="" :class="{typeImg:attrKey==item.idx}" @click="attrKey=item.idx,sumNum=maxNum,attrKey?attrState=item.info:attrState='',showMsg('定位 - '+item.info)">
           <!-- 分类图片子标签， -->
           <p slot="typeInfo" v-show="item.idx==attrKey">{{item.intro}}</p>
@@ -179,9 +175,9 @@
       <!-- 数据库 中部40% -->
         <div id="badge">
           <img v-lazy="item.badge" alt="">
-        <!-- 懒加载,国家国徽 -->
+          <!-- 懒加载,国家国徽 -->
           <div id="index">{{idx+1}}</div>
-        <!-- 备选功能按键，预留 -->
+          <!-- 备选功能按键，预留 -->
         </div>
       </div>  
     </div>
@@ -232,8 +228,8 @@ export default {
       message: '',          //点击时传入的消息框内容
       showTimer: null,     //消息框定时器 
       sideBar: false,     //侧边栏的显示状态
-      searchkey: 'item.ename+item.name+item.land',
-      attrKey: '',         
+      searchkey: 'item.ename+item.name+item.land', //eavl控制的搜索项
+      attrKey: '',                   //   
       attrState: '',
       maxNum: 30,
       sumNum: 30,
@@ -249,105 +245,113 @@ export default {
       page: 0
     }
   }, 
-  // beforeRouteLeave(to, from, next){
-  //   this.page = parseInt(document.documentElement.srcollTop || window.scrollY)
-  //   next()
-  // },
+  //离开路由使用page记录当前高度
   beforeRouteLeave( to, from, next){
         this.page = document.querySelector('#views').scrollTop || window.scrollY
         next()
   },
+  //返回路由时跳转page记录高度
   activated(){
     window.scrollTo(0, this.page)
   },
   computed:{
-    result(){       //数据过滤运算
-       return (this.$store.state.flags.filter(item=>
-              //第一层,数组类型过滤    
-            (item.type== this.type1 || item.type== this.type2 || item.type== this.type3 || item.type== this.type4 || item.type== this.type5) && 
-             //第二层数组匹配特征过滤
-            this.flagStyle.every(itm=>item.code.indexOf(itm)!==-1) &&
-            //第三层数组匹配标签过滤
-            (item.attr).indexOf(this.attrKey)>-1 &&
-        (     //第四层数组关键字过滤
+    result(){       
+      //数据过滤运算
+      return (this.$store.state.flags.filter(item=>
+      //第一层,数组类型过滤    
+          (item.type== this.type1 || item.type== this.type2 || item.type== this.type3 || item.type== this.type4 || item.type== this.type5) && 
+          //第二层数组匹配特征过滤
+          this.flagStyle.every(itm=>item.code.indexOf(itm)!==-1) &&
+          //第三层数组匹配标签过滤
+          (item.attr).indexOf(this.attrKey)>-1 &&
+        ( 
+        //第四层数组关键字过滤
           eval(this.searchkey)
         ).indexOf(this.search)>-1))
-      
     },
   },
   methods:{
-    iptBlur(e){     //点击键盘确定(13)时，输入框失去焦点
+    iptBlur(e){    
+    //点击键盘确定(13按键)时，输入框失去焦点
       e.target.blur()
     },
-    cancelkey(msg,e){   //从eval字符串中取出关键字
-      this.showMsg('取消'+e+'过滤')
-      this.searchkey = this.searchkey.replace(msg,'')
+    cancelkey( msg, e){   
+    //从eval字符串中取出关键字
+      this.showMsg('取消'+ e +'过滤')
+      this.searchkey = this.searchkey.replace( msg, '')
     },
-    addkey(msg,e){   //向eval字符串中注入关键字
-      this.showMsg('增加'+e+'过滤')
-      this.searchkey+=msg
+    addkey( msg, e){   
+    //向eval字符串中注入关键字
+      this.showMsg('增加'+ e +'过滤')
+      this.searchkey += msg
     },
-    reverseItem(){   //向store发出源数组倒序命令
+    reverseItem(){   
+    //向store发出源数组倒序命令
         this.sumNum = this.maxNum
+        //重置展示长度
         this.getOut()
+        //滚回顶部
         this.$store.commit('reverseItem')
     },
-    sendMutation(key){   //切换排序方式时，产生提示框，忽略重复请求
-      if(this.sortWay===key){
+    sendMutation(key){   
+    //切换排序方式时，产生提示框，忽略重复请求
+      if(this.sortWay === key){
         return
       }else{
         this.getOut()
-        this.$store.commit('sortMethod',key)
+        //滚回顶部
+        this.$store.commit('sortMethod', key)
       }
     },
-    clearTag(){       //将搜索项重置
+    clearTag(){      
+    //将搜索项重置
       this.$store.commit('clearTag')
     },         
-    cancelIpt(){  //重置输入框  
+    cancelIpt(){  
+    //重置输入框  
     if(this.search){                 
       this.search='' 
       this.showMsg('已清除当前搜索项')
       }           
     },
-    showMsg(message){      //小黑弹框的内容控制
+    showMsg(message){      
+    //小黑弹框的内容控制
       var div = this.$refs.show
       div.style.display='block'
       this.message = message
-      if(this.showTimer){                //如果定时器存在则清除重启
+      if(this.showTimer){                
+      //如果定时器存在则清除重启
         clearTimeout(this.showTimer)
         this.showTimer = setTimeout(()=>{
         this.$refs.show.style.display='none'
         },this.$store.state.time)
-      }else{                          //不存在则照旧进行
+      }else{                          
+      //不存在则照旧进行
         this.showTimer = setTimeout(()=>{
         this.$refs.show.style.display='none'
         },this.$store.state.time)
       }
     },
-    getOut(){         //滚回顶部
+    getOut(){         
+    //滚回顶部
       document.body.scrollTop = document.documentElement.scrollTop = 0
     },
-    stopScroll(){     //触发滚动条锁定
+    stopScroll(){     
+    //触发滚动条锁定
       document.body.style.position = "fixed"
     },
-    startScroll(){    //触发后解除滚动条锁定
+    startScroll(){    
+    //触发后解除滚动条锁定
       document.body.style.position = "static"
     },
-    showMore(){     //点击加载更多
-      if(this.sumNum<this.result.length){
-        this.sumNum+=this.maxNum
+    showMore(){     
+    //点击加载更多
+      if(this.sumNum < this.result.length){
+        this.sumNum += this.maxNum
       }
     },
-    showPop(event){   //点击产生泡泡
-      var pop = this.$refs.pop
-      pop.style.left = (event.clientX - 12) + 'px'
-      pop.style.top = (event.clientY - 12) + 'px'
-      pop.style.display="block"
-      setTimeout(()=>{
-        pop.style.display = "none"
-      },200)
-    },
-    init(){    //点击初始化搜索项
+    init(){    
+    //点击初始化搜索项，这段写得太low
       this.clearTag()
       this.search=''
       this.attrKey=''
@@ -381,14 +385,16 @@ export default {
     //     that.topBtn = false
     //   }
     // }
-    toDatas(item) {    //跳路由,送出整个item
+    toDatas(item) {    
+    //跳路由,送出整个item
       this.$router.push({
       path: '/datas',   
       })
       this.$store.state.items = item
     },    
-    chooseImg(idx,type){    //面板选择
-      if(typeof this[type]=='number'){
+    chooseImg(idx, type){    
+    //面板选择
+      if(typeof this[type] == 'number'){
         this[type] = false
       }else{
         this[type] = idx
@@ -396,7 +402,8 @@ export default {
     },
   },
   filters:{
-    numb(data){     //文字过滤器
+    numb(data){     
+    //文字过滤器
       if(data>10000 && data<100000000){
         return data/10000+'万'
       }else if(data>100000000){
@@ -405,7 +412,8 @@ export default {
         return data
       }
     },
-    gdp(data){     //文字过滤器2
+    gdp(data){     
+    //文字过滤器2
       if(data===0){
         return '数据暂无'
       }else if(data>10000){
@@ -415,6 +423,7 @@ export default {
       }
     },
     per(data){
+    //人均收入文字过滤器
       if(data){
         return data+'美元'
       }else{
@@ -427,18 +436,23 @@ export default {
 
 <style scoped>
 .class2{
+  /* 地区颜色 */
   color: purple !important;
 }
 .class3{
+  /* 州省颜色 */
   color: rgb(5, 98, 236);
 }
 .class4{
+  /* 组织颜色 */
   color: green;
 }
 .class5{
+  /* 历史颜色 */
   color: black;
 }
 .border1{
+  /* 由tag特征面板使用的样式 */
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   border: 1px solid black !important;
   position: relative;
@@ -451,22 +465,10 @@ export default {
   margin-left: 12px;
   float: right;
   top: 4px;
-  /* padding: 1px; */
   line-height: 10px;
   letter-spacing: -1px;
   color: rgb(51, 51, 51);
   position: absolute;
-}
-#pop{   
-  /* 泡泡的具体实现 */
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  background: rgba(0, 0, 0, .15);
-  transition: all ease 0.2s;
 }
 #tags{  
   /* 过滤项面板 */
@@ -491,6 +493,7 @@ export default {
   font-size: 16px;
   line-height: 40px;
   color: white;
+  cursor: pointer;
   background: #db4137;
 }
 #tags .buttons{
@@ -544,7 +547,8 @@ export default {
 #clear:active{
   transform: scale(1.2);
 }
-.font{     /* 渲染色，主题色 */
+.font{     
+  /* 渲染色，主题色 */
   color: #DB4137 !important;
 }
 .typeImg{
@@ -561,6 +565,7 @@ export default {
   background-image: url("../../../public/img/bg/cloud-dark.png");
   background-size: 40px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 #keyTag span{
   /* 左下角标签的关闭按钮 */
@@ -602,10 +607,11 @@ export default {
   color: #DB4137;
   letter-spacing: -2px;
 }
-.wlk{
+.warn{
   font-size: 10px;
   text-decoration: underline;
-  margin-left: -30%;
+  float: left;
+  margin-left: 5%;
 }
 .space{    
   /* 占位白块 */

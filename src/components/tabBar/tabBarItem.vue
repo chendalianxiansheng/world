@@ -37,6 +37,7 @@ export default {
 
 <style scoped>
 .tab-bar-item{
+  /* 下方导航栏个体样式 */
   flex: 0.25;
   font-size: 11px;
   cursor: pointer;
@@ -44,6 +45,7 @@ export default {
   z-index: 99;
 }
 .tab-bar-item img{
+  /* 小图标实现 */
   margin-top: 5px;
   height: 25px;
 }

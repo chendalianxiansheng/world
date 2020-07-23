@@ -268,6 +268,7 @@ export default new Vuex.Store({
       },
     ],
     time:2000,
+    popWidth: 24,
     // ↓ 默认的data展示页，默认为中国
     items: {
       id: 108,
