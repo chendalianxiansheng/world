@@ -206,11 +206,14 @@
 </template>
 
 <script>
+//组件区
 import searchInput from "../../components/view/searchInput"
 import inputBtn from "../../components/view/inputBtn"
 import iconTag from "../../components/view/iconTag"
 import sideBar from "../../components/view/sideBar"
-
+//功能区
+import { numb,gdp,per } from "@/views/pubFunc/filter"
+ 
 export default {
   name: 'views',
   components:{
@@ -315,18 +318,15 @@ export default {
       }           
     },
     showMsg(message){      
-    //小黑弹框的内容控制
       var div = this.$refs.show
       div.style.display='block'
       this.message = message
       if(this.showTimer){                
-      //如果定时器存在则清除重启
         clearTimeout(this.showTimer)
         this.showTimer = setTimeout(()=>{
         this.$refs.show.style.display='none'
         },this.$store.state.time)
       }else{                          
-      //不存在则照旧进行
         this.showTimer = setTimeout(()=>{
         this.$refs.show.style.display='none'
         },this.$store.state.time)
@@ -402,34 +402,9 @@ export default {
     },
   },
   filters:{
-    numb(data){     
-    //文字过滤器
-      if(data>10000 && data<100000000){
-        return data/10000+'万'
-      }else if(data>100000000){
-        return data/100000000+'亿'
-       }else{
-        return data
-      }
-    },
-    gdp(data){     
-    //文字过滤器2
-      if(data===0){
-        return '数据暂无'
-      }else if(data>10000){
-        return data/10000+'万亿'
-      }else{
-        return data+'亿'
-      }
-    },
-    per(data){
-    //人均收入文字过滤器
-      if(data){
-        return data+'美元'
-      }else{
-        return '无法计算'
-      }
-    },
+    numb,
+    gdp,
+    per
   }      //filter尾括号
 }       //配置尾括号
 </script>
@@ -595,7 +570,6 @@ export default {
   top: 35%;
   left: 50%;
   display: none;
-  transition: all ease 0.3s;
 }
 #count{   
   /* 右上角的计数区域 */

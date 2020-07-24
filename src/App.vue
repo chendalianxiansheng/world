@@ -35,6 +35,7 @@
 
 import tabBarItem from "./components/tabBar/tabBarItem"
 //底部路由按钮实现
+import { debounce } from "./components/untils/until"
 
 export default {
   name:'App',
