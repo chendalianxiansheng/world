@@ -136,13 +136,13 @@
   <div v-if="result.length>0" @click="sideBar=''">
     <!-- if/else切换无结果填充图 -->
     <transition appear name="changeList">
-    <div @click="toDatas($event)">
+    <div>
       <!-- 表单切换的特效实现 -->
     <div class="list" v-for="(item,idx) in result.slice(0,sumNum)" :key="item.id">
       <div class="flag">
         <div class="king" :class="{class2:item.type==2,class3:item.type==3,class4:item.type==4,class5:item.type==5}">♚</div>
         
-        <img :src="item.flag" alt="" :data-img="idx">  
+        <img :src="item.flag" alt="" @click="toDatas(item)">  
         <!-- 图片懒加载，有使用效果，但不知道有没有性能提升 -->
         <p class="feature">{{item.land}} / {{item.place}}</p>
         
@@ -394,24 +394,24 @@ export default {
     //     that.topBtn = false
     //   }
     // }
-    toDatas(e) {    
-    //跳路由,送出整个item
-      var tar = e.target
-      var name = tar.tagName.toLowerCase();
-      if(name==='img' && tar.getAttribute('data-img')){
-        var idx = tar.getAttribute('data-img')
-        // console.log(jump)
-        this.$router.push({
-          path: '/datas'
-        })
-        this.$store.state.items = this.$store.state.flags[idx]
-      }
-
-    // this.$router.push({
-    //   path: '/datas',   
-    //   })
-    //   this.$store.state.items = item
-    },    
+    // toDatas(e) {    
+    // //跳路由,用的事件托管不知道有没有优化
+    //   var tar = e.target
+    //   var name = tar.tagName.toLowerCase();
+    //   if(name==='img' && tar.getAttribute('data-img')){
+    //     var idx = tar.getAttribute('data-img')
+    //     // console.log(jump)
+    //     this.$router.push({
+    //       path: '/datas'
+    //     })
+    //     this.$store.state.items = this.$store.state.flags[idx]
+    //   }
+    toDatas(item){
+      this.$router.push({
+      path: '/datas',   
+      })
+      this.$store.state.items = item
+    },   
     chooseImg(idx, type){    
     //面板选择
       if(typeof this[type] == 'number'){
