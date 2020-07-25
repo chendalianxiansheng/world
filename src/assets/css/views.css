@@ -1,0 +1,411 @@
+.class2{
+  /* 地区颜色 */
+  color: purple !important;
+}
+.class3{
+  /* 州省颜色 */
+  color: rgb(5, 98, 236);
+}
+.class4{
+  /* 组织颜色 */
+  color: green;
+}
+.class5{
+  /* 历史颜色 */
+  color: black;
+}
+.border1{
+  /* 由tag特征面板使用的样式 */
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  border: 1px solid black !important;
+  position: relative;
+  transform: scale(1.2);
+  /* border-radius: 50%; */
+}
+#arrLen{
+  /* 过滤项的右上角数字 */ 
+  font-size: 10px;
+  margin-left: 12px;
+  float: right;
+  top: 4px;
+  line-height: 10px;
+  letter-spacing: -1px;
+  color: rgb(51, 51, 51);
+  position: absolute;
+}
+#tags{  
+  /* 过滤项面板 */
+  width: 60%;
+  height: 460px;
+  background: white;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  overflow-y: hidden;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#tags-top{
+  /* 过滤项面板顶部 */
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  color: white;
+  cursor: pointer;
+  background: #db4137;
+}
+#tags .buttons{
+  /* 过滤项面板关闭按钮 */
+  width: 20%;
+  height: 50px;
+  float: left;
+}
+#tags .buttons img{
+  /* 过滤项面板小图 */
+  margin-top: 8px;
+  height: 19px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+#tags .buttons p{
+  /* 过滤项面板介绍 */
+  margin-top: 5px;
+  font-size: 8px;
+  line-height: 12px;
+  color: rgb(197, 195, 195);
+}
+#buttons-p{
+  /* 过滤项底部文字 */
+  clear: both;
+  width: 88%;
+  margin-left: 5%;
+  text-indent: 2em;
+  text-align: start;
+  padding: 12px 1%;
+  font-size: 10px;
+  font-weight: 700;
+}
+#pic1{
+  /* 陆家嘴背景图 */
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0.3;
+  z-index: -1;
+}
+#clear{
+  /* 右下角清除按钮 */
+  width: 25px;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  z-index: 2;
+  transition: all ease 0.2s;
+}
+#clear:active{
+  transform: scale(1.2);
+}
+.font{     
+  /* 渲染色，主题色 */
+  color: #DB4137 !important;
+}
+.typeImg{
+  border: 1px solid black !important;
+}
+#keyTag{
+  /* 左下角特征标签 */ 
+  position: fixed;
+  z-index: 22;
+  padding: 3px 10px;
+  color: white;
+  bottom: 68px;
+  left: -10px;
+  background-image: url("../../../public/img/bg/cloud-dark.png");
+  background-size: 40px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+#keyTag span{
+  /* 左下角标签的关闭按钮 */
+  padding-left: 7px;
+}
+#bbg{
+  /* 黑色背景遮罩 */
+  width: 100%;
+  height: 100%;
+  background:rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 33;
+}
+.choose{
+  background: #DB4137 !important;
+  color: white !important;
+}
+#showMessage{     
+  /* 弹出的消息框 */
+  position: fixed;
+  z-index: 999;
+  transform: translateX(-50%);
+  background:rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  padding: 5px 15px;
+  top: 35%;
+  left: 50%;
+  display: none;
+}
+#count{   
+  /* 右上角的计数区域 */
+  font-size: 17px;
+  height: 20px;
+  line-height: 22px;
+  margin-top: 3px;
+  text-align: center;
+  color: #DB4137;
+  letter-spacing: -2px;
+}
+.warn{
+  font-size: 10px;
+  text-decoration: underline;
+  float: left;
+  margin-left: 5%;
+}
+.space{    
+  /* 占位白块 */
+  width: 100%;
+  height: 36px; 
+}
+.king{
+  color: orange;
+  position: absolute;
+  top: -5px;
+}
+.list{    
+  /* 被渲染的单个内容块 */
+  width: 96%;
+  height: 89px;
+  background: white;
+  display: flex;
+  margin-left: 1.5%;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  /* border-radius: 6px; */
+  margin-top: 6px;
+  overflow: hidden;
+  /* box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); */
+  user-select: none;
+} 
+.list:hover{
+  background: #DB4137;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.3)
+}
+.list:hover p{
+  color: white !important;
+}
+.list:hover #badge #index{
+  background: white;
+  color: #DB4137;
+}
+.list p{    /* 内容块中的所有p标签 */
+  overflow:visible;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.list .flag{   /* 内容块中的第一部分 国旗+英文国名 */
+  flex: 0.29;
+  position: relative;
+}
+.list .flag img{   /* 内容块第一部分的国旗图片 */
+  height: 50px;
+  margin-top: 6px;
+  text-align: start;
+  float: left;
+  margin-left: 5px;
+  border: 1px solid #AEAAAA;
+}
+.list .flag .feature{
+  font-size: 10px;
+  position: absolute;
+  bottom: 14px;
+  left: 5px;
+  color: black;
+}
+.list .flag .ename{   /* 内容块第一部分的p标签 */
+  position: absolute;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
+  left: 5px;
+  bottom: -3px;
+  z-index: 0;
+  color: rgb(204, 203, 203, 0.7);
+  
+}
+.list .content{   /* 内容块的第二部分：中间文字 */
+  flex: 0.41;
+  width: 41%;
+}
+.list .content .name,.fullname,.line-a{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.list .content .name{  /* 内容块第二部分中间文字的标题 */
+  color: black;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.list .content .fullname{  /* 内容块中间部分的副标题 */
+  font-size: 10px;
+  line-height: 15px;
+}
+.list .content .line-a{  
+  color: #DB4137;
+  font-size: 10px;
+}
+.list .badge{  /* 内容块第三部分的徽章区 */
+  flex: 0.3;
+  position: relative;
+}
+.list .badge img{  /* 内容块第三部分的徽章图片 */
+  position: absolute;
+  width: 140px;
+  top: -7%;
+  left: 0%;
+  z-index: 0;
+}
+.list .badge .index{   /* 数据列表右上角序列标志 */
+  position: absolute;
+  z-index: 0;
+  width: 20px;
+  height: 20px;
+  right: 1%;
+  font-size: 10px;
+  line-height: 20px;
+  color: white;
+  background: #DB4137;
+  border-radius: 20px;
+}
+.changeList-enter,.changeList-leave-to{    
+  transform: translateY(500px);
+}
+.changeList-enter-active,.changeList-leave-active{   
+  transition: all 0.5s ease;
+}
+.changeList-move{     /* 数据列表过度过程 */
+  transition: all 0.5s ease;
+}
+/* .changeList-leave-active{
+  position: absolute;
+} */
+.changeStyle-enter,.changeStyle-leave-to{   /* 无效图初始和结束样式 */
+  transform: translateX(200px);    
+  opacity: 0;
+}
+.changeStyle-enter-active,.changeStyle-leave-active{   /* 无效图过度效果 */ 
+  transition: all 0.5s ease;
+}
+/* 侧边栏的开始和结束样式 */
+.sideBar-enter,.sideBar-leave-to{    
+  transform: translateX(500px);
+  opacity: 0;
+}
+.sideBar-enter-active,.sideBar-leave-active{
+  transition: all ease 0.2s;
+}
+.keyTag-enter,.keyTag-leave-to{
+  transform: translateX(-100%);
+}
+.keyTag-enter-active,.keyTag-leave-active{
+  transition: all ease 0.5s;
+}
+/* imgScale特征面板初加载 */
+.imgScale-enter,.imgScale-leave-to{
+  transform: scale(0);
+}
+.imgScale-enter-active,.imgScale-leave-active{
+  transition: all ease 0.5s;
+}
+/* fadeImg底部menu按钮的动态效果 */
+.fadeImg-enter,.fadeImg-leave-to{
+  transform: translateX(100%);
+}
+.fadeImg-leave-active{
+  display: none;
+}
+.fadeImg-enter-active,.fadeImg-leave-active{
+  transition: all ease 1s;
+}
+#view-bottom{  
+  /* 底部填充div */
+  width: 100%;
+  height: 70px;
+}
+#no-div{   
+  /* 无效图容器的空间位置 */
+  width: 100%;
+  height: 100%;
+}
+#no-result{
+  /* 没有搜索结果时展示的地球图片 */
+  position: absolute;
+  width: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+#menu{
+  /* 下方按钮和hr横线的整体 */
+  margin-top: 10px;
+  position: relative;
+}
+#menu:after{
+  /* 按钮内的hr横线 */
+  content:'';
+  width: 90%;
+  height: 1px;
+  background: #DB4137;
+  position: absolute;
+  top: 64%;
+  left: 5%;
+  z-index: 1;
+}
+#menu img{
+  /* 已无更多 和 下滑加载按钮 */ 
+  position: relative;
+  z-index: 2;
+  top: 4px;
+  width: 60px;
+}
+#go-to{
+  /* 返回顶部按钮 */ 
+  position: fixed;
+  width: 30px;
+  right: 15px;
+  border-radius: 1px;
+  bottom: 65px;
+  z-index: 33;
+  background:rgba(0, 0, 0, 0.5);
+  transition: all ease 0.1s;
+}
+#go-to:active{   
+  /* 返回顶部点击效果 */
+  transform: scale(1.1);
+  background: #db4137;
+}
+.explain-enter,.explain-leave-to{
+  transform: rotateY(180deg);
+}
+.explain-leave-active{
+  display: none;
+}
+.explain-enter-active,.explain-leave-active{
+  transition: all ease 1s;
+}

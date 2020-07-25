@@ -40,6 +40,7 @@
 
 <script>
 import { drawTab1 } from './drawTab1'
+import { numb,typeName } from "@/views/pubFunc/filter"
 
 export default {
   name: 'datas',
@@ -50,45 +51,27 @@ export default {
     };
   },
   filters:{
-    numb(data){     //文字过滤器
-      if(data>10000 && data<100000000){
-        return data/10000+'万'
-      }else if(data>100000000){
-        return data/100000000+'亿'
-       }else{
-        return data
-      }
-    },
-    typeName(data){
-      if(data==1){
-        return '国家'
-      }else if(data==2){
-        return '地区'
-      }else if(data==3){
-        return '州省'
-      }else if(data==4){
-        return '组织'
-      }else{
-        return '历史'
-      }
-    },
+    numb,
+    typeName
   },
   created(){ 
     this.item = this.$store.state.items  
   },
   beforeMount(){
+    //合并两个数组为对象
     this.merge = this.item.partvalue.map((value,idx) => ({value, name: this.item.part[idx]}));
+    //绘制echarts1
     this.$nextTick(()=>{
       this.drawTab1();
     })
   },
   mounted(){
-    // this.$router.afterEach((to, from) => {
+    //加载时将其他页面带入的高度清空
     window.scrollTo(0, 0) 
-    // this.drawTab2();
   },
   methods:{
     back(){
+      //点击返回时跳转views路由
       this.$router.replace('/views')
     },
     drawTab1
@@ -106,8 +89,8 @@ export default {
 /* 顶部功能行 */
 #datasTop{
   width: 100%;
-  height: 35px;
-  line-height: 35px;
+  height: 36px;
+  line-height: 36px;
   font-size: 13px;
   float: left;
   position: fixed;
@@ -136,7 +119,7 @@ export default {
   position: absolute;
   width: 54vmin;
   right: 2%;
-  top: 0;
+  top: 36px;
   bottom: 0;
   margin: auto;
 }

@@ -27,11 +27,24 @@ function per(data){
     return '无法计算'
   }
 }
+function typeName(data){
+  switch (data) {
+    case 1:
+      return '国家';
+      break;
+    case 2:
+      return '地区'
+      break;
+    default:
+      break;
+  }
+}
 
 export {
+  typeName as typeName,
   numb as numb,
   gdp as gdp,
-  per as per
+  per as per 
 }
 
 

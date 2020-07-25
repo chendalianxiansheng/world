@@ -85,22 +85,28 @@ export default {
     }
   },
   methods:{
+    //四大按钮（国名/首都/地区/大洲）点击实现
     sendkey(msg,e){
       this.$emit('sendkey',msg,e.target.innerHTML)
     },
+    //五种旗帜分类按钮（国家/地区/州省/组织/历史）
     sendImg(idx){
       this.$emit('sendImg',idx,'type'+idx)
     },
+    //四大按钮解除事件
     cancelkey(msg,e){
       this.$emit('cancelkey',msg,e.target.innerHTML)
     },
+    //标题问号圆圈点击事件
     sendTag(){
       this.$emit('sendTag')
     },
+    //tab-bar数据初始化
     init(){
       this.pics.forEach(item=>item.state=false)
       this.pics[0].state = true
     },
+    //全局搜索项（views）初始化
     sendInit(){
       this.$emit('sendInit')
     }

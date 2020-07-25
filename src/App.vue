@@ -35,7 +35,6 @@
 
 import tabBarItem from "./components/tabBar/tabBarItem"
 //底部路由按钮实现
-import { debounce } from "./components/untils/until"
 
 export default {
   name:'App',
@@ -51,7 +50,7 @@ export default {
       //点击产生泡泡  
       var pop = this.$refs.pop
       pop.style.left = (event.clientX - 12) + 'px'
-      //暂时未解构，后面宽度与时间间隔会写作变量，并入setting
+      //暂时未解构，后面宽度与时间间隔会写作变量，并入setting路由
       pop.style.top = (event.clientY - 12) + 'px'
       pop.style.display="block"
       setTimeout(()=>{
@@ -63,50 +62,6 @@ export default {
 </script>
 
 <style>
-
  @import "./assets/css/main.css";
- /* 导入的其他全局样式 */ 
-
-#app {
-  /* vue自带默认样式 */
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-}
-nav{
-  /* 底部的nav导航栏 */
-  display: flex;
-  background: #da493e;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 50px;
-  z-index: 99;
-}
-input[type="text"]{  
-  /* 输入型表单全局样式 */
-  outline-style: none;
-  border: 1px solid Gainsboro; 
-  border-radius: 20px;  
-  height: 25px;
-  line-height: 25px;
-}
-input[type="text"]:focus{  
-  /* 输入型表单激活样式 */ 
-  border-color: #DB4137;  
-  outline: 0; 
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 10px rgba(219,65,55,.6)
-}
-#pop{   
-  /* 泡泡的具体实现 */
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  background: rgba(0, 0, 0, .15);
-}
+ /* 导入的全局样式 */ 
 </style>

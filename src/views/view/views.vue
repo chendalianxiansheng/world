@@ -23,7 +23,7 @@
     </div>
     <transition appear name="keyTag">
     <!-- 左下角标签的渐入渐出特效实现 -->
-      <span id="keyTag" v-if=attrState>
+      <span id="keyTag" v-if=attrKey>
       <!-- 左下角标签的实体以及逻辑控制 -->
         <span @click="sideBar=true,sideBar?stopScroll():startScroll()">{{attrState}}</span>  
         <!-- 左下角标签的文字说明 -->
@@ -36,7 +36,7 @@
     <!-- 层级高度为33的黑色蒙版 -->
     <transition name="sideBar">
       <!-- 侧边栏的运动效果元素 -->
-      <side-bar v-show="sideBar" @sendkey="addkey" @cancelkey="cancelkey" @sendTag="" @sendImg="chooseImg" @sendInit="init">
+      <side-bar v-show="sideBar" @sendkey="addkey" @cancelkey="cancelkey" @sendTag="explain=!explain" @sendImg="chooseImg" @sendInit="init">
         <!-- 侧边栏的真实DOM -->
         <span slot="warn" class="warn">*默认可搜索英文，至少选择一项！</span>
         <!-- 当索引按键都没有被激活时 -->
@@ -136,20 +136,20 @@
   <div v-if="result.length>0" @click="sideBar=''">
     <!-- if/else切换无结果填充图 -->
     <transition appear name="changeList">
-    <div>
+    <div @click="toDatas($event)">
       <!-- 表单切换的特效实现 -->
     <div class="list" v-for="(item,idx) in result.slice(0,sumNum)" :key="item.id">
-      <div id="flag">
+      <div class="flag">
         <div class="king" :class="{class2:item.type==2,class3:item.type==3,class4:item.type==4,class5:item.type==5}">♚</div>
         
-        <img :src="item.flag" alt=""  @click="toDatas(item)">  
+        <img :src="item.flag" alt="" :data-img="idx">  
         <!-- 图片懒加载，有使用效果，但不知道有没有性能提升 -->
-        <p id="content">{{item.land}} / {{item.place}}</p>
+        <p class="feature">{{item.land}} / {{item.place}}</p>
         
-        <p id="ename">{{item.ename}}</p>
+        <p class="ename">{{item.ename}}</p>
       </div>
       <!-- 图片区 左侧30% -->
-      <div id="content">
+      <div class="content">
         <p class="name">{{item.name}}</p>
         <p class="fullname">{{item.fullname}}</p>
         <p class="line-a">首都：{{item.city}}</p>
@@ -173,10 +173,10 @@
         </icon-tag>
       </div>
       <!-- 数据库 中部40% -->
-        <div id="badge">
+        <div class="badge">
           <img v-lazy="item.badge" alt="">
           <!-- 懒加载,国家国徽 -->
-          <div id="index">{{idx+1}}</div>
+          <div class="index">{{idx+1}}</div>
           <!-- 备选功能按键，预留 -->
         </div>
       </div>  
@@ -195,13 +195,19 @@
   <div v-else id="no-div">
     <!-- 无结果需要渲染的内容 -->
     <transition name="changeStyle" appear>
-      <!-- 无结果展示内容的特效实现 -->
+    <!-- 无结果展示内容的特效实现 -->
       <img src="../../../public/img/sideBar/ball.png" alt="" id="no-result">
+      <!-- 找不到结果的图片实现，一个球 -->
     </transition>
   </div>
     <div id="view-bottom">
+    <!-- 底部充数div -->
     </div>
     <!-- 填充底部tabBar的div -->
+    <transition name="explain">
+      <explain v-if="explain" @click="explain=false"></explain>
+        <!-- 展示页面声明的div -->
+    </transition>
   </div>
 </template>
 
@@ -211,6 +217,7 @@ import searchInput from "../../components/view/searchInput"
 import inputBtn from "../../components/view/inputBtn"
 import iconTag from "../../components/view/iconTag"
 import sideBar from "../../components/view/sideBar"
+import explain from "../../components/view/explain"
 //功能区
 import { numb,gdp,per } from "@/views/pubFunc/filter"
  
@@ -221,6 +228,7 @@ export default {
     inputBtn,      //图标功能组件
     iconTag,      //资料模板组件
     sideBar,     //侧边栏组件
+    explain     //说明组件
   },
   data() {
     return {
@@ -229,32 +237,33 @@ export default {
       color: true,            //激活颜色变量
       reverse: false,        //倒序数组变量
       message: '',          //点击时传入的消息框内容
-      showTimer: null,     //消息框定时器 
+      //showTimer: null,   //消息框定时器 
       sideBar: false,     //侧边栏的显示状态
       searchkey: 'item.ename+item.name+item.land', //eavl控制的搜索项
-      attrKey: '',                   //   
-      attrState: '',
-      maxNum: 30,
-      sumNum: 30,
-      tags: false,
+      attrKey: '',                //左下角标签关键字   
+      attrState: '',             //左下角标签状态
+      maxNum: 30,               //不断累加的展示数
+      sumNum: 30,              //初始展示数
+      tags: false,            //过滤面板显示状态
+      type1: 1,              //旗帜类型过滤 side-bar选项
+      type2: false,         //旗帜类型过滤2
+      type3: false,        //旗帜类型过滤3
+      type4: false,       //旗帜类型过滤4
+      type5: false,      //旗帜类型过滤5
+      flagStyle:[],     //旗帜类型的存放数组
+      page: 0,         //当前页面滚动高度
+      explain: false, //声明面板的逻辑控制
       buttonInfo: '过滤 简介 : 选择需要过滤的旗帜特征，含有颜色/图形/图案和结构分类',
-      buttonInfor: '过滤 简介 : 选择需要过滤的旗帜特征，含有颜色/图形/图案和结构分类',
-      type1: 1,
-      type2: false,
-      type3: false,
-      type4: false,
-      type5: false,
-      flagStyle:[],
-      page: 0
+      buttonInfor: '过滤 简介 : 选择需要过滤的旗帜特征，含有颜色/图形/图案和结构分类'
     }
   }, 
-  //离开路由使用page记录当前高度
   beforeRouteLeave( to, from, next){
-        this.page = document.querySelector('#views').scrollTop || window.scrollY
-        next()
+    //离开路由使用page记录当前高度
+    this.page = document.querySelector('#views').scrollTop || window.scrollY
+    next()
   },
-  //返回路由时跳转page记录高度
   activated(){
+    //返回路由时跳转page记录高度
     window.scrollTo(0, this.page)
   },
   computed:{
@@ -267,37 +276,35 @@ export default {
           this.flagStyle.every(itm=>item.code.indexOf(itm)!==-1) &&
           //第三层数组匹配标签过滤
           (item.attr).indexOf(this.attrKey)>-1 &&
-        ( 
-        //第四层数组关键字过滤
-          eval(this.searchkey)
-        ).indexOf(this.search)>-1))
+          (eval(this.searchkey)).indexOf(this.search)>-1))
+          //第四层数组关键字过滤
     },
   },
   methods:{
     iptBlur(e){    
-    //点击键盘确定(13按键)时，输入框失去焦点
+      //点击键盘确定(13按键)时，输入框失去焦点
       e.target.blur()
     },
     cancelkey( msg, e){   
-    //从eval字符串中取出关键字
+      //从eval字符串中取出关键字
       this.showMsg('取消'+ e +'过滤')
       this.searchkey = this.searchkey.replace( msg, '')
     },
     addkey( msg, e){   
-    //向eval字符串中注入关键字
+      //向eval字符串中注入关键字
       this.showMsg('增加'+ e +'过滤')
       this.searchkey += msg
     },
     reverseItem(){   
-    //向store发出源数组倒序命令
-        this.sumNum = this.maxNum
-        //重置展示长度
-        this.getOut()
-        //滚回顶部
-        this.$store.commit('reverseItem')
+      //向store发出源数组倒序命令
+      this.sumNum = this.maxNum
+      //重置展示长度
+      this.getOut()
+      //滚回顶部
+      this.$store.commit('reverseItem')
     },
     sendMutation(key){   
-    //切换排序方式时，产生提示框，忽略重复请求
+      //切换排序方式时，产生提示框，忽略重复请求
       if(this.sortWay === key){
         return
       }else{
@@ -307,17 +314,18 @@ export default {
       }
     },
     clearTag(){      
-    //将搜索项重置
+      //将搜索项重置
       this.$store.commit('clearTag')
     },         
     cancelIpt(){  
-    //重置输入框  
-    if(this.search){                 
-      this.search='' 
-      this.showMsg('已清除当前搜索项')
+      //重置输入框  
+      if(this.search){                 
+        this.search='' 
+        this.showMsg('已清除当前搜索项')
       }           
     },
-    showMsg(message){      
+    showMsg(message){    
+      //黑色提示框  
       var div = this.$refs.show
       div.style.display='block'
       this.message = message
@@ -333,25 +341,26 @@ export default {
       }
     },
     getOut(){         
-    //滚回顶部
+      //滚回顶部
       document.body.scrollTop = document.documentElement.scrollTop = 0
     },
     stopScroll(){     
-    //触发滚动条锁定
+      //触发滚动条锁定
       document.body.style.position = "fixed"
     },
     startScroll(){    
-    //触发后解除滚动条锁定
+      //触发后解除滚动条锁定
       document.body.style.position = "static"
     },
     showMore(){     
-    //点击加载更多
+      //点击加载更多
       if(this.sumNum < this.result.length){
         this.sumNum += this.maxNum
       }
     },
     init(){    
-    //点击初始化搜索项，这段写得太low
+      //点击初始化搜索项，这段写得太low
+      console.log(this.flagStyle)
       this.clearTag()
       this.search=''
       this.attrKey=''
@@ -385,12 +394,23 @@ export default {
     //     that.topBtn = false
     //   }
     // }
-    toDatas(item) {    
+    toDatas(e) {    
     //跳路由,送出整个item
-      this.$router.push({
-      path: '/datas',   
-      })
-      this.$store.state.items = item
+      var tar = e.target
+      var name = tar.tagName.toLowerCase();
+      if(name==='img' && tar.getAttribute('data-img')){
+        var idx = tar.getAttribute('data-img')
+        // console.log(jump)
+        this.$router.push({
+          path: '/datas'
+        })
+        this.$store.state.items = this.$store.state.flags[idx]
+      }
+
+    // this.$router.push({
+    //   path: '/datas',   
+    //   })
+    //   this.$store.state.items = item
     },    
     chooseImg(idx, type){    
     //面板选择
@@ -410,407 +430,6 @@ export default {
 </script>
 
 <style scoped>
-.class2{
-  /* 地区颜色 */
-  color: purple !important;
-}
-.class3{
-  /* 州省颜色 */
-  color: rgb(5, 98, 236);
-}
-.class4{
-  /* 组织颜色 */
-  color: green;
-}
-.class5{
-  /* 历史颜色 */
-  color: black;
-}
-.border1{
-  /* 由tag特征面板使用的样式 */
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  border: 1px solid black !important;
-  position: relative;
-  transform: scale(1.2);
-  /* border-radius: 50%; */
-}
-#arrLen{
-  /* 过滤项的右上角数字 */ 
-  font-size: 10px;
-  margin-left: 12px;
-  float: right;
-  top: 4px;
-  line-height: 10px;
-  letter-spacing: -1px;
-  color: rgb(51, 51, 51);
-  position: absolute;
-}
-#tags{  
-  /* 过滤项面板 */
-  width: 60%;
-  height: 460px;
-  background: white;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  overflow-y: hidden;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-#tags-top{
-  /* 过滤项面板顶部 */
-  width: 100%;
-  height: 40px;
-  font-size: 16px;
-  line-height: 40px;
-  color: white;
-  cursor: pointer;
-  background: #db4137;
-}
-#tags .buttons{
-  /* 过滤项面板关闭按钮 */
-  width: 20%;
-  height: 50px;
-  float: left;
-}
-#tags .buttons img{
-  /* 过滤项面板小图 */
-  margin-top: 8px;
-  height: 19px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-#tags .buttons p{
-  /* 过滤项面板介绍 */
-  margin-top: 5px;
-  font-size: 8px;
-  line-height: 12px;
-  color: rgb(197, 195, 195);
-}
-#buttons-p{
-  /* 过滤项底部文字 */
-  clear: both;
-  width: 88%;
-  margin-left: 5%;
-  text-indent: 2em;
-  text-align: start;
-  padding: 12px 1%;
-  font-size: 10px;
-  font-weight: 700;
-}
-#pic1{
-  /* 陆家嘴背景图 */
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  opacity: 0.3;
-  z-index: -1;
-}
-#clear{
-  /* 右下角清除按钮 */
-  width: 25px;
-  position: absolute;
-  bottom: 3px;
-  right: 3px;
-  z-index: 2;
-  transition: all ease 0.2s;
-}
-#clear:active{
-  transform: scale(1.2);
-}
-.font{     
-  /* 渲染色，主题色 */
-  color: #DB4137 !important;
-}
-.typeImg{
-  border: 1px solid black !important;
-}
-#keyTag{
-  /* 左下角特征标签 */ 
-  position: fixed;
-  z-index: 22;
-  padding: 3px 10px;
-  color: white;
-  bottom: 68px;
-  left: -10px;
-  background-image: url("../../../public/img/bg/cloud-dark.png");
-  background-size: 40px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
-#keyTag span{
-  /* 左下角标签的关闭按钮 */
-  padding-left: 7px;
-}
-#bbg{
-  /* 黑色背景遮罩 */
-  width: 100%;
-  height: 100%;
-  background:rgba(0, 0, 0, 0.5);
-  position: fixed;
-  z-index: 33;
-}
-.choose{
-  background: #DB4137 !important;
-  color: white !important;
-}
-#showMessage{     
-  /* 弹出的消息框 */
-  position: fixed;
-  z-index: 999;
-  transform: translateX(-50%);
-  background:rgba(0, 0, 0, 0.8);
-  color: white;
-  text-align: center;
-  padding: 5px 15px;
-  top: 35%;
-  left: 50%;
-  display: none;
-}
-#count{   
-  /* 右上角的计数区域 */
-  font-size: 17px;
-  height: 20px;
-  line-height: 22px;
-  margin-top: 3px;
-  text-align: center;
-  color: #DB4137;
-  letter-spacing: -2px;
-}
-.warn{
-  font-size: 10px;
-  text-decoration: underline;
-  float: left;
-  margin-left: 5%;
-}
-.space{    
-  /* 占位白块 */
-  width: 100%;
-  height: 36px; 
-}
-.king{
-  color: orange;
-  position: absolute;
-  top: -5px;
-}
-.list{    
-  /* 被渲染的单个内容块 */
-  width: 96%;
-  height: 89px;
-  background: white;
-  display: flex;
-  margin-left: 1.5%;
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  /* border-radius: 6px; */
-  margin-top: 6px;
-  overflow: hidden;
-  /* box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); */
-  user-select: none;
-} 
-.list:hover{
-  background: #DB4137;
-  box-shadow: 3px 3px 5px rgba(0,0,0,0.3)
-}
-.list:hover p{
-  color: white !important;
-}
-.list:hover #badge #index{
-  background: white;
-  color: #DB4137;
-}
-.list p{    /* 内容块中的所有p标签 */
-  overflow:visible;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.list #flag{   /* 内容块中的第一部分 国旗+英文国名 */
-  flex: 0.29;
-  position: relative;
-}
-.list #flag img{   /* 内容块第一部分的国旗图片 */
-  height: 50px;
-  margin-top: 6px;
-  text-align: start;
-  float: left;
-  margin-left: 5px;
-  border: 1px solid #AEAAAA;
-}
-.list #flag #content{
-  font-size: 10px;
-  position: absolute;
-  bottom: 14px;
-  left: 5px;
-  color: black;
-}
-.list #flag #ename{   /* 内容块第一部分的p标签 */
-  position: absolute;
-  font-size: 16px;
-  line-height: 18px;
-  font-weight: 700;
-  left: 5px;
-  bottom: -3px;
-  z-index: 0;
-  color: rgb(204, 203, 203, 0.7);
-  
-}
-.list #content{   /* 内容块的第二部分：中间文字 */
-  flex: 0.41;
-  width: 41%;
-}
-.list #content .name,.fullname,.line-a{
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.list #content .name{  /* 内容块第二部分中间文字的标题 */
-  color: black;
-  font-weight: 700;
-  margin-top: 2px;
-}
-.list #content .fullname{  /* 内容块中间部分的副标题 */
-  font-size: 10px;
-  line-height: 15px;
-}
-.list #content .line-a{  
-  color: #DB4137;
-  font-size: 10px;
-}
-.list #badge{  /* 内容块第三部分的徽章区 */
-  flex: 0.3;
-  position: relative;
-}
-.list #badge img{  /* 内容块第三部分的徽章图片 */
-  position: absolute;
-  width: 140px;
-  top: -7%;
-  left: 0%;
-  z-index: 0;
-}
-.list #badge #index{   /* 数据列表右上角序列标志 */
-  position: absolute;
-  z-index: 0;
-  width: 20px;
-  height: 20px;
-  right: 1%;
-  font-size: 10px;
-  line-height: 20px;
-  color: white;
-  background: #DB4137;
-  border-radius: 20px;
-}
-.changeList-enter,.changeList-leave-to{    
-  transform: translateY(500px);
-}
-.changeList-enter-active,.changeList-leave-active{   
-  transition: all 0.5s ease;
-}
-.changeList-move{     /* 数据列表过度过程 */
-  transition: all 0.5s ease;
-}
-/* .changeList-leave-active{
-  position: absolute;
-} */
-.changeStyle-enter,.changeStyle-leave-to{   /* 无效图初始和结束样式 */
-  transform: translateX(200px);    
-  opacity: 0;
-}
-.changeStyle-enter-active,.changeStyle-leave-active{   /* 无效图过度效果 */ 
-  transition: all 0.5s ease;
-}
-/* 侧边栏的开始和结束样式 */
-.sideBar-enter,.sideBar-leave-to{    
-  transform: translateX(500px);
-  opacity: 0;
-}
-.sideBar-enter-active,.sideBar-leave-active{
-  transition: all ease 0.2s;
-}
-.keyTag-enter,.keyTag-leave-to{
-  transform: translateX(-100%);
-}
-.keyTag-enter-active,.keyTag-leave-active{
-  transition: all ease 0.5s;
-}
-/* imgScale特征面板初加载 */
-.imgScale-enter,.imgScale-leave-to{
-  transform: scale(0);
-}
-.imgScale-enter-active,.imgScale-leave-active{
-  transition: all ease 0.5s;
-}
-/* fadeImg底部menu按钮的动态效果 */
-.fadeImg-enter,.fadeImg-leave-to{
-  transform: translateX(100%);
-}
-.fadeImg-leave-active{
-  display: none;
-}
-.fadeImg-enter-active,.fadeImg-leave-active{
-  transition: all ease 1s;
-}
-#view-bottom{  
-  /* 底部填充div */
-  width: 100%;
-  height: 70px;
-}
-#no-div{   
-  /* 无效图容器的空间位置 */
-  width: 100%;
-  height: 100%;
-}
-#no-result{
-  /* 没有搜索结果时展示的地球图片 */
-  position: absolute;
-  width: 50%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-}
-#menu{
-  /* 下方按钮和hr横线的整体 */
-  margin-top: 10px;
-  position: relative;
-}
-#menu:after{
-  /* 按钮内的hr横线 */
-  content:'';
-  width: 90%;
-  height: 1px;
-  background: #DB4137;
-  position: absolute;
-  top: 64%;
-  left: 5%;
-  z-index: 1;
-}
-#menu img{
-  /* 已无更多 和 下滑加载按钮 */ 
-  position: relative;
-  z-index: 2;
-  top: 4px;
-  width: 60px;
-}
-#go-to{
-  /* 返回顶部按钮 */ 
-  position: fixed;
-  width: 30px;
-  right: 15px;
-  border-radius: 1px;
-  bottom: 65px;
-  z-index: 33;
-  background:rgba(0, 0, 0, 0.5);
-  transition: all ease 0.1s;
-}
-#go-to:active{   
-  /* 返回顶部点击效果 */
-  transform: scale(1.1);
-  background: #db4137;
-}
-
+@import "../../assets/css/views.css";
+/* 东西写得太多了，先转移一下css */
 </style>      
