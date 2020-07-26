@@ -174,7 +174,7 @@
       </div>
       <!-- 数据库 中部40% -->
         <div class="badge">
-          <img v-lazy="item.badge" alt="">
+          <img :src="item.badge" alt="">
           <!-- 懒加载,国家国徽 -->
           <div class="index">{{idx+1}}</div>
           <!-- 备选功能按键，预留 -->
