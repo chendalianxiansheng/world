@@ -1,6 +1,6 @@
 <template>
 <div id="exp">
-  
+  <div id="exp-top"></div>
 </div>
 </template>
 
@@ -27,5 +27,10 @@ export default {
   margin: auto;
   z-index: 999;
   background: rgba(0, 0, 0, 0.5);
+}
+#div-top{
+  width: 100%;
+  height: 20%;
+  background: #db4137;
 }
 </style>
