@@ -1,13 +1,9 @@
-
-<!-- 问号按键，数据说明组件 -->
-
 <template>
+<!-- 问号按键，数据说明组件 -->
 <div id="exp">
   <div id="exp-top" @click="sendExp">数据说明 <span>×</span></div>
   <div id="exp-content">
     <exp-info></exp-info>
-    <img src="" alt=""> 
-    <img src="" alt="">
   </div>
 </div>
 </template>
@@ -36,23 +32,29 @@ export default {
 
 <style scoped>
 #exp{
-  width: 60vmin;
+  /* 数据说明div */
+  width: 60%;
   height: 460px;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
-  z-index: 999;
+  z-index: 6666;
   background: rgba(255, 255, 255, 0.95);
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.1);
 }
 #exp-top{
+  /* 数据说明顶部div */
   width: 100%;
   height: 40px;
   line-height: 40px;
-  background: url("../../../public/img/bg/cloud-dark.png");
+  background: #db4137;
   background-size: 40px;
   color: white;  
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
 }
 </style>

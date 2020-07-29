@@ -16,11 +16,10 @@
 }
 .border1{
   /* 由tag特征面板使用的样式 */
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); */
   border: 1px solid black !important;
   position: relative;
-  transform: scale(1.2);
-  /* border-radius: 50%; */
+  transform: scale(1.1);
 }
 #arrLen{
   /* 过滤项的右上角数字 */ 
@@ -271,18 +270,21 @@
   color: #DB4137;
   font-size: 10px;
 }
-.list .badge{  /* 内容块第三部分的徽章区 */
+.list .badge{  
+  /* 内容块第三部分的徽章区 */
   flex: 0.3;
   position: relative;
 }
-.list .badge img{  /* 内容块第三部分的徽章图片 */
+.list .badge img{  
+  /* 内容块第三部分的徽章图片 */
   position: absolute;
   width: 140px;
   top: -7%;
   left: 0%;
   z-index: 0;
 }
-.list .badge .index{   /* 数据列表右上角序列标志 */
+.list .badge .index{   
+  /* 数据列表右上角序列标志 */
   position: absolute;
   z-index: 0;
   width: 20px;
@@ -300,17 +302,20 @@
 .changeList-enter-active,.changeList-leave-active{   
   transition: all 0.5s ease;
 }
-.changeList-move{     /* 数据列表过度过程 */
+.changeList-move{     
+  /* 数据列表过度过程 */
   transition: all 0.5s ease;
 }
 /* .changeList-leave-active{
   position: absolute;
 } */
-.changeStyle-enter,.changeStyle-leave-to{   /* 无效图初始和结束样式 */
+.changeStyle-enter,.changeStyle-leave-to{   
+  /* 无效图初始和结束样式 */
   transform: translateX(200px);    
   opacity: 0;
 }
-.changeStyle-enter-active,.changeStyle-leave-active{   /* 无效图过度效果 */ 
+.changeStyle-enter-active,.changeStyle-leave-active{   
+  /* 无效图过度效果 */ 
   transition: all 0.5s ease;
 }
 /* 侧边栏的开始和结束样式 */
@@ -326,6 +331,10 @@
 }
 .keyTag-enter-active,.keyTag-leave-active{
   transition: all ease 0.5s;
+}
+/* fadeImg底部menu按钮的动态效果 */
+.fadeImg-enter,.fadeImg-leave-to{
+  transform: translateX(100%);
 }
 .fadeImg-leave-active{
   display: none;
@@ -346,7 +355,7 @@
 #no-result{
   /* 没有搜索结果时展示的地球图片 */
   position: absolute;
-  width: 50%;
+  width: 50vmin;
   top: 0;
   left: 0;
   right: 0;

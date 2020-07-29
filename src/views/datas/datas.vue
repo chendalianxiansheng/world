@@ -3,8 +3,8 @@
     <!-- 顶端数据行 -->
     <div id="datasTop">
       <div id="backTo" @click="back()">返回 ➤ </div>
-      <span id="name1">{{item.name}}</span>
-      
+      <span id="name1">♚ {{item.name}}</span>
+      <span id="right-type">#类型：{{item.type | typeName}}</span>
     </div>
   <!-- 内容数据块1 -->
     <div id="datasInfo">
@@ -14,7 +14,7 @@
       <transition name="fadeFlag" appear>
       <div id="datasContent">
         <p id="datas-p1">{{item.ename}}</p>
-        <img id="flags" :src="item.flag" alt="">
+        <img id="flags" :src="item.flag" alt="" @dblclick="openFlag()">
         <div id="datasP">
           <p>国名：{{item.name}}</p>
           <p>首都：{{item.city}}</p>
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+//工具项
 import { drawTab1 } from './drawTab1'
 import { numb,typeName } from "@/views/pubFunc/filter"
 
@@ -74,6 +75,9 @@ export default {
       //点击返回时跳转views路由
       this.$router.replace('/views')
     },
+    openFlag(){
+      console.log(1)
+    },
     drawTab1
   }      //methods尾括号
 }       //vue实例尾括号
@@ -89,13 +93,14 @@ export default {
 /* 顶部功能行 */
 #datasTop{
   width: 100%;
-  height: 36px;
-  line-height: 36px;
+  height: 31px;
+  line-height: 31px;
   font-size: 13px;
   float: left;
   position: fixed;
   z-index: 9999;
-  background: white;
+  background: var(--tag);
+  background-size: 50px;
 }
 /* 左上角回退按钮 */
 #backTo{
@@ -103,10 +108,22 @@ export default {
   float: left;
   margin-left: 3%;
   cursor: pointer;
+  color: white;
 }
 /* 顶端国家名称 */
 #name1{
   text-align: center;
+  font-size: 16px;
+  line-height: 34px;
+  color: white;
+}
+#right-type{
+  font-size: 26px;
+  line-height: 40px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.15);
+  position: absolute;
+  right: 0;
 }
 /* 顶部模块1 数据模块 */
 #datasInfo{

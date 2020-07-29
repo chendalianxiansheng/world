@@ -10,7 +10,7 @@ body,html{
 :root{
   --tag: url("../../../public/img/bg/cloud-dark.png");
 }
-body,h1,h2,h3,hr,p,ul,li,img{   
+body,h1,h2,h3,hr,p,ul,li,div,img{   
   /* 小弟们的初始设置 */
   border: none;
   margin: 0;

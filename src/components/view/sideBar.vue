@@ -116,7 +116,7 @@ export default {
 
 <style>
 #Bar-top{
-  width: 60vw;
+  width: 60vmin;
   position: fixed;
   top: 66px;
   right: 0;

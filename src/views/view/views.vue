@@ -53,7 +53,7 @@
     <!-- 黑底白字提示框，默认隐藏 -->
     <search-input @sendClick="cancelIpt">
     <!-- 功能栏的搜索框 ↑ 功能栏的图标项 ↓ -->
-        <p slot="search-tag">我也不知道</p>
+        <p slot="search-tag">▼ 检索项</p>
         <input type="text" slot="search" placeholder="输入关键字" v-model="search" @keydown.13="iptBlur($event)" maxlength="5">
       <input-btn>
         <div slot="ipt-btn-out" @click="sumNum=maxNum,sortWay=='id'?'':reverse='',sendMutation('id'),sortWay='id',showMsg('按设计宽高比排序')">

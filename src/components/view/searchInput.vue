@@ -1,6 +1,9 @@
 <template>
+<!-- 主路由的顶部样式 -->
   <div id="search">
     <div id="search-bg">
+      <span>#旗帜检索功能</span>
+      <!-- 虚幻字体 -->
       <slot name="search-tag"></slot>
     </div>
     <div id="search-content">
@@ -30,7 +33,7 @@ export default {
 #search{
   /* 被固定在顶层的标题栏 */
   width: 100%;
-  height: 65px;
+  height: 66px;
   background: whitesmoke;
   position: fixed;
   top: 0;
@@ -44,13 +47,23 @@ export default {
   height: 30px;
   background: var(--tag);
   background-size: 50px;
+  overflow: hidden;
+}
+#search-bg>span{
+  font-size: 28px;
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.15);
 }
 #search-bg>p{
   /* 标题栏文本内容 */
   color: white;
-  line-height: 32px;
+  line-height: 34px;
   /* 30px行高32，使文字偏下 */
-  font-size: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
 }
 #search-content{
   /* 标题栏底部 */
