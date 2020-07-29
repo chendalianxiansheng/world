@@ -205,7 +205,7 @@
     </div>
     <!-- 填充底部tabBar的div -->
     <transition name="explain">
-      <explain v-if="explain" @click="explain=false"></explain>
+      <explain v-if="explain" @click="explain=false" @sendExp="explain=false"></explain>
         <!-- 展示页面声明的div -->
     </transition>
   </div>

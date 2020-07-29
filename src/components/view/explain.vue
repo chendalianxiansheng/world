@@ -1,10 +1,18 @@
+
+<!-- 问号按键，数据说明组件 -->
+
 <template>
 <div id="exp">
-  <div id="exp-top"></div>
+  <div id="exp-top" @click="sendExp">数据说明 <span>×</span></div>
+  <div id="exp-content">
+    <img src="" alt=""> 
+    <img src="" alt="">
+  </div>
 </div>
 </template>
 
 <script>
+
 export default {
   name: 'explain',
   data() {
@@ -12,6 +20,11 @@ export default {
       
     };
   },
+  methods:{
+    sendExp(){
+      this.$emit('sendExp')
+    }
+  }
 }
 </script>
 
@@ -26,11 +39,14 @@ export default {
   bottom: 0;
   margin: auto;
   z-index: 999;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.95);
 }
-#div-top{
+#exp-top{
   width: 100%;
-  height: 20%;
-  background: #db4137;
+  height: 45px;
+  line-height: 45px;
+  background: url("../../../public/img/bg/cloud-dark.png");
+  background-size: 40px;
+  color: white;  
 }
 </style>

@@ -401,11 +401,11 @@
   background: #db4137;
 }
 .explain-enter,.explain-leave-to{
-  transform: rotateY(180deg);
+  transform: rotateY(90deg);
 }
 .explain-leave-active{
   display: none;
 }
 .explain-enter-active,.explain-leave-active{
-  transition: all ease 1s;
+  transition: all ease 0.5s;
 }
