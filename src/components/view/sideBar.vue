@@ -118,7 +118,7 @@ export default {
 #Bar-top{
   width: 60vw;
   position: fixed;
-  top: 36px;
+  top: 66px;
   right: 0;
   z-index: 99;
   overflow-y: scroll;
@@ -269,7 +269,7 @@ export default {
   background: white;
 }
 #bar-bottom{
-  height: 92px;
+  height: 122px;
   background: whitesmoke;
 }
 </style>

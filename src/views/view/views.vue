@@ -1,11 +1,10 @@
 <template>
   <div id="views">
+  <transition name="explain" appear>
     <div id="tags" v-if="tags">
     <!-- 旗帜特征选择面板 @点击创建/移除-->
       <div id="tags-top" @click="tags=false">特征过滤 ×</div>
       <!-- 旗帜特征顶部div @点击移除-->
-    <transition-group name="imgScale" appear>
-    <!-- 旗帜特征标签过度样式 -->
       <div class="buttons" v-for="item in $store.state.buttons" :key="item.idx" @click="item.state=!item.state,getOut(),sumNum=maxNum,item.state?buttonInfo=item.info:'',item.state?flagStyle.push(item.code):flagStyle.splice(flagStyle.indexOf(item.code),1)" >
       <!-- 旗帜特征标签div -->
       <img :src="item.url" alt="" :class="{border1:item.state}">
@@ -13,7 +12,6 @@
       <p :style="{color:item.state?'black':''}">{{item.word}}</p>
       <!-- 旗帜特征的图片按钮描述 -->
     </div>
-    </transition-group>
       <p id="buttons-p">{{buttonInfo}}</p>
       <!-- 旗帜特征底部介绍div -->
       <img src="../../../public/img/bg/gw.png" alt="" id="pic1">
@@ -21,6 +19,7 @@
       <img src="../../../public/img/tags/clear.png" @click="clearTag(),buttonInfo=buttonInfor,flagStyle=[]" id="clear" alt="">
       <!-- 旗帜特征右下角重置图片 垃圾箱回收图标 -->
     </div>
+  </transition>
     <transition appear name="keyTag">
     <!-- 左下角标签的渐入渐出特效实现 -->
       <span id="keyTag" v-if=attrKey>
@@ -54,6 +53,7 @@
     <!-- 黑底白字提示框，默认隐藏 -->
     <search-input @sendClick="cancelIpt">
     <!-- 功能栏的搜索框 ↑ 功能栏的图标项 ↓ -->
+        <p slot="search-tag">我也不知道</p>
         <input type="text" slot="search" placeholder="输入关键字" v-model="search" @keydown.13="iptBlur($event)" maxlength="5">
       <input-btn>
         <div slot="ipt-btn-out" @click="sumNum=maxNum,sortWay=='id'?'':reverse='',sendMutation('id'),sortWay='id',showMsg('按设计宽高比排序')">

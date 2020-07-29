@@ -5,6 +5,7 @@
 <div id="exp">
   <div id="exp-top" @click="sendExp">数据说明 <span>×</span></div>
   <div id="exp-content">
+    <exp-info></exp-info>
     <img src="" alt=""> 
     <img src="" alt="">
   </div>
@@ -13,8 +14,13 @@
 
 <script>
 
+import expInfo from "./explainInfo"
+
 export default {
   name: 'explain',
+  components:{
+    expInfo
+  },
   data() {
     return {
       
@@ -31,7 +37,7 @@ export default {
 <style scoped>
 #exp{
   width: 60vmin;
-  height: 60%;
+  height: 460px;
   position: absolute;
   left: 0;
   right: 0;
@@ -43,8 +49,8 @@ export default {
 }
 #exp-top{
   width: 100%;
-  height: 45px;
-  line-height: 45px;
+  height: 40px;
+  line-height: 40px;
   background: url("../../../public/img/bg/cloud-dark.png");
   background-size: 40px;
   color: white;  

@@ -98,6 +98,9 @@
   opacity: 0.3;
   z-index: -1;
 }
+.search-tag{
+  color: white;
+}
 #clear{
   /* 右下角清除按钮 */
   width: 25px;
@@ -125,7 +128,7 @@
   color: white;
   bottom: 68px;
   left: -10px;
-  background-image: url("../../../public/img/bg/cloud-dark.png");
+  background-image: var(--tag);
   background-size: 40px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   cursor: pointer;
@@ -178,7 +181,7 @@
 .space{    
   /* 占位白块 */
   width: 100%;
-  height: 36px; 
+  height: 66px; 
 }
 .king{
   color: orange;
@@ -323,17 +326,6 @@
 }
 .keyTag-enter-active,.keyTag-leave-active{
   transition: all ease 0.5s;
-}
-/* imgScale特征面板初加载 */
-.imgScale-enter,.imgScale-leave-to{
-  transform: scale(0);
-}
-.imgScale-enter-active,.imgScale-leave-active{
-  transition: all ease 0.5s;
-}
-/* fadeImg底部menu按钮的动态效果 */
-.fadeImg-enter,.fadeImg-leave-to{
-  transform: translateX(100%);
 }
 .fadeImg-leave-active{
   display: none;
