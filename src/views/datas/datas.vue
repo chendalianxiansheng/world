@@ -1,5 +1,8 @@
 <template>
   <div id="datasDiv">
+    <transition name="prompt1">
+    <prompt v-if="prompt"></prompt>
+    </transition>
     <!-- 顶端数据行 -->
     <div id="datasTop">
       <div id="backTo" @click="back()">返回 ➤ </div>
@@ -32,6 +35,12 @@
       </transition>
     </div>
     <!-- 内容数据块2 echarts 民族构成模板 -->
+    <img 
+    src="../../assets/img/viewImg/menu.png" 
+    id="ellipsis" 
+    alt=""
+    @click="prompt=!prompt"
+    >
     <div id="chart1"></div>
     <div id="map"></div>
     <div id="bottom"></div>
@@ -39,16 +48,24 @@
 </template>
 
 <script>
+
+//组件
+import prompt from "../../components/datas/prompt"
+
 //工具项
 import { drawTab1 } from './drawTab1'
 import { numb,typeName } from "@/views/pubFunc/filter"
 
 export default {
   name: 'datas',
+  components: {
+    prompt
+  },
   data() {
     return {
       item: [],
-      merge: ''
+      merge: '',
+      prompt: false
     };
   },
   filters:{
@@ -76,7 +93,7 @@ export default {
       this.$router.replace('/views')
     },
     openFlag(){
-      console.log(1)
+      console.log(1);
     },
     drawTab1
   }      //methods尾括号
@@ -84,14 +101,15 @@ export default {
 </script>
 
 <style scoped>
-/* 整个data的样式 */
 #datasDiv{
+  /* 整个data的样式 */
   width: 100%;
   height: 100%;
   background: whitesmoke;
 }
-/* 顶部功能行 */
+
 #datasTop{
+  /* 顶部功能行 */
   width: 100%;
   height: 31px;
   line-height: 31px;
@@ -102,22 +120,23 @@ export default {
   background: var(--tag);
   background-size: 50px;
 }
-/* 左上角回退按钮 */
 #backTo{
+  /* 左上角回退按钮 */
   position: absolute;
   float: left;
   margin-left: 3%;
   cursor: pointer;
   color: white;
 }
-/* 顶端国家名称 */
 #name1{
+  /* 顶端国家名称 */
   text-align: center;
   font-size: 16px;
   line-height: 34px;
   color: white;
 }
 #right-type{
+  /* 右上角的隐藏字体 */
   font-size: 26px;
   line-height: 40px;
   font-weight: 900;
@@ -125,23 +144,27 @@ export default {
   position: absolute;
   right: 0;
 }
-/* 顶部模块1 数据模块 */
 #datasInfo{
+  /* 顶部模块1 数据模块 */
   position: relative;
   width: 100%;
   height: 355px;
 }
-/* 右侧国徽样式 */
 #badges{
+  /* 右侧国徽样式 */
   position: absolute;
   width: 54vmin;
   right: 2%;
   top: 36px;
   bottom: 0;
   margin: auto;
+  transition: all ease 0.5s;
 }
-/* 数据模块1的所有左侧数据 */ 
+#badges:active{
+  transform: scale(1.1);
+}
 #datasContent{
+  /* 数据模块1的所有左侧数据 */ 
   float: left;
   margin-left: 2%;
 }
@@ -173,6 +196,17 @@ export default {
 #datasP p:nth-child(2n+1){
   color: #db4137;
 }
+#ellipsis{
+  position: absolute;
+  top: 370px;
+  right: 2%;
+  width: 7%;
+  z-index: 999;
+  transition: all ease 0.2s;
+}
+#ellipsis:active{
+  transform: scale(1.2);
+}
 #chart1{
   width: 100%;
   height: 260px;
@@ -202,5 +236,11 @@ export default {
 }
 .rotateBadge-enter-active,.rotateBadge-leave-active{
   transition: all ease 0.5s;
+}
+.prompt1-enter,.prompt1-leave-to{
+  transform: rotateY(90deg)
+}
+.prompt1-enter-active,.prompt1-leave-active{
+  transition: all ease 0.3s;
 }
 </style>

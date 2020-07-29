@@ -4,6 +4,7 @@
     <div id="search-bg">
       <span>#旗帜检索功能</span>
       <!-- 虚幻字体 -->
+      <div id="search-count">收录数量：{{$store.state.flags.length}}</div>
       <slot name="search-tag"></slot>
     </div>
     <div id="search-content">
@@ -55,6 +56,13 @@ export default {
   position: absolute;
   left: 0;
   color: rgba(255, 255, 255, 0.15);
+}
+#search-count{
+  font-size: 11px;
+  position: absolute;
+  color: rgba(255, 255, 255, 0.85);
+  right: 2%;
+  top: 16px;
 }
 #search-bg>p{
   /* 标题栏文本内容 */

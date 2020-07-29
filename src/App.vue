@@ -1,6 +1,8 @@
 <template>
   <div id="app" @click="showPop($event)">
     <!-- 点击泡泡与泡泡实现 -->
+    <div id="masking-out" v-if="display"></div>
+    <!-- 外围蒙版 -->
     <div id="pop" ref="pop"></div>
     <!-- 实体标签，选择缓存views组件 -->
     <keep-alive include="views">
@@ -43,6 +45,7 @@ export default {
   },
   data(){
     return{
+      display: false
     }
   },
   methods:{

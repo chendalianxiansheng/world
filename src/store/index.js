@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { flags } from './fakeFlags'   //导入资料数据
+import { flags } from './flags'   //导入资料数据
 import { attr } from './attr'     //导入侧边栏国家分类
 
 Vue.use(Vuex)
