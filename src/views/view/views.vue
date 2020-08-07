@@ -1,3 +1,6 @@
+
+<!-- Views主路由的实现 -->
+
 <template>
   <div id="views">
   <transition name="explain" appear>

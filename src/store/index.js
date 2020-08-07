@@ -1,3 +1,6 @@
+
+//Vuex配置页
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { flags } from './flags'   //导入资料数据

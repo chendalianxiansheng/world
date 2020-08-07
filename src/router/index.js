@@ -1,3 +1,6 @@
+
+//路由的具体配置 => 均使用懒加载
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 //全部懒加载导入（旧写法，懒得改了）

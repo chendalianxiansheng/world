@@ -1,3 +1,6 @@
+
+<!-- 页面的最高配置 -->
+
 <template>
   <div id="app" @click="showPop($event)">
     <!-- 点击泡泡与泡泡实现 -->

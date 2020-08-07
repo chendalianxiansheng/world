@@ -1,5 +1,5 @@
 
-//共用过滤器
+//共用的过滤器
 
 function numb(data){     
   //文字过滤器
@@ -47,4 +47,8 @@ export {
   numb as numb,
   gdp as gdp,
   per as per 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dev

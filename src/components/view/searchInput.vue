@@ -1,5 +1,7 @@
+
+<!-- Views路由标题栏的整体组件 -->
+
 <template>
-<!-- 主路由的顶部样式 -->
   <div id="search">
     <div id="search-bg">
       <span>#旗帜检索功能</span>

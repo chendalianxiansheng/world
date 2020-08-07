@@ -1,3 +1,6 @@
+
+<!-- Views路由顶部菜单栏的插槽实现 -->
+
 <template>
   <div id="ipt-btn">
     <slot name="ipt-btn-out">

@@ -1,3 +1,6 @@
+
+<!-- Tree路由，负责展示时间线 -->
+
 <template>
   <div id="tree" @click="run">
     <tree-top></tree-top>
