@@ -1,3 +1,6 @@
+
+<!-- Tree路由的侧边功能栏实现 -->
+
 <template>
   <div id="tree-top" @click="sendArr">
     <div @click="cvlz=!cvlz" :style="{background:cvlz?'white':'#db4137'}">

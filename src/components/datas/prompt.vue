@@ -1,3 +1,6 @@
+
+<!-- 民族构成右上角的按钮弹出框实现 -->
+
 <template>
 <div id="prompt">
   <div id="prompt-tab">

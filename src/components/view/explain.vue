@@ -1,5 +1,7 @@
+
+<!-- Views路由的问号点击父组件 -->
+
 <template>
-<!-- 问号按键，数据说明组件 -->
 <div id="exp">
   <div id="exp-top" @click="sendExp">数据说明 <span>×</span></div>
   <div id="exp-content">

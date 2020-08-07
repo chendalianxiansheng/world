@@ -1,3 +1,6 @@
+
+<!-- 页面的tabBar样式实现 -->
+
 <template>
   <div class="tab-bar-item" @click="itemClick">
     <div v-if="!isActive">

@@ -1,3 +1,6 @@
+
+/* 作用于全局的CSS样式 */
+
 body,html{       
   /* 顶端大佬的全局设置 */
   -webkit-tap-highlight-color: rgba(255,0,0,0);
@@ -8,10 +11,11 @@ body,html{
   height: 100%;
 }
 :root{
+  /* 变量仓库 */
   --tag: url("../../../public/img/bg/cloud-dark.png");
 }
 body,h1,h2,h3,hr,p,ul,li,div,img{   
-  /* 小弟们的初始设置 */
+  /* 小弟们的初始化 */
   border: none;
   margin: 0;
   padding: 0;
@@ -69,6 +73,7 @@ input[type="text"]:focus{
   background: rgba(0, 0, 0, .15);
 }
 #masking-out{
+  /* 全局蒙版，暂时未实现 */
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3);

@@ -1,3 +1,6 @@
+
+/* Views路由的单页样式 */
+
 .class2{
   /* 地区颜色 */
   color: purple !important;
@@ -89,7 +92,7 @@
   font-weight: 700;
 }
 #pic1{
-  /* 陆家嘴背景图 */
+  /* 过滤项页面底部背景图 */
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -101,7 +104,7 @@
   color: white;
 }
 #clear{
-  /* 右下角清除按钮 */
+  /* 过滤项的右下角清除按钮 */
   width: 25px;
   position: absolute;
   bottom: 3px;
@@ -110,6 +113,7 @@
   transition: all ease 0.2s;
 }
 #clear:active{
+  /* 点击清除按钮的效果 */
   transform: scale(1.2);
 }
 .font{     
@@ -117,6 +121,7 @@
   color: #DB4137 !important;
 }
 .typeImg{
+  /* 强化效果 */
   border: 1px solid black !important;
 }
 #keyTag{
@@ -145,6 +150,7 @@
   z-index: 33;
 }
 .choose{
+  /* 强化的选中样式 */
   background: #DB4137 !important;
   color: white !important;
 }
@@ -172,6 +178,7 @@
   letter-spacing: -2px;
 }
 .warn{
+  /* 小字提示信息 */
   font-size: 10px;
   text-decoration: underline;
   float: left;

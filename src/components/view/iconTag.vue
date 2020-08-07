@@ -1,3 +1,6 @@
+
+<!-- Views路由的信息栏数据实现 -->
+
 <template>
   <div id="line-b">
     <div class="line-left">
