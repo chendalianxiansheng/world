@@ -26,7 +26,7 @@
   font-size: 10px;
   margin-left: 12px;
   float: right;
-  top: 4px;
+  top: 34px;
   line-height: 10px;
   letter-spacing: -1px;
   color: rgb(51, 51, 51);
@@ -213,16 +213,19 @@
   background: white;
   color: #DB4137;
 }
-.list p{    /* 内容块中的所有p标签 */
+.list p{    
+  /* 内容块中的所有p标签 */
   overflow:visible;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.list .flag{   /* 内容块中的第一部分 国旗+英文国名 */
+.list .flag{   
+  /* 内容块中的第一部分 国旗+英文国名 */
   flex: 0.29;
   position: relative;
 }
-.list .flag img{   /* 内容块第一部分的国旗图片 */
+.list .flag img{   
+  /* 内容块第一部分的国旗图片 */
   height: 50px;
   margin-top: 6px;
   text-align: start;
@@ -237,7 +240,8 @@
   left: 5px;
   color: black;
 }
-.list .flag .ename{   /* 内容块第一部分的p标签 */
+.list .flag .ename{   
+  /* 内容块第一部分的p标签 */
   position: absolute;
   font-size: 16px;
   line-height: 18px;
@@ -248,7 +252,8 @@
   color: rgb(204, 203, 203, 0.7);
   
 }
-.list .content{   /* 内容块的第二部分：中间文字 */
+.list .content{   
+  /* 内容块的第二部分：中间文字 */
   flex: 0.41;
   width: 41%;
 }
@@ -257,12 +262,14 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.list .content .name{  /* 内容块第二部分中间文字的标题 */
+.list .content .name{  
+  /* 内容块第二部分中间文字的标题 */
   color: black;
   font-weight: 700;
   margin-top: 2px;
 }
-.list .content .fullname{  /* 内容块中间部分的副标题 */
+.list .content .fullname{  
+  /* 内容块中间部分的副标题 */
   font-size: 10px;
   line-height: 15px;
 }

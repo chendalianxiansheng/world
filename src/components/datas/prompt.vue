@@ -1,7 +1,7 @@
 <template>
 <div id="prompt">
   <div id="prompt-tab">
-    <img src="../../../public/img/bg/way.png" alt="">
+    <!-- <img src="../../../public/img/bg/way.png" alt=""> -->
     <div id="prompt-items">
       <div 
       v-for="(item, idx) of people"

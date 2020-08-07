@@ -1,7 +1,7 @@
 <template>
   <div id="views">
   <transition name="explain" appear>
-    <div id="tags" v-if="tags">
+    <div id="tags" v-show="tags">
     <!-- 旗帜特征选择面板 @点击创建/移除-->
       <div id="tags-top" @click="tags=false">特征过滤 ×</div>
       <!-- 旗帜特征顶部div @点击移除-->
@@ -204,10 +204,10 @@
     <!-- 底部充数div -->
     </div>
     <!-- 填充底部tabBar的div -->
-    <transition name="explain">
-      <explain v-if="explain" @click="explain=false" @sendExp="explain=false"></explain>
+    <!-- <transition name="explain">
+      <explain v-if="explain" @click="explain=false" @sendExp="explain=false"></explain> -->
         <!-- 展示页面声明的div -->
-    </transition>
+    <!-- </transition> -->
   </div>
 </template>
 
@@ -217,7 +217,7 @@ import searchInput from "../../components/view/searchInput"
 import inputBtn from "../../components/view/inputBtn"
 import iconTag from "../../components/view/iconTag"
 import sideBar from "../../components/view/sideBar"
-import explain from "../../components/view/explain"
+//import explain from "../../components/view/explain"
 //功能区
 import { numb,gdp,per } from "@/views/pubFunc/filter"
  
@@ -228,7 +228,7 @@ export default {
     inputBtn,      //图标功能组件
     iconTag,      //资料模板组件
     sideBar,     //侧边栏组件
-    explain     //说明组件
+    //explain     //说明组件
   },
   data() {
     return {
