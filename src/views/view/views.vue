@@ -8,7 +8,11 @@
     <!-- 旗帜特征选择面板 @点击创建/移除-->
       <div id="tags-top" @click="tags=false">特征过滤 ×</div>
       <!-- 旗帜特征顶部div @点击移除-->
-      <div class="buttons" v-for="item in $store.state.buttons" :key="item.idx" @click="item.state=!item.state,getOut(),sumNum=maxNum,item.state?buttonInfo=item.info:'',item.state?flagStyle.push(item.code):flagStyle.splice(flagStyle.indexOf(item.code),1)" >
+      <div 
+        class="buttons" 
+        v-for="item in $store.state.buttons" 
+        :key="item.idx" 
+        @click="item.state=!item.state,getOut(),sumNum=maxNum,item.state?buttonInfo=item.info:'',item.state?flagStyle.push(item.code):flagStyle.splice(flagStyle.indexOf(item.code),1)" >
       <!-- 旗帜特征标签div -->
       <img :src="item.url" alt="" :class="{border1:item.state}">
       <!-- 旗帜特征标签图片 -->
@@ -42,7 +46,10 @@
         <!-- 侧边栏的真实DOM -->
         <span slot="warn" class="warn">*默认可搜索英文，至少选择一项！</span>
         <!-- 当索引按键都没有被激活时 -->
-        <div v-for="item in $store.state.attr" slot="picp" :key="item.idx">
+        <div 
+          v-for="item in $store.state.attr" 
+          slot="picp" 
+          :key="item.idx">
         <!-- sideBar组件用于渲染的图文父标签 -->
           <img slot="typeImg" :src="item.src" alt="" :class="{typeImg:attrKey==item.idx}" @click="attrKey=item.idx,sumNum=maxNum,attrKey?attrState=item.info:attrState='',showMsg('定位 - '+item.info)">
           <!-- 分类图片子标签， -->
@@ -141,7 +148,10 @@
     <transition appear name="changeList">
     <div>
       <!-- 表单切换的特效实现 -->
-    <div class="list" v-for="(item,idx) in result.slice(0,sumNum)" :key="item.id">
+    <div 
+      class="list" 
+      v-for="(item,idx) in result.slice(0,sumNum)" 
+      :key="item.id">
       <div class="flag">
         <div class="king" :class="{class2:item.type==2,class3:item.type==3,class4:item.type==4,class5:item.type==5}">♚</div>
         
@@ -187,7 +197,7 @@
     </transition>
     <img id="go-to" src="../../assets/img/viewImg/arrow.png" alt="" @click="getOut(),sumNum=maxNum,showMsg('返回顶部')">  
     <transition name="fadeImg" appear>
-      <div id="menu" @touchstart="sumNum<result.length?showMore():showMsg('已无更多数据')">
+      <div id="menu" @touchstart="pageDown" @click="pageDown">
         <img v-if="sumNum<result.length" src="../../assets/img/viewImg/swipe.png" alt="" ref="bottomTag">
         <img v-else src="../../assets/img/viewImg/end.png" alt="">
         <!-- 底部提示和横线 -->
@@ -207,10 +217,9 @@
     <!-- 底部充数div -->
     </div>
     <!-- 填充底部tabBar的div -->
-    <!-- <transition name="explain">
-      <explain v-if="explain" @click="explain=false" @sendExp="explain=false"></explain> -->
-        <!-- 展示页面声明的div -->
-    <!-- </transition> -->
+    <transition name="explain">
+      <explain v-if="explain" @click="explain=false" @sendExp="explain=false"></explain>
+    </transition>
   </div>
 </template>
 
@@ -220,7 +229,7 @@ import searchInput from "../../components/view/searchInput"
 import inputBtn from "../../components/view/inputBtn"
 import iconTag from "../../components/view/iconTag"
 import sideBar from "../../components/view/sideBar"
-//import explain from "../../components/view/explain"
+import explain from "../../components/view/explain"
 //功能区
 import { numb,gdp,per } from "@/views/pubFunc/filter"
  
@@ -231,7 +240,7 @@ export default {
     inputBtn,      //图标功能组件
     iconTag,      //资料模板组件
     sideBar,     //侧边栏组件
-    //explain     //说明组件
+    explain     //说明组件
   },
   data() {
     return {
@@ -377,6 +386,15 @@ export default {
       this.type5 = false
       this.showMsg('已重置所有搜索项')
     },
+    pageDown(){
+      /* 底部翻页功能的触发 */
+      if(this.sumNum<this.result.length){
+        this.showMore()
+      }else{
+        this.showMsg('已无更多数据')
+      }
+    },
+    //sumNum<result.length?showMore():showMsg('已无更多数据')
     // backTop(){   //有点卡，弃用该方案
     //   var that = this
     //   let timer = setInterval(()=>{

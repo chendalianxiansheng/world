@@ -1,5 +1,5 @@
 
-//民族构成的echarts表单实现函数
+//民族构成的echarts图形配置
 
 function drawTab1(){
   let chart = this.$echarts.init(document.getElementById('chart1'))

@@ -47,8 +47,5 @@ export {
   numb as numb,
   gdp as gdp,
   per as per 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> dev
+

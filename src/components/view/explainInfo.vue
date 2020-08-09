@@ -9,10 +9,10 @@
     <img src="../../../public/img/bg/bd.png" alt="百度百科">
     <img src="../../../public/img/bg/WJ.png" alt="维基百科">
     <p class="explain-p">
-      页面布局与图标/图案为个人设计，其中国旗和国徽图像下载于维基百科，已进行压缩处理，欢迎在gitHub中取用
+      页面布局与图标/图案为个人设计，其中 国旗和国徽图像下载于维基百科，已进行压缩处理，欢迎在gitHub中取用
     </p>
     <img src="../../../public/img/bg/gt.png" alt="gitHub"><br>
-    <a href="https://github.com/chendalianxiansheng/world" target="_blank">https://github.com/chendalianxiansheng/world</a>
+    <a :href="link" target="_blank">https://github.com/chendalianxiansheng/world</a>
     <p class="explain-p">
       如遇到严重错误或提出建议，欢迎与本人联系反馈，<span>微信账号：chenhanyu1991</span>
     </p>
@@ -26,6 +26,7 @@ export default {
   name: 'explainInfo',
   data() {
     return {
+      link:'https://github.com/chendalianxiansheng/world'
     };
   },
 }

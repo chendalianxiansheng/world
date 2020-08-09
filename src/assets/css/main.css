@@ -11,7 +11,6 @@ body,html{
   height: 100%;
 }
 :root{
-  /* 变量仓库 */
   --tag: url("../../../public/img/bg/cloud-dark.png");
 }
 body,h1,h2,h3,hr,p,ul,li,div,img{   

@@ -6,6 +6,7 @@
   <div id="exp-top" @click="sendExp">数据说明 <span>×</span></div>
   <div id="exp-content">
     <exp-info></exp-info>
+    <!-- 该组件为主要内容 -->
   </div>
 </div>
 </template>
@@ -26,6 +27,7 @@ export default {
   },
   methods:{
     sendExp(){
+      //向上发射指令
       this.$emit('sendExp')
     }
   }
@@ -44,7 +46,7 @@ export default {
   bottom: 0;
   margin: auto;
   z-index: 6666;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255);
   box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.1);
 }
 #exp-top{

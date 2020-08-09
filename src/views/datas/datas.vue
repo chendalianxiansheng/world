@@ -53,11 +53,11 @@
 <script>
 
 //组件
-import prompt from "../../components/datas/prompt"
+import prompt from '../../components/datas/prompt'
 
 //工具项
 import { drawTab1 } from './drawTab1'
-import { numb,typeName } from "@/views/pubFunc/filter"
+import { numb,typeName } from '@/views/pubFunc/filter'
 
 export default {
   name: 'datas',
@@ -104,146 +104,5 @@ export default {
 </script>
 
 <style scoped>
-#datasDiv{
-  /* 整个data的样式 */
-  width: 100%;
-  height: 100%;
-  background: whitesmoke;
-}
-
-#datasTop{
-  /* 顶部功能行 */
-  width: 100%;
-  height: 31px;
-  line-height: 31px;
-  font-size: 13px;
-  float: left;
-  position: fixed;
-  z-index: 9999;
-  background: var(--tag);
-  background-size: 50px;
-}
-#backTo{
-  /* 左上角回退按钮 */
-  position: absolute;
-  float: left;
-  margin-left: 3%;
-  cursor: pointer;
-  color: white;
-}
-#name1{
-  /* 顶端国家名称 */
-  text-align: center;
-  font-size: 16px;
-  line-height: 34px;
-  color: white;
-}
-#right-type{
-  /* 右上角的隐藏字体 */
-  font-size: 26px;
-  line-height: 40px;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.15);
-  position: absolute;
-  right: 0;
-}
-#datasInfo{
-  /* 顶部模块1 数据模块 */
-  position: relative;
-  width: 100%;
-  height: 355px;
-}
-#badges{
-  /* 右侧国徽样式 */
-  position: absolute;
-  width: 54vmin;
-  right: 2%;
-  top: 36px;
-  bottom: 0;
-  margin: auto;
-  transition: all ease 0.5s;
-}
-#badges:active{
-  transform: scale(1.1);
-}
-#datasContent{
-  /* 数据模块1的所有左侧数据 */ 
-  float: left;
-  margin-left: 2%;
-}
-#datasContent #datas-p1{
-  font-size: 18px;
-  padding-top: 40px;
-  font-weight: 700;
-  color: #ccc;
-  text-align: start;
-}
-#datasContent #datas-p1::first-letter{
-  font-size: 23px;
-  color: #db4137;
-}
-#flags{
-  height: 80px;
-  float: left;
-  border: 1px solid rgb(173, 173, 173);
-}
-#datasP{
-  clear: both;
-  padding-top: 5px;
-  text-align: start;
-  line-height: 18px;
-  font-size: 10px;
-  font-weight: 700;
-}
-/* 单数数据为红色字体 */
-#datasP p:nth-child(2n+1){
-  color: #db4137;
-}
-#ellipsis{
-  position: absolute;
-  top: 370px;
-  right: 2%;
-  width: 7%;
-  z-index: 999;
-  transition: all ease 0.2s;
-}
-#ellipsis:active{
-  transform: scale(1.2);
-}
-#chart1{
-  width: 100%;
-  height: 260px;
-  padding-top: 15px;
-  background: lightsalmon;
-  /* background-image: url("../../../public/img/bg/bg1.png");
-  background-size: 120% 270px; */
-}
-#map{
-  width: 100%;
-  height: 300px;
-  background: lightgreen;
-}
-#bottom{
-  width: 100%;
-  height: 500px;
-  background: gold;
-}
-.fadeFlag-enter,.fadeFlag-leave-to{
-  transform: translateX(-100%);
-}
-.fadeFlag-enter-active,.fadeFlag-leave-active{
-  transition: all ease 0.5s;
-}
-.rotateBadge-enter,.rotateBadge-leave-to{
-  transform: translateX(100%)
-}
-.rotateBadge-enter-active,.rotateBadge-leave-active{
-  transition: all ease 0.5s;
-}
-.prompt1-enter,.prompt1-leave-to{
-  transform: rotateY(90deg)
-}
-.prompt1-enter-active,.prompt1-leave-active{
-  transition: all ease 0.3s;
-}
+@import '../../assets/css/datas.css'
 </style>

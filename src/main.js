@@ -4,8 +4,8 @@ import router from './router'
 import store from './store'
 // import vueLazyload from 'vue-lazyload'
 import echarts from 'echarts'
-import './plugins/element'
-// import elementUI from 'element-ui'
+// import './plugins/echarts-config'
+import './plugins/element-config'
 import "element-ui/lib/theme-chalk/index.css"
 
 Vue.config.productionTip = false
