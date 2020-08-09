@@ -6,16 +6,21 @@
     <transition name="prompt1">
     <prompt v-if="prompt"></prompt>
     </transition>
+
     <!-- 顶端数据行 -->
     <div id="datasTop">
       <div id="backTo" @click="back()">返回 ➤ </div>
-      <span id="name1">♚ {{item.name}}</span>
-      <span id="right-type">#类型：{{item.type | typeName}}</span>
+      <span class="title">♚ {{item.name}}</span>
+      <span id="right-type" class="shadowFont">#类型：{{item.type | typeName}}</span>
     </div>
   <!-- 内容数据块1 -->
     <div id="datasInfo">
       <transition name="rotateBadge" appear tag="div">
-        <img id="badges" :src="item.badge" alt="">
+        <img 
+          id="badges" 
+          alt="国家国徽" 
+          :src="item.badge" 
+          @click="$store.commit('maskSwitch')">
       </transition>
       <transition name="fadeFlag" appear>
       <div id="datasContent">

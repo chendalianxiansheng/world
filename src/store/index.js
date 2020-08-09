@@ -15,7 +15,6 @@ export default new Vuex.Store({
     attr,
     buttons,
     time:2000,
-    popWidth: 24,
     // ↓ 默认的data展示页，默认为中国
     items: {
       id: 108,
@@ -42,8 +41,8 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    //实现数据的排序方式
-    sortMethod(state,key){    
+    sortMethod(state,key){ 
+      //实现数据的排序方式   
       state.flags.sort((a,b)=>{
         var a = a[key]
         var b = b[key]
@@ -54,12 +53,12 @@ export default new Vuex.Store({
         }
       })
     },
-    //实现数据的倒序
-    reverseItem(state){  
+    reverseItem(state){ 
+      //实现数据的倒序 
       state.flags.reverse()
     },
-    //实现过滤项的全部清除
     clearTag(state){
+      //实现过滤项的全部清除
       state.buttons.forEach(item=>item.state=false)
     }
   },

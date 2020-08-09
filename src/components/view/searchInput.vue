@@ -4,10 +4,10 @@
 <template>
   <div id="search">
     <div id="search-bg">
-      <span>#旗帜检索功能</span>
+      <span class="shadowFont">#旗帜：检索</span>
       <!-- 虚幻字体 -->
       <div id="search-count">收录数量：{{$store.state.flags.length}}</div>
-      <slot name="search-tag"></slot>
+      <p class="title">▼ 检索项</p>
     </div>
     <div id="search-content">
       <slot name="search"></slot>
@@ -52,28 +52,12 @@ export default {
   background-size: 50px;
   overflow: hidden;
 }
-#search-bg>span{
-  font-size: 28px;
-  font-weight: 900;
-  position: absolute;
-  left: 0;
-  color: rgba(255, 255, 255, 0.15);
-}
 #search-count{
   font-size: 11px;
   position: absolute;
   color: rgba(255, 255, 255, 0.85);
-  right: 2%;
-  top: 16px;
-}
-#search-bg>p{
-  /* 标题栏文本内容 */
-  color: white;
-  line-height: 34px;
-  /* 30px行高32，使文字偏下 */
-  font-size: 16px;
-  cursor: pointer;
-  user-select: none;
+  left: 2%;
+  top: 14px;
 }
 #search-content{
   /* 标题栏底部 */

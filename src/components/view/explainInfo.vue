@@ -69,6 +69,5 @@ export default {
 }
 #img-bottom-right{
   width: 15vmin !important;
-  border-radius: 50%;
 }
 </style>

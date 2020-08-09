@@ -11,7 +11,16 @@ body,html{
   height: 100%;
 }
 :root{
+  /* 变量仓库 */
   --tag: url("../../../public/img/bg/cloud-dark.png");
+  --main: #db4137;
+  --light: #fff;
+  --dark: #000;
+  --huge: 2em;
+  --big: 1.5em;
+  --normal: 1em;
+  --small: 0.8em;
+  --micro: 0.6em;
 }
 body,h1,h2,h3,hr,p,ul,li,div,img{   
   /* 小弟们的初始化 */
@@ -39,7 +48,7 @@ img{
 nav{
   /* 底部的nav导航栏 */
   display: flex;
-  background: #db4137;
+  background: var(--main);
   position: fixed;
   left: 0;
   right: 0;
@@ -57,7 +66,7 @@ input[type="text"]{
 }
 input[type="text"]:focus{  
   /* 输入型表单激活样式 */ 
-  border-color: #DB4137;  
+  border-color: var(--main);  
   outline: 0; 
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 10px rgba(219,65,55,.6)
 }
@@ -71,15 +80,32 @@ input[type="text"]:focus{
   z-index: 9999;
   background: rgba(0, 0, 0, .15);
 }
-#masking-out{
-  /* 全局蒙版，暂时未实现 */
+.title{
+  /* 路由顶部的居中字体 */
+  font-size: var(--normal);
+  line-height: 34px;
+  line-height: 30px;
+  color: white;
+}
+.shadowFont{
+  /* 路由顶部的右侧字体 */
+  font-size: 28px;
+  line-height: 37px;
+  font-weight: 900;
+  position: absolute;
+  right: 0;
+  color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  user-select: none;
+}
+/* #mask-out{
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(225, 225, 225, 0);
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 6666;
-}
+  z-index: 8888;
+} */
