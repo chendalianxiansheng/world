@@ -14,16 +14,26 @@
         :key="item.idx" 
         @click="item.state=!item.state,getOut(),sumNum=maxNum,item.state?buttonInfo=item.info:'',item.state?flagStyle.push(item.code):flagStyle.splice(flagStyle.indexOf(item.code),1)" >
       <!-- 旗帜特征标签div -->
-      <img :src="item.url" alt="" :class="{border1:item.state}">
+      <img
+        alt="旗帜特征"  
+        :src="item.url" 
+        :class="{border1:item.state}">
       <!-- 旗帜特征标签图片 -->
       <p :style="{color:item.state?'black':''}">{{item.word}}</p>
       <!-- 旗帜特征的图片按钮描述 -->
     </div>
       <p id="buttons-p">{{buttonInfo}}</p>
       <!-- 旗帜特征底部介绍div -->
-      <img src="../../../public/img/bg/gw.png" alt="" id="pic1">
+      <img 
+        src="../../../public/img/bg/gw.png" 
+        alt="旗帜特征" 
+        id="pic1">
       <!-- 旗帜特征底部背景图片 => 目前是上海陆家嘴 -->
-      <img src="../../../public/img/tags/clear.png" @click="clearTag(),buttonInfo=buttonInfor,flagStyle=[]" id="clear" alt="">
+      <img 
+        src="../../../public/img/tags/clear.png" 
+        @click="clearTag(),buttonInfo=buttonInfor,flagStyle=[]" 
+        id="clear" 
+        alt="重置搜索项">
       <!-- 旗帜特征右下角重置图片 垃圾箱回收图标 -->
     </div>
   </transition>
@@ -38,11 +48,17 @@
   </span>
   </transition>
 
-    <div id="bbg" v-show="sideBar" @click="sideBar=false,startScroll()"></div>
+    <div id="mask" v-show="sideBar" @click="sideBar=false,startScroll()"></div>
     <!-- 层级高度为33的黑色蒙版 -->
     <transition name="sideBar">
       <!-- 侧边栏的运动效果元素 -->
-      <side-bar v-show="sideBar" @sendkey="addkey" @cancelkey="cancelkey" @sendTag="explain=!explain" @sendImg="chooseImg" @sendInit="init">
+      <side-bar 
+        v-show="sideBar" 
+        @sendkey="addkey" 
+        @cancelkey="cancelkey" 
+        @sendTag="explain=!explain" 
+        @sendImg="chooseImg" 
+        @sendInit="init">
         <!-- 侧边栏的真实DOM -->
         <span slot="warn" class="warn">*默认可搜索英文，至少选择一项！</span>
         <!-- 当索引按键都没有被激活时 -->
@@ -51,7 +67,12 @@
           slot="picp" 
           :key="item.idx">
         <!-- sideBar组件用于渲染的图文父标签 -->
-          <img slot="typeImg" :src="item.src" alt="" :class="{typeImg:attrKey==item.idx}" @click="attrKey=item.idx,sumNum=maxNum,attrKey?attrState=item.info:attrState='',showMsg('定位 - '+item.info)">
+          <img 
+            slot="typeImg" 
+            :src="item.src" 
+            alt="分类内容" 
+            :class="{typeImg:attrKey==item.idx}" 
+            @click="attrKey=item.idx,sumNum=maxNum,attrKey?attrState=item.info:attrState='',showMsg('定位 - '+item.info)">
           <!-- 分类图片子标签， -->
           <p slot="typeInfo" v-show="item.idx==attrKey">{{item.intro}}</p>
           <!-- 分类文本字标签 -->
@@ -64,51 +85,65 @@
     <search-input @sendClick="cancelIpt">
     <!-- 功能栏的搜索框 ↑ 功能栏的图标项 ↓ -->
         <!-- <p slot="search-tag" @click="">▼ 检索项</p> -->
-        <input type="text" slot="search" placeholder="输入关键字" v-model="search" @keydown.13="iptBlur($event)" maxlength="5">
+        <input 
+          type="text" 
+          slot="search" 
+          placeholder="输入关键字" 
+          v-model="search" 
+          @keydown.13="iptBlur($event)" 
+          maxlength="5">
+          <!-- 输入框 -->
       <input-btn>
         <div slot="ipt-btn-out" @click="sumNum=maxNum,sortWay=='id'?'':reverse='',sendMutation('id'),sortWay='id',showMsg('按设计宽高比排序')">
           <!-- 1，防止重复点击清除reverse    2.修改排序方式    3.触发黑色弹框 -->
           <!-- 功能排序模块1-'ID' 下属正/反两个图片和文本 -->
-          <img v-if="sortWay==='id'" slot="ipt-btn-icon" src="../../assets/img/viewImg/width1.png" alt="">
+          <img v-if="sortWay==='id'" slot="ipt-btn-icon" src="../../assets/img/viewImg/width1.png" alt="设计排序">
           <img v-else slot="ipt-btn-icon-active" src="../../assets/img/viewImg/width0.png" alt="">
           <p slot="ipt-btn-text" :class="{font:sortWay==='id'}">按设计</p>
-          <!-- 字体跟随关键字的切换激活类名 -->
+          <!-- 字体跟随关键字的切换激活类名  按设计排序 -->
         </div>
       </input-btn>
 
       <input-btn>
         <div slot="ipt-btn-out" @click="sumNum=maxNum,sortWay=='ename'?'':reverse='',sendMutation('ename'),sortWay='ename',showMsg('按英文首字母排序')">
-          <img v-if="sortWay==='ename'" slot="ipt-btn-icon" src="../../assets/img/viewImg/code1.png" alt="">
+          <img v-if="sortWay==='ename'" slot="ipt-btn-icon" src="../../assets/img/viewImg/code1.png" alt="字母排序">
           
           <img v-else slot="ipt-btn-icon-active" src="../../assets/img/viewImg/code0.png" alt="">
           
           <p slot="ipt-btn-text" :class="{font:sortWay==='ename'}">按字母</p>
         </div>
       </input-btn>
+      <!-- 按字母排序 -->
 
       <input-btn>
         <div slot="ipt-btn-out" @click="sumNum=maxNum,sortWay=='area'?'':reverse='',sendMutation('area'),sortWay='area',showMsg('按国家面积排序')">
-          <img v-if="sortWay==='area'" slot="ipt-btn-icon" src="../../assets/img/viewImg/m1.png" alt="">
+          <img v-if="sortWay==='area'" slot="ipt-btn-icon" src="../../assets/img/viewImg/m1.png" alt="面积排序">
           
           <img v-else slot="ipt-btn-icon-active" src="../../assets/img/viewImg/m0.png" alt="">
           
           <p slot="ipt-btn-text" :class="{font:sortWay==='area'}">按面积</p>
         </div>
       </input-btn>
+      <!-- 按面积排序 -->
+
       <input-btn>
         <div slot="ipt-btn-out" @click="sumNum=maxNum,sortWay=='people'?'':reverse='',sendMutation('people'),sortWay='people',showMsg('按国家人口排序')">
-          <img v-if="sortWay==='people'" slot="ipt-btn-icon" src="../../assets/img/viewImg/people1.png" alt="">
+          <img v-if="sortWay==='people'" slot="ipt-btn-icon" src="../../assets/img/viewImg/people1.png" alt="人口排序">
           <img v-else slot="ipt-btn-icon-active" src="../../assets/img/viewImg/people0.png" alt="">
           <p slot="ipt-btn-text" :class="{font:sortWay==='people'}">按人口</p>
         </div>
-      </input-btn>  
+      </input-btn> 
+      <!-- 按人口排序 -->
+
       <input-btn>
         <div slot="ipt-btn-out" @click="sumNum=maxNum,sortWay=='gdp'?'':reverse='',sendMutation('gdp'),sortWay='gdp',showMsg('按年产总值排序/美元')">
-          <img v-if="sortWay==='gdp'" slot="ipt-btn-icon" src="../../assets/img/viewImg/GDP1.png" alt="">
+          <img v-if="sortWay==='gdp'" slot="ipt-btn-icon" src="../../assets/img/viewImg/GDP1.png" alt="总量排序">
           <img v-else slot="ipt-btn-icon-active" src="../../assets/img/viewImg/GDP0.png" alt="">
           <p slot="ipt-btn-text" :class="{font:sortWay==='gdp'}">按总量</p>
         </div>
       </input-btn>
+      <!-- 按GDP总量排序 -->
+
       <input-btn>
         <div slot="ipt-btn-out" @click="sumNum=maxNum,sortWay=='per'?'':reverse='',sendMutation('per'),sortWay='per',showMsg('按人均收入排序/美元')">
           <img v-if="sortWay==='per'" slot="ipt-btn-icon" src="../../assets/img/viewImg/per1.png" alt="">
@@ -116,6 +151,8 @@
           <p slot="ipt-btn-text" :class="{font:sortWay==='per'}">按人均</p>
         </div>
       </input-btn>
+      <!-- 按人均收入排序 -->
+
       <input-btn>
           <div slot="ipt-btn-out" @click="tags=!tags">
           <span id="arrLen" v-if="flagStyle.length" :class="{font:!tags}">{{flagStyle.length}}</span>
@@ -125,12 +162,17 @@
           <p :class="{font:tags}" slot="ipt-btn-text">过滤项</p>
         </div>
       </input-btn>
+      <!-- 启动过滤项 -->
+
       <input-btn>
         <div slot="ipt-btn-out" @click="sideBar=!sideBar,sideBar?stopScroll():startScroll()">
           <div id="count">{{result.length}}</div>
           <p slot="ipt-btn-text" class="font">展示数</p>
         </div>
       </input-btn>
+      <!-- 当前展示数量与侧边栏按钮 -->
+
+
       <input-btn>
           <div slot="ipt-btn-out">
           <img v-if="reverse" slot="ipt-btn-icon" @click="reverseItem(),reverse='',showMsg('取消倒序')" src="../../assets/img/viewImg/rotate1.png" alt="">
@@ -139,12 +181,16 @@
           <p :class="{font:reverse}" slot="ipt-btn-text">倒 序</p>
         </div>
       </input-btn>
+      <!-- 是否开启倒序模式 -->
       
     </search-input>
+
     <div class="space"></div>
     <!-- 填充浮动功能栏的大白块 (●—●) -->
+
   <div v-if="result.length>0" @click="sideBar=''">
-    <!-- if/else切换无结果填充图 -->
+  <!-- if/else切换无结果填充图 -->
+  
     <transition appear name="changeList">
     <div>
       <!-- 表单切换的特效实现 -->
@@ -154,7 +200,7 @@
       :key="item.id">
       <div class="flag">
         <div class="king" :class="{class2:item.type==2,class3:item.type==3,class4:item.type==4,class5:item.type==5}">♚</div>
-        
+        <!-- 右侧的小图标样式 -->
         <img :src="item.flag" alt="" @click="toDatas(item)">  
         <!-- 图片懒加载，有使用效果，但不知道有没有性能提升 -->
         <p class="feature">{{item.land}} / {{item.place}}</p>
@@ -198,8 +244,16 @@
     <img id="go-to" src="../../assets/img/viewImg/arrow.png" alt="" @click="getOut(),sumNum=maxNum,showMsg('返回顶部')">  
     <transition name="fadeImg" appear>
       <div id="menu" @touchstart="pageDown" @click="pageDown">
-        <img v-if="sumNum<result.length" src="../../assets/img/viewImg/swipe.png" alt="" ref="bottomTag">
-        <img v-else src="../../assets/img/viewImg/end.png" alt="">
+        <img 
+          v-if="sumNum<result.length" 
+          src="../../assets/img/viewImg/swipe.png" 
+          alt="滑动加载" 
+          ref="bottomTag">
+          <!-- 底部滑动提示图片 -->
+        <img 
+          v-else 
+          src="../../assets/img/viewImg/end.png" 
+          alt="已无更多">
         <!-- 底部提示和横线 -->
       </div> 
     </transition>
@@ -218,20 +272,34 @@
     </div>
     <!-- 填充底部tabBar的div -->
     <transition name="explain">
-      <explain v-if="explain" @click="explain=false" @sendExp="explain=false"></explain>
+      <explain 
+        v-if="explain" 
+        @click="explain=false" 
+        @sendExp="explain=false">
+      </explain>
+      <!-- 说明模块的开启状态 -->
     </transition>
   </div>
 </template>
 
 <script>
+
 //组件区
 import searchInput from "../../components/view/searchInput"
+//顶部搜索框组件
 import inputBtn from "../../components/view/inputBtn"
+//顶部菜单栏的按钮插槽
 import iconTag from "../../components/view/iconTag"
+//资料部分content的排列样式
 import sideBar from "../../components/view/sideBar"
+//侧边栏组件
 import explain from "../../components/view/explain"
+//说明弹出框组件
+
+
 //功能区
 import { numb,gdp,per } from "@/views/pubFunc/filter"
+//公共filter方法
  
 export default {
   name: 'views',
@@ -441,16 +509,19 @@ export default {
         this[type] = idx
       }
     },
-  },
+  }, 
+  //methods尾括号
   filters:{
     numb,
     gdp,
     per
-  }      //filter尾括号
-}       //配置尾括号
+  }      
+  //filter尾括号
+}       
+//配置尾括号
 </script>
 
 <style scoped>
 @import "../../assets/css/views.css";
-/* 东西写得太多了，先转移一下css */
+/* 单独作用的css */
 </style>      

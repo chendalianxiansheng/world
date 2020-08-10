@@ -42,7 +42,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 6666;
+  z-index: 99;
 }
 #search-bg{
   /* 带有底色的标题栏 */

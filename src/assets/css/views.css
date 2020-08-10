@@ -1,6 +1,12 @@
 
 /* Views路由的单页样式 */
 
+.king{
+  /* 国家颜色 */
+  color: orange;
+  position: absolute;
+  top: -5px;
+}
 .class2{
   /* 地区颜色 */
   color: purple !important;
@@ -25,7 +31,7 @@
   transform: scale(1.1);
 }
 #arrLen{
-  /* 过滤项的右上角数字 */ 
+  /* 过滤项的右上角数字（极小） */ 
   font-size: 10px;
   margin-left: 12px;
   float: right;
@@ -41,7 +47,7 @@
   height: 460px;
   background: white;
   position: fixed;
-  z-index: 9999;
+  z-index: 666;
   left: 0;
   right: 0;
   top: 0;
@@ -62,19 +68,19 @@
   background: #db4137;
 }
 #tags .buttons{
-  /* 过滤项面板关闭按钮 */
+  /* 过滤项面板的DIV容器 */
   width: 20%;
   height: 50px;
   float: left;
 }
 #tags .buttons img{
-  /* 过滤项面板小图 */
+  /* 过滤项面板中的DIV小图 */
   margin-top: 8px;
   height: 19px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 #tags .buttons p{
-  /* 过滤项面板介绍 */
+  /* 过滤项面板中的DIV名称 */
   margin-top: 5px;
   font-size: 8px;
   line-height: 12px;
@@ -141,8 +147,8 @@
   /* 左下角标签的关闭按钮 */
   padding-left: 7px;
 }
-#bbg{
-  /* 黑色背景遮罩 */
+#mask{
+  /* 黑色背景遮罩层 */
   width: 100%;
   height: 100%;
   background:rgba(0, 0, 0, 0.5);
@@ -162,7 +168,7 @@
   background:rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
-  padding: 5px 15px;
+  padding: 8px 16px;
   top: 35%;
   left: 50%;
   display: none;
@@ -180,6 +186,7 @@
 .warn{
   /* 小字提示信息 */
   font-size: 10px;
+  line-height: 18px;
   text-decoration: underline;
   float: left;
   margin-left: 5%;
@@ -188,11 +195,6 @@
   /* 占位白块 */
   width: 100%;
   height: 66px; 
-}
-.king{
-  color: orange;
-  position: absolute;
-  top: -5px;
 }
 .list{    
   /* 被渲染的单个内容块 */

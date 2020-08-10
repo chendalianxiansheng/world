@@ -45,7 +45,7 @@ export default {
   top: 0;
   bottom: 0;
   margin: auto;
-  z-index: 6666;
+  z-index: 999;
   background: rgba(255, 255, 255);
   box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.1);
 }

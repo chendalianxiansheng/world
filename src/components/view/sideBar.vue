@@ -14,6 +14,8 @@
           <p class="picsTag" :class="{color2:item.state}">{{item.tag}}</p>
         </div>
       </div>
+
+      <weakSwitch @sendWeak="weakPush"></weakSwitch>
       
       <p id="top-info">选择至少一项用于检索的过滤信息类型，如单选国名时，不再获得包含首都名、地区、所在洲的字符匹配结果。全部取消时只能进行字母搜索</p>
       <div id="top-btn">
@@ -34,8 +36,14 @@
 </template>
 
 <script>
+
+import weakSwitch from './weakSwitch'
+
 export default {
   name:'sideBar',
+  components: {
+    weakSwitch
+  },
   data(){
     return{
       country: true,
@@ -90,15 +98,17 @@ export default {
   methods:{
     //四大按钮（国名/首都/地区/大洲）点击实现
     sendkey(msg,e){
-      this.$emit('sendkey',msg,e.target.innerHTML)
+      e = typeof e==='string'?e:e.target.innerHTML
+      this.$emit('sendkey', msg, e)
     },
     //五种旗帜分类按钮（国家/地区/州省/组织/历史）
     sendImg(idx){
-      this.$emit('sendImg',idx,'type'+idx)
+      this.$emit('sendImg', idx, 'type'+idx)
     },
     //四大按钮解除事件
     cancelkey(msg,e){
-      this.$emit('cancelkey',msg,e.target.innerHTML)
+      e = typeof e==='string'?e:e.target.innerHTML
+      this.$emit('cancelkey', msg, e)
     },
     //标题问号圆圈点击事件
     sendTag(){
@@ -112,6 +122,13 @@ export default {
     //全局搜索项（views）初始化
     sendInit(){
       this.$emit('sendInit')
+    },
+    weakPush(state){
+      if(state){
+        this.sendkey('+item.from', '强关联')
+      }else{
+        this.cancelkey('+item.from', '强关联')
+      }
     }
   },
 }
